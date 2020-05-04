@@ -4,7 +4,7 @@
 
 #include "ProfileResult.h"
 
-class InstrumentationTimer
+class __declspec(dllexport) InstrumentationTimer
 {
 public:
 	explicit InstrumentationTimer(const std::string& functionName) noexcept;

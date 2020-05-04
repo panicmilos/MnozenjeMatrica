@@ -8,11 +8,11 @@
 class Instrumentor
 {
 public:
-	[[nodiscard]] static Instrumentor& getInstance() noexcept;
+	[[nodiscard]] static  __declspec(dllexport) Instrumentor& getInstance() noexcept;
 	~Instrumentor() noexcept;
 
-	void beginSession(const std::string& filePath) noexcept;
-	void endSession() noexcept;
+	void __declspec(dllexport) beginSession(const std::string& filePath) noexcept;
+	void __declspec(dllexport) endSession() noexcept;
 
 	void profileGivenResult(const ProfileResult& profilingResult) noexcept;
 
