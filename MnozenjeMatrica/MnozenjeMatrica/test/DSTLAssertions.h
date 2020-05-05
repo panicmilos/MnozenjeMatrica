@@ -1,5 +1,31 @@
 #pragma once
 
+#include <utility>
+#include <vector>
+
+#include "../src/Matrix.h"
+
+#define MATRIX_EXPECT_THROW(statements, exceptionType, exceptionMessage)		\
+	EXPECT_THROW({																\
+		try                                                                     \
+		{																		\
+			statements; 														\
+		}																		\
+		catch (const exceptionType & e)											\
+		{																		\
+			EXPECT_STREQ(exceptionMessage, e.what());							\
+			throw;																\
+		}																		\
+	}, exceptionType)															\
+
+#define MATRIX_DIMENSIONS_EQ MatrixAssertions::MATRIX_DIMENSIONS_EQ_
+#define MATRIX_DIMENSIONS_NOT_EQ MatrixAssertions::MATRIX_DIMENSIONS_NOT_EQ_
+#define MATRIX_ELEMENTS_EQ MatrixAssertions::MATRIX_ELEMENTS_EQ_
+
 namespace MatrixAssertions
 {
+	void MATRIX_DIMENSIONS_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions);
+	void MATRIX_DIMENSIONS_NOT_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions);
+
+	void MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements);
 } // MatrixAssertions

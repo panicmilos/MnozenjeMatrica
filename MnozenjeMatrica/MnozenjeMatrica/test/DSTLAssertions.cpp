@@ -1,1 +1,40 @@
 #include "DSTLAssertions.h"
+
+#include <algorithm>
+#include <vector>
+
+#include "gtest\gtest.h"
+
+void MatrixAssertions::MATRIX_DIMENSIONS_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions)
+{
+	auto [numberOfRowsExpected, numberOfColumnsExpected] = dimensions;
+	auto [numberOfRows, numberOfColumns] = std::pair{ m.getNumberOfRows(), m.getNumberOfColumns() };
+
+	ASSERT_EQ(numberOfRows, numberOfRowsExpected);
+	ASSERT_EQ(numberOfColumns, numberOfColumnsExpected);
+}
+
+void MatrixAssertions::MATRIX_DIMENSIONS_NOT_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions)
+{
+	auto [numberOfRowsExpected, numberOfColumnsExpected] = dimensions;
+	auto [numberOfRows, numberOfColumns] = std::pair{ m.getNumberOfRows(), m.getNumberOfColumns() };
+
+	const bool numberOfRowsAreNotSame = numberOfRows != numberOfRowsExpected;
+	const bool numberOfColumnsAreNotSame = numberOfColumns != numberOfColumnsExpected;
+
+	ASSERT_EQ(numberOfRowsAreNotSame, true);
+	ASSERT_EQ(numberOfColumnsAreNotSame, true);
+}
+
+void MatrixAssertions::MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements)
+{
+	size_t matrixSize = m.getSize();
+
+	ASSERT_EQ(matrixSize, elements.size());
+
+	const int* const matrixElements = m.getMatrixElements();
+
+	bool allElementsAreSame = std::equal(elements.begin(), elements.end(), matrixElements);
+
+	ASSERT_EQ(allElementsAreSame, true);
+}

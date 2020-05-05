@@ -2,9 +2,9 @@
 
 #include "Matrix.h"
 
-#define TESTING 0
+#define TESTING 1
 
-#ifdef TESTING
+#if TESTING == 0
 
 int main()
 {
