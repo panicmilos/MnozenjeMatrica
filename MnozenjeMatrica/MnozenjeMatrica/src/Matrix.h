@@ -31,10 +31,13 @@ public:
 	void print() noexcept;
 
 private:
+	void throwIfRowIndexIsOutOfBounds(const size_t rowIndex) const noexcept(false);
+
 	[[nodiscard]] bool validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const noexcept;
 	[[nodiscard]] bool validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
 	[[nodiscard]] bool areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
 	[[nodiscard]] bool doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
+	[[nodiscard]] bool validateRowIndex(const size_t rowIndex) const noexcept;
 
 	int* matrixElements = nullptr;
 	size_t numberOfRows = 0;

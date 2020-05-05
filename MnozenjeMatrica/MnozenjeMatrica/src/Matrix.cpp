@@ -104,7 +104,7 @@ bool Matrix::doesListInitializerHaveAtLeastOneColumn(const std::initializer_list
 {
 	const auto firstColumnPtr = matrixElements.begin();
 	const size_t sizeOfFirstColumn = firstColumnPtr->size();
-	bool hasMoreThenOneColumn = sizeOfFirstColumn > 0;
+	const bool hasMoreThenOneColumn = sizeOfFirstColumn > 0;
 
 	return hasMoreThenOneColumn;
 }
@@ -116,40 +116,49 @@ Matrix::~Matrix() noexcept
 
 Matrix& Matrix::operator=(const Matrix& m)
 {
-	//if(this != &m) // test prvo
-	const int oldNumberOfElements = getSize();
-	const int newNumberOfElements = m.getSize();
-
-	const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements;
-	if (matricesDontHaveSameSize)
+	if (this != &m)
 	{
-		int* newMemoryForMatrixElements = new int[newNumberOfElements];
+		const int oldNumberOfElements = getSize();
+		const int newNumberOfElements = m.getSize();
 
-		delete matrixElements;
+		const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements;
+		if (matricesDontHaveSameSize)
+		{
+			int* newMemoryForMatrixElements = new int[newNumberOfElements];
 
-		matrixElements = newMemoryForMatrixElements;
+			delete matrixElements;
+
+			matrixElements = newMemoryForMatrixElements;
+		}
+
+		std::copy(m.matrixElements, m.matrixElements + newNumberOfElements, matrixElements);
 	}
 
-	std::copy(m.matrixElements, m.matrixElements + newNumberOfElements, matrixElements);
+	return *this;
 }
 
 Matrix& Matrix::operator=(Matrix&& m) noexcept
 {
-	//if(this != &m) // test prvo
-	delete matrixElements;
+	if (this != &m)
+	{
+		delete matrixElements;
 
-	matrixElements = m.matrixElements;
-	numberOfRows = m.numberOfRows;
-	numberOfColumns = m.numberOfColumns;
+		matrixElements = m.matrixElements;
+		numberOfRows = m.numberOfRows;
+		numberOfColumns = m.numberOfColumns;
 
-	m.matrixElements = nullptr;
-	m.numberOfRows = 0;
-	m.numberOfColumns = 0;
+		m.matrixElements = nullptr;
+		m.numberOfRows = 0;
+		m.numberOfColumns = 0;
+	}
+
+	return *this;
 }
 
 MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 {
-	// check
+	throwIfRowIndexIsOutOfBounds(rowIndex);
+
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 
 	return MatrixRow(startOfIndexedRowPrt, numberOfColumns);
@@ -157,10 +166,26 @@ MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 
 const MatrixRow Matrix::operator[](const size_t rowIndex) const noexcept(false)
 {
-	// check
+	throwIfRowIndexIsOutOfBounds(rowIndex);
+
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 
-	return MatrixRow(matrixElements + rowIndex * numberOfColumns, numberOfColumns);
+	return MatrixRow(startOfIndexedRowPrt, numberOfColumns);
+}
+
+void Matrix::throwIfRowIndexIsOutOfBounds(const size_t rowIndex) const noexcept(false)
+{
+	if (!validateRowIndex(rowIndex))
+	{
+		throw MatrixIndexOutOfBounds("Given rowIndex is out of bounds.\n");
+	}
+}
+
+bool Matrix::validateRowIndex(const size_t rowIndex) const noexcept
+{
+	const bool isRowIndexInBounds = rowIndex < numberOfRows;
+
+	return isRowIndexInBounds;
 }
 
 size_t Matrix::getNumberOfRows() const noexcept
@@ -175,7 +200,9 @@ size_t Matrix::getNumberOfColumns() const noexcept
 
 size_t Matrix::getSize() const noexcept
 {
-	return numberOfRows * numberOfColumns;
+	const size_t numberOfElements = numberOfRows * numberOfColumns;
+
+	return numberOfElements;
 }
 
 int* const Matrix::getMatrixElements() const noexcept
