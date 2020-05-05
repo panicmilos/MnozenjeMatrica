@@ -1,0 +1,1 @@
+{"otherData": {},"traceEvents":[{"cat":"function","dur":1000802,"name":"void __cdecl sumNumbersInVector(const class std::vector<int,class std::allocator<int> > &)","ph":"X","pid":0,"tid":4034106023,"ts":274210862370}]}
