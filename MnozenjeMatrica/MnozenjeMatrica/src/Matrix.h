@@ -12,6 +12,11 @@ public:
 	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_);
 	~Matrix();
 
+	size_t getNumberOfRows() const;
+	size_t getNumberOfColumns() const;
+	size_t getSize() const;
+	const int* const getMatrixElements() const;
+
 	void print();
 
 private:

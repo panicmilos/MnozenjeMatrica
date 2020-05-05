@@ -92,6 +92,26 @@ Matrix::~Matrix()
 	delete matrixElements;
 }
 
+size_t Matrix::getNumberOfRows() const
+{
+	return numberOfRows;
+}
+
+size_t Matrix::getNumberOfColumns() const
+{
+	return numberOfColumns;
+}
+
+size_t Matrix::getSize() const
+{
+	return numberOfRows * numberOfColumns;
+}
+
+const int* const Matrix::getMatrixElements() const
+{
+	return matrixElements;
+}
+
 void Matrix::print()
 {
 	for (size_t i = 0; i < numberOfRows; ++i)
