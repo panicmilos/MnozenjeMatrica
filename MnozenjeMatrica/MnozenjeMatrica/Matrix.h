@@ -17,6 +17,25 @@ public:
 	{
 	}
 
+	Matrix(const Matrix& m) :
+		matrixElements(new int[m.numberOfRows * m.numberOfColumns]()),
+		numberOfRows(m.numberOfRows),
+		numberOfColumns(m.numberOfColumns)
+	{
+		const size_t numberOfElements = m.numberOfRows * m.numberOfColumns;
+		std::copy(m.matrixElements, m.matrixElements + numberOfElements, matrixElements);
+	}
+
+	Matrix(Matrix&& m) noexcept :
+		matrixElements(m.matrixElements),
+		numberOfRows(m.numberOfRows),
+		numberOfColumns(m.numberOfColumns)
+	{
+		m.matrixElements = nullptr;
+		m.numberOfRows = 0;
+		m.numberOfColumns = 0;
+	}
+
 	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_)
 	{
 		if (!validateMatrixDimensionsForInitializerListConstructor(matrixElements_))
