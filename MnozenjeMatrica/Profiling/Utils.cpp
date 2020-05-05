@@ -1,5 +1,10 @@
 #include "Utils.h"
 
+#include <algorithm>
+
+constexpr char SINGLE_QUOTES = '\'';
+constexpr char DOUBLE_QUOTES = '"';
+
 uint32_t Utils::getU_Int32_TFromThreadId() noexcept
 {
 	std::thread::id threadId = std::this_thread::get_id();
@@ -14,4 +19,9 @@ long long Utils::getTimeSinceEpochInMicroseconds(const std::chrono::time_point<s
 	long long TimeSinceEpochInMicroseconds = timeInMicroseconds.time_since_epoch().count();
 
 	return TimeSinceEpochInMicroseconds;
+}
+
+void Utils::replaceAllDoubleQuotesWithSingleInString(std::string& stringForModification) noexcept
+{
+	std::replace(stringForModification.begin(), stringForModification.end(), DOUBLE_QUOTES, SINGLE_QUOTES);
 }

@@ -1,6 +1,6 @@
 #include "ProfilingFileWritter.h"
 
-#include <algorithm>
+#include "Utils.h"
 
 ProfilingFileWritter::~ProfilingFileWritter() noexcept
 {
@@ -38,18 +38,20 @@ void ProfilingFileWritter::writeFooter() noexcept
 	outputFile << "]}";
 }
 
-void ProfilingFileWritter::writeProfile(const ProfileResult& profilingResult) noexcept
+ProfilingFileWritter& ProfilingFileWritter::operator<<(const ProfileResult& profilingResult) noexcept
 {
 	std::lock_guard<decltype(lockForWritingInFile)> lockGuard(lockForWritingInFile);
 
 	writeCommaIfNotFirstProfiling();
 	writeJsonData(profilingResult);
+
+	return *this;
 }
 
 void ProfilingFileWritter::writeJsonData(const ProfileResult& profilingResult) noexcept
 {
 	std::string functionName = profilingResult.functionName;
-	std::replace(functionName.begin(), functionName.end(), '"', '\'');
+	Utils::replaceAllDoubleQuotesWithSingleInString(functionName);
 
 	outputFile << "{";
 	outputFile << "\"cat\":\"function\",";

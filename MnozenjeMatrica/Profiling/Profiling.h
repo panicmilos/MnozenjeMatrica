@@ -3,7 +3,7 @@
 #include "InstrumentationTimer.h"
 #include "Instrumentor.h"
 
-constexpr char DEFAULT_RESULT_FILE_PATH[] = "results.json";
+constexpr char DEFAULT_RESULT_FILE_PATH[] = "profilingResults.json";
 
 #define PROFILE_SCOPE(functionName) InstrumentationTimer timer##__LINE__(functionName)
 #define PROFILE_FUNCTION()  PROFILE_SCOPE(__FUNCTION__)
@@ -11,15 +11,15 @@ constexpr char DEFAULT_RESULT_FILE_PATH[] = "results.json";
 
 namespace Profiling
 {
-	__declspec(dllexport) void beginProfiling(const std::string& filePath = DEFAULT_RESULT_FILE_PATH)
+	__declspec(dllexport) void beginSession(const std::string& filePath = DEFAULT_RESULT_FILE_PATH)
 	{
 		Instrumentor& instrumentorInstance = Instrumentor::getInstance();
 		instrumentorInstance.beginSession(filePath);
 	}
 
-	__declspec(dllexport) void endProfiling()
+	__declspec(dllexport) void endSession()
 	{
 		Instrumentor& instrumentorInstance = Instrumentor::getInstance();
 		instrumentorInstance.endSession();
 	}
-}
+} // namespace Profiling

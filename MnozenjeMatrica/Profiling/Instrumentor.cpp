@@ -34,5 +34,5 @@ void Instrumentor::endSession() noexcept
 
 void Instrumentor::profileGivenResult(const ProfileResult& profilingResult) noexcept
 {
-	profilingFile.writeProfile(profilingResult);
+	profilingFile << profilingResult;
 }

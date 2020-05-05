@@ -15,7 +15,7 @@ public:
 	void open(const std::string& filePath) noexcept;
 	void close() noexcept;
 
-	void writeProfile(const ProfileResult& profilingResult) noexcept;
+	ProfilingFileWritter& operator<<(const ProfileResult& profilingResult) noexcept;
 
 private:
 	void writeHeader() noexcept;

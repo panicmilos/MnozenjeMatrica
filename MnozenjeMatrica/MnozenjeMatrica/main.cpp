@@ -38,11 +38,11 @@ int main()
 {
 	const std::vector<int> numbers = generateVectorWithNumber();
 
-	Profiling::beginProfiling("singleprofile.json");
+	Profiling::beginSession("./profilingResults/singleprofile.json");
 	sumNumbersInVector(numbers);
-	Profiling::endProfiling();
+	Profiling::endSession();
 
-	Profiling::beginProfiling("./results/multipleprofilefromthreads.json");
+	Profiling::beginSession("./profilingResults/multipleprofilefromthreads.json");
 	std::thread t1 = std::thread(sumNumbersInVector, numbers);
 	std::thread t2 = std::thread(sumNumbersInVector, numbers);
 	std::thread t3 = std::thread(sumNumbersInVector, numbers);
@@ -51,9 +51,9 @@ int main()
 	t2.join();
 	t3.join();
 	t4.join();
-	Profiling::beginProfiling("singleprofile2.json");
+	Profiling::beginSession("./profilingResults/singleprofile2.json");
 	sumNumbersInVector(numbers);
-	Profiling::endProfiling();
+	Profiling::endSession();
 
 	return 0;
 }
