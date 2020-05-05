@@ -36,6 +36,9 @@
     <ClInclude Include="test\MatrixConstructorTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="src\MatrixExceptions.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="test\DSTLAssertions.cpp">
       <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MatrixExceptions.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,16 +2,19 @@
 
 #include "Matrix.h"
 
-#define TESTING 1
+#define TESTING 0
 
 #if TESTING == 0
 
 int main()
 {
+	int milos[2][2] = { {1, 2}, {3, 4} };
+	std::cout << milos[0];
 	Matrix m1{};
 	m1.print();
 
 	Matrix m(2, 2);
+
 	m.print();
 
 	/*Matrix m2 =
@@ -21,6 +24,7 @@ int main()
 	};*/
 
 	Matrix m3{ {1, 2}, {1, 3} };
+
 	Matrix m4{ m3 };
 	Matrix m5{ std::move(m4) };
 	std::cout << "M4\n";

@@ -3,11 +3,6 @@
 #include <algorithm>
 #include <iostream>
 
-MatrixHaveBadDimensions::MatrixHaveBadDimensions(const char* exceptionMessage) :
-	std::runtime_error(exceptionMessage)
-{
-}
-
 Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue) :
 	matrixElements(new int[numberOfRows_ * numberOfColumns_]()),
 	numberOfRows(numberOfRows_),
@@ -114,6 +109,39 @@ bool Matrix::doesListInitializerHasMoreThenOneColumn(const std::initializer_list
 Matrix::~Matrix()
 {
 	delete matrixElements;
+}
+
+Matrix& Matrix::operator=(const Matrix& m)
+{
+	//if(this != &m) // test prvo
+	const int oldNumberOfElements = getSize();
+	const int newNumberOfElements = m.getSize();
+
+	bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements;
+	if (matricesDontHaveSameSize)
+	{
+		int* newMemoryForMatrixElements = new int[newNumberOfElements];
+
+		delete matrixElements;
+
+		matrixElements = newMemoryForMatrixElements;
+	}
+
+	std::copy(m.matrixElements, m.matrixElements + newNumberOfElements, matrixElements);
+}
+
+Matrix& Matrix::operator=(Matrix&& m) noexcept
+{
+	//if(this != &m) // test prvo
+	delete matrixElements;
+
+	matrixElements = m.matrixElements;
+	numberOfRows = m.numberOfRows;
+	numberOfColumns = m.numberOfColumns;
+
+	m.matrixElements = nullptr;
+	m.numberOfRows = 0;
+	m.numberOfColumns = 0;
 }
 
 size_t Matrix::getNumberOfRows() const

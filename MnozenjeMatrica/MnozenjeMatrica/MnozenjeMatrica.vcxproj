@@ -160,12 +160,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Matrix.h" />
+    <ClInclude Include="src\MatrixExceptions.h" />
     <ClInclude Include="test\DSTLAssertions.h" />
     <ClInclude Include="test\MatrixConstructorTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
+    <ClCompile Include="src\MatrixExceptions.cpp" />
     <ClCompile Include="test\DSTLAssertions.cpp" />
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
     <ClCompile Include="test\ProfilingTest.cpp" />

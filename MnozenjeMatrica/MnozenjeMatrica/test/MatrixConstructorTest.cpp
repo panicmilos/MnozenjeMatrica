@@ -2,6 +2,8 @@
 
 #include "DSTLAssertions.h"
 #include "gtest\gtest.h"
+#include "../src/Matrix.h"
+#include "../src/MatrixExceptions.h"
 
 TEST(MatrixConstructorDefault, SuccessfulConstructing)
 {
@@ -82,7 +84,8 @@ TEST_P(MatrixConstructorWithBadInitializerList, ShouldThrowBecauseOfBadDimension
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixConstructorInitializerList, MatrixConstructorWithBadInitializerList,
-	testing::Values(InitializerListCase1,
+	testing::Values(
+		InitializerListCase1,
 		InitializerListCase2,
 		InitializerListCase3
 	));
