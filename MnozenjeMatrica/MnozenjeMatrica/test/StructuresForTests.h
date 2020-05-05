@@ -9,6 +9,13 @@ struct Dimensions
 	size_t numberOfColumns;
 };
 
+struct Element
+{
+	int value;
+	size_t rowIndex;
+	size_t columnIndex;
+};
+
 struct MatrixForTest : public ::testing::Test
 {
 public:

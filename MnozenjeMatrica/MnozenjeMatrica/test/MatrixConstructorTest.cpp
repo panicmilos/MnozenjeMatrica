@@ -1,6 +1,7 @@
 #include "MatrixConstructorTest.h"
 
 #include "DSTLAssertions.h"
+#include "../src/Matrix.h"
 #include "../src/MatrixExceptions.h"
 
 TEST(MatrixConstructorDefault, SuccessfulConstructing)
@@ -29,9 +30,9 @@ TEST(MatrixConstructorWithParams, SuccessfulConstructingWithNonDefaultValue)
 
 TEST_P(MatrixConstructorWithBadParams, ShouldThrowBecauseOfBadDimensions)
 {
-	auto parametes = GetParam();
+	auto parameters = GetParam();
 
-	MATRIX_EXPECT_THROW(Matrix m(parametes.numberOfRows, parametes.numberOfColumns), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
+	MATRIX_EXPECT_THROW(Matrix m(parameters.numberOfRows, parameters.numberOfColumns), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixConstructorWithParams, MatrixConstructorWithBadParams,

@@ -26,7 +26,7 @@ void MatrixRow::throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const
 {
 	if (!validateColumnIndex(elementIndex))
 	{
-		throw MatrixIndexOutOfBounds("Given columnIndex is out of bounds.\n");
+		throw MatrixIndexOutOfBounds("Given columnIndex is out of bounds!");
 	}
 }
 

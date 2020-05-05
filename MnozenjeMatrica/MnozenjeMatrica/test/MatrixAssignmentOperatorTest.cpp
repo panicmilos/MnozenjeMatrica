@@ -1,6 +1,7 @@
 #include "MatrixAssignmentOperatorTest.h"
 
 #include "DSTLAssertions.h"
+#include "../src/Matrix.h"
 
 TEST_P(MatrixAssignmentOperatorCopyWithParams, CopyingWithMatrixSizeAsParams)
 {

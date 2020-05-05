@@ -179,7 +179,7 @@ void Matrix::throwIfRowIndexIsOutOfBounds(const size_t rowIndex) const noexcept(
 {
 	if (!validateRowIndex(rowIndex))
 	{
-		throw MatrixIndexOutOfBounds("Given rowIndex is out of bounds.\n");
+		throw MatrixIndexOutOfBounds("Given rowIndex is out of bounds!");
 	}
 }
 
