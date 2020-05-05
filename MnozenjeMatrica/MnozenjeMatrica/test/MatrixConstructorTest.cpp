@@ -75,17 +75,14 @@ TEST(MatrixConstructorInitializerList, SuccessfulConstructing)
 	MATRIX_ELEMENTS_EQ(m, { 2, 23, -4, 55, 0, 6 });
 }
 
-TEST(MatrixConstructorWithBadInitializerList, ShouldThrowBecauseOfBadDimensions1)
+TEST_P(MatrixConstructorWithBadInitializerList, ShouldThrowBecauseOfBadDimensions)
 {
-	MATRIX_EXPECT_THROW(Matrix m({ {} }), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
+	auto parameters = GetParam();
+	MATRIX_EXPECT_THROW(Matrix m(parameters), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
 }
 
-TEST(MatrixConstructorWithBadInitializerList, ShouldThrowBecauseOfBadDimensions2)
-{
-	MATRIX_EXPECT_THROW(Matrix m({ {}, {} }), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
-}
-
-TEST(MatrixConstructorWithBadInitializerList, ShouldThrowBecauseOfBadDimensions3)
-{
-	MATRIX_EXPECT_THROW(Matrix m({ {1, 2}, {3} }), MatrixHaveBadDimensions, "Matrix must have at lease one row and one column!");
-}
+INSTANTIATE_TEST_CASE_P(MatrixConstructorInitializerList, MatrixConstructorWithBadInitializerList,
+	testing::Values(InitializerListCase1,
+		InitializerListCase2,
+		InitializerListCase3
+	));
