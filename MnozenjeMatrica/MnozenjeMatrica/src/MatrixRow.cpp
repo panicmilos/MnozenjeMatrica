@@ -32,13 +32,9 @@ void MatrixRow::throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const
 
 bool MatrixRow::validateColumnIndex(const size_t elementIndex) const noexcept
 {
-	const bool isElementIndexOutOfBounds = elementIndex >= numberOfElements;
-	if (isElementIndexOutOfBounds)
-	{
-		return false;
-	}
+	const bool isElementIndexInBounds = elementIndex < numberOfElements;
 
-	return true;
+	return isElementIndexInBounds;
 }
 
 std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept

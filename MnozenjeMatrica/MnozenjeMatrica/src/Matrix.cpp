@@ -10,7 +10,7 @@ Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const 
 	numberOfRows(numberOfRows_),
 	numberOfColumns(numberOfColumns_)
 {
-	if (!ValidateDimensionsForParametarizedConstructor(numberOfRows_, numberOfColumns_))
+	if (!validateDimensionsForParametarizedConstructor(numberOfRows_, numberOfColumns_))
 	{
 		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
 	}
@@ -22,11 +22,11 @@ Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const 
 	}
 }
 
-bool Matrix::ValidateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const
+bool Matrix::validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const
 {
-	const bool haveAtLeastOneRow = numberOfRows > 0;
-	const bool haveAtLeastOneColumn = numberOfColumns > 0;
-	const bool areDimenstionsGood = haveAtLeastOneRow & haveAtLeastOneColumn;
+	const bool hasAtLeastOneRow = numberOfRows > 0;
+	const bool hasAtLeastOneColumn = numberOfColumns > 0;
+	const bool areDimenstionsGood = hasAtLeastOneRow & hasAtLeastOneColumn;
 
 	return areDimenstionsGood;
 }
@@ -52,7 +52,7 @@ Matrix::Matrix(Matrix&& m) noexcept :
 
 Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_)
 {
-	if (!validateMatrixDimensionsForInitializerListConstructor(matrixElements_))
+	if (!validateDimensionsForInitializerListConstructor(matrixElements_))
 	{
 		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
 	}
@@ -63,23 +63,24 @@ Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixEl
 
 	for (auto rowIt = matrixElements_.begin(); rowIt != matrixElements_.end(); ++rowIt)
 	{
-		size_t rowIndex = rowIt - matrixElements_.begin();
+		const size_t rowIndex = rowIt - matrixElements_.begin();
+
 		for (auto columnIt = rowIt->begin(); columnIt != rowIt->end(); ++columnIt)
 		{
-			size_t columnIndex = columnIt - rowIt->begin();
+			const size_t columnIndex = columnIt - rowIt->begin();
+
 			matrixElements[rowIndex * numberOfColumns + columnIndex] = *columnIt;
 		}
 	}
 }
 
-bool Matrix::validateMatrixDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
+bool Matrix::validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
 {
-	if (!areAllColumnsInListInitializerSameSize(matrixElements) || !doesListInitializerHasMoreThenOneColumn(matrixElements))
-	{
-		return false;
-	}
+	const bool areAllColumnsSameSize = areAllColumnsInListInitializerSameSize(matrixElements);
+	const bool hasAtLeastOneColumn = doesListInitializerHaveAtLeastOneColumn(matrixElements);
+	const bool areDimensionsGood = areAllColumnsSameSize & hasAtLeastOneColumn;
 
-	return true;
+	return areDimensionsGood;
 }
 
 bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
@@ -99,7 +100,7 @@ bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<
 	return allColumnsHaveSameSize;
 }
 
-bool Matrix::doesListInitializerHasMoreThenOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
+bool Matrix::doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
 {
 	const auto firstColumnPtr = matrixElements.begin();
 	const size_t sizeOfFirstColumn = firstColumnPtr->size();

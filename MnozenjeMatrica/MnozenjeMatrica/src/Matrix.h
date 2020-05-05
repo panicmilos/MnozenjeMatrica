@@ -31,10 +31,10 @@ public:
 	void print();
 
 private:
-	bool ValidateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const;
-	bool validateMatrixDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
+	bool validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const;
+	bool validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
 	bool areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
-	bool doesListInitializerHasMoreThenOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
+	bool doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
 
 	int* matrixElements = nullptr;
 	size_t numberOfRows = 0;
