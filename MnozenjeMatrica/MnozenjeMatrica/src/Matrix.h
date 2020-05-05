@@ -11,30 +11,30 @@ class Matrix
 {
 public:
 	Matrix() = default;
-	Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue = DEFAULT_ELEMENT_VALUE);
+	Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue = DEFAULT_ELEMENT_VALUE) noexcept(false);
 	Matrix(const Matrix& m);
 	Matrix(Matrix&& m) noexcept;
-	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_);
+	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_) noexcept(false);
 	~Matrix() noexcept;
 
 	Matrix& operator=(const Matrix& m);
 	Matrix& operator=(Matrix&& m) noexcept;
 
-	MatrixRow operator[](size_t rowIndex);
-	const MatrixRow operator[](size_t rowIndex) const;
+	[[nodiscard]] MatrixRow operator[](const size_t rowIndex) noexcept(false);
+	[[nodiscard]] const MatrixRow operator[](const size_t rowIndex) const noexcept(false);
 
-	size_t getNumberOfRows() const;
-	size_t getNumberOfColumns() const;
-	size_t getSize() const;
-	int* const getMatrixElements() const;
+	[[nodiscard]] size_t getNumberOfRows() const noexcept;
+	[[nodiscard]] size_t getNumberOfColumns() const noexcept;
+	[[nodiscard]] size_t getSize() const noexcept;
+	[[nodiscard]] int* const getMatrixElements() const noexcept;
 
-	void print();
+	void print() noexcept;
 
 private:
-	bool validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const;
-	bool validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
-	bool areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
-	bool doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const;
+	[[nodiscard]] bool validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const noexcept;
+	[[nodiscard]] bool validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
+	[[nodiscard]] bool areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
+	[[nodiscard]] bool doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
 
 	int* matrixElements = nullptr;
 	size_t numberOfRows = 0;

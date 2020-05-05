@@ -8,21 +8,21 @@ MatrixRow::MatrixRow(int* const startOfRowPtr_, const size_t numberOfElements_) 
 {
 }
 
-int& MatrixRow::operator[](const size_t elementIndex)
+int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 {
 	throwIfColumnIndexIsOutOfBounds(elementIndex);
 
 	return startOfRowPtr[elementIndex];
 }
 
-const int& MatrixRow::operator[](const size_t elementIndex) const
+const int& MatrixRow::operator[](const size_t elementIndex) const noexcept(false)
 {
 	throwIfColumnIndexIsOutOfBounds(elementIndex);
 
 	return startOfRowPtr[elementIndex];
 }
 
-void MatrixRow::throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const
+void MatrixRow::throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const noexcept(false)
 {
 	if (!validateColumnIndex(elementIndex))
 	{

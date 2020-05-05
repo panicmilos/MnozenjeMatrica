@@ -5,7 +5,7 @@
 
 #include "MatrixExceptions.h"
 
-Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue) :
+Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue) noexcept(false) :
 	matrixElements(new int[numberOfRows_ * numberOfColumns_]()),
 	numberOfRows(numberOfRows_),
 	numberOfColumns(numberOfColumns_)
@@ -22,7 +22,7 @@ Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const 
 	}
 }
 
-bool Matrix::validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const
+bool Matrix::validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const noexcept
 {
 	const bool hasAtLeastOneRow = numberOfRows > 0;
 	const bool hasAtLeastOneColumn = numberOfColumns > 0;
@@ -50,7 +50,7 @@ Matrix::Matrix(Matrix&& m) noexcept :
 	m.numberOfColumns = 0;
 }
 
-Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_)
+Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_) noexcept(false)
 {
 	if (!validateDimensionsForInitializerListConstructor(matrixElements_))
 	{
@@ -74,7 +74,7 @@ Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixEl
 	}
 }
 
-bool Matrix::validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
+bool Matrix::validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept
 {
 	const bool areAllColumnsSameSize = areAllColumnsInListInitializerSameSize(matrixElements);
 	const bool hasAtLeastOneColumn = doesListInitializerHaveAtLeastOneColumn(matrixElements);
@@ -83,7 +83,7 @@ bool Matrix::validateDimensionsForInitializerListConstructor(const std::initiali
 	return areDimensionsGood;
 }
 
-bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
+bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept
 {
 	auto firstColumnPtr = matrixElements.begin();
 	const size_t sizeOfFirstColumn = firstColumnPtr->size();
@@ -100,7 +100,7 @@ bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<
 	return allColumnsHaveSameSize;
 }
 
-bool Matrix::doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const
+bool Matrix::doesListInitializerHaveAtLeastOneColumn(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept
 {
 	const auto firstColumnPtr = matrixElements.begin();
 	const size_t sizeOfFirstColumn = firstColumnPtr->size();
@@ -147,41 +147,43 @@ Matrix& Matrix::operator=(Matrix&& m) noexcept
 	m.numberOfColumns = 0;
 }
 
-MatrixRow Matrix::operator[](size_t rowIndex)
+MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 {
+	// check
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 
 	return MatrixRow(startOfIndexedRowPrt, numberOfColumns);
 }
 
-const MatrixRow Matrix::operator[](size_t rowIndex) const
+const MatrixRow Matrix::operator[](const size_t rowIndex) const noexcept(false)
 {
+	// check
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 
 	return MatrixRow(matrixElements + rowIndex * numberOfColumns, numberOfColumns);
 }
 
-size_t Matrix::getNumberOfRows() const
+size_t Matrix::getNumberOfRows() const noexcept
 {
 	return numberOfRows;
 }
 
-size_t Matrix::getNumberOfColumns() const
+size_t Matrix::getNumberOfColumns() const noexcept
 {
 	return numberOfColumns;
 }
 
-size_t Matrix::getSize() const
+size_t Matrix::getSize() const noexcept
 {
 	return numberOfRows * numberOfColumns;
 }
 
-int* const Matrix::getMatrixElements() const
+int* const Matrix::getMatrixElements() const noexcept
 {
 	return matrixElements;
 }
 
-void Matrix::print()
+void Matrix::print() noexcept
 {
 	for (size_t i = 0; i < numberOfRows; ++i)
 	{
