@@ -147,11 +147,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="ProfilingTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Profiling\Profiling.vcxproj">
       <Project>{6ec35b0e-beb0-4115-ae2e-59a11540186e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

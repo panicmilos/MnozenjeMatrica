@@ -1,59 +1,17 @@
-#include <algorithm>
-#include <chrono>
-#include <iostream>
-#include <numeric>
-#include <future>
-#include <vector>
-
-#include "Profiling.h"
-
-std::vector<int> generateVectorWithNumber()
-{
-	const auto getNumberFrom1to10000 = []()
-	{
-		static int i;
-
-		return i % 10000;
-	};
-
-	std::vector<int> numbersFrom1To10000(10000);
-	std::generate(numbersFrom1To10000.begin(), numbersFrom1To10000.end(), getNumberFrom1to10000);
-
-	return numbersFrom1To10000;
-}
-
-void sumNumbersInVector(const std::vector<int>& numbers)
-{
-	PROFILE_FUNCSIG();
-	const auto plus = [](const int sum, const int number)
-	{
-		return sum + number;
-	};
-	// Little more delay because sum is just too fast.
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	std::accumulate(numbers.begin(), numbers.end(), 0, plus);
-}
+#include "Matrix.h"
 
 int main()
 {
-	const std::vector<int> numbers = generateVectorWithNumber();
+	Matrix m(2, 2);
+	m.print();
 
-	Profiling::beginSession("./profilingResults/singleprofile.json");
-	sumNumbersInVector(numbers);
-	Profiling::endSession();
+	/*Matrix m2 =
+	{
+		{ 1, 2 },
+		{ 1, 4 }
+	};*/
 
-	Profiling::beginSession("./profilingResults/multipleprofilefromthreads.json");
-	std::thread t1 = std::thread(sumNumbersInVector, numbers);
-	std::thread t2 = std::thread(sumNumbersInVector, numbers);
-	std::thread t3 = std::thread(sumNumbersInVector, numbers);
-	std::thread t4 = std::thread(sumNumbersInVector, numbers);
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
-	Profiling::beginSession("./profilingResults/singleprofile2.json");
-	sumNumbersInVector(numbers);
-	Profiling::endSession();
-
-	return 0;
+	Matrix m3 = { {1, 2}, {1, 3} };
+	m3.print();
+	//m2.print();
 }
