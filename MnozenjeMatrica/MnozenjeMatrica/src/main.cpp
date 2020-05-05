@@ -2,6 +2,10 @@
 
 #include "Matrix.h"
 
+#define TESTING 0
+
+#ifdef TESTING
+
 int main()
 {
 	Matrix m1{};
@@ -26,3 +30,4 @@ int main()
 
 	//m2.print();
 }
+#endif // !TESTING
