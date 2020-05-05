@@ -4,7 +4,7 @@
 
 #define TESTING 0
 
-#if TESTING == 0
+#if TESTING == 1
 
 int main()
 {

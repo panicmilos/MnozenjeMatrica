@@ -129,6 +129,8 @@ Matrix& Matrix::operator=(const Matrix& m)
 			delete matrixElements;
 
 			matrixElements = newMemoryForMatrixElements;
+			numberOfRows = m.numberOfRows;
+			numberOfColumns = m.numberOfColumns;
 		}
 
 		std::copy(m.matrixElements, m.matrixElements + newNumberOfElements, matrixElements);

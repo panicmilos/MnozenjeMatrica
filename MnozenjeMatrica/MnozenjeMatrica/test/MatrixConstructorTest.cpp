@@ -36,9 +36,9 @@ TEST_P(MatrixConstructorWithBadParams, ShouldThrowBecauseOfBadDimensions)
 
 INSTANTIATE_TEST_CASE_P(MatrixConstructorWithParams, MatrixConstructorWithBadParams,
 	testing::Values(
-		MatrixDimensions{ 0u, 0u },
-		MatrixDimensions{ 0u, 1u },
-		MatrixDimensions{ 1u, 0u }
+		Dimensions{ 0u, 0u },
+		Dimensions{ 0u, 1u },
+		Dimensions{ 1u, 0u }
 ));
 
 TEST_F(MatrixConstructorCopy, SuccessfulConstructing)

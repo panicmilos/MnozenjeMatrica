@@ -42,6 +42,15 @@
     <ClInclude Include="src\MatrixRow.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="test\MatrixAssignmentOperatorTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\MatrixIndexingOperatorTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\StructuresForTests.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -64,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="src\MatrixRow.cpp">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\MatrixAssignmentOperatorTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\MatrixIndexingOperatorTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\StructuresForTests.cpp">
+      <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
