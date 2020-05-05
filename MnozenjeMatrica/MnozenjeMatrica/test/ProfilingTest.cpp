@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <chrono>
-#include <iostream>
 #include <numeric>
-#include <future>
 #include <vector>
 
 #include "Profiling.h"

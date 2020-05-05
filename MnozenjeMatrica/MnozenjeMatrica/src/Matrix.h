@@ -3,63 +3,9 @@
 #include <initializer_list>
 #include <string>
 
+#include "MatrixRow.h"
+
 constexpr int DEFAULT_ELEMENT_VALUE = 0;
-
-#include <iostream> // remove;
-#include "MatrixExceptions.h"
-
-class MatrixRow
-{
-public:
-	MatrixRow(int* const rowStartPtr_, const size_t numberOfColumns_) :
-		rowStartPtr(rowStartPtr_),
-		numberOfColumns(numberOfColumns_)
-	{
-	}
-
-	int& operator[](size_t columnIndex)
-	{
-		if (!validateColumnIndex(columnIndex))
-		{
-			std::cout << "GRESKA!\n";
-
-			return rowStartPtr[0];
-		}
-
-		return rowStartPtr[columnIndex];
-	}
-
-	const int& operator[](size_t columnIndex) const
-	{
-		if (!validateColumnIndex(columnIndex))
-		{
-			std::cout << "GRESKA!\n";
-
-			return rowStartPtr[0];
-		}
-
-		return rowStartPtr[columnIndex];
-	}
-
-	friend std::ostream& operator << (std::ostream& out, const MatrixRow& mr)
-	{
-		return out << mr.rowStartPtr;
-	}
-
-private:
-	bool validateColumnIndex(size_t columnIndex) const
-	{
-		if (columnIndex >= numberOfColumns)
-		{
-			return false;
-		}
-
-		return true;
-	}
-
-	int* const rowStartPtr;
-	size_t numberOfColumns;
-};
 
 class Matrix
 {
@@ -69,20 +15,13 @@ public:
 	Matrix(const Matrix& m);
 	Matrix(Matrix&& m) noexcept;
 	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_);
-	~Matrix();
+	~Matrix() noexcept;
 
 	Matrix& operator=(const Matrix& m);
 	Matrix& operator=(Matrix&& m) noexcept;
 
-	MatrixRow operator[](size_t rowIndex)
-	{
-		return MatrixRow(matrixElements + rowIndex * numberOfColumns, numberOfColumns);
-	}
-
-	const MatrixRow operator[](size_t rowIndex) const
-	{
-		return MatrixRow(matrixElements + rowIndex * numberOfColumns, numberOfColumns);
-	}
+	MatrixRow operator[](size_t rowIndex);
+	const MatrixRow operator[](size_t rowIndex) const;
 
 	size_t getNumberOfRows() const;
 	size_t getNumberOfColumns() const;

@@ -1,8 +1,6 @@
 #include "MatrixConstructorTest.h"
 
 #include "DSTLAssertions.h"
-#include "gtest\gtest.h"
-#include "../src/Matrix.h"
 #include "../src/MatrixExceptions.h"
 
 TEST(MatrixConstructorDefault, SuccessfulConstructing)

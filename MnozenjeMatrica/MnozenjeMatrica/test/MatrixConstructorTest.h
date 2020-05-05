@@ -4,6 +4,7 @@
 
 #include "gtest\gtest.h"
 #include "../src/Matrix.h"
+#include "../src/MatrixRow.h"
 
 struct MatrixDimensions
 {
@@ -24,12 +25,12 @@ public:
 	MatrixForTest() : m(2, 3)
 	{
 		int* const matrixElements = m.getMatrixElements();
-		matrixElements[0] = 2;
-		matrixElements[1] = 23;
-		matrixElements[2] = -4;
-		matrixElements[3] = 55;
-		matrixElements[5] = 6;
-	} // promeniti kada se upaci operator ()
+		m[0][0] = 2;
+		m[0][1] = 23;
+		m[0][2] = -4;
+		m[1][0] = 55;
+		m[1][2] = 6;
+	}
 };
 
 struct MatrixConstructorCopy : public MatrixForTest
