@@ -2,14 +2,14 @@
 
 #include <stdexcept>
 
-class MatrixHaveBadDimensions : public std::runtime_error
-{
-public:
-	explicit MatrixHaveBadDimensions(const char* exceptionMessage);
-};
+#define DeclareExceptionClass(exceptionName)                  \
+class exceptionName : public std::runtime_error               \
+{                                                             \
+public:                                                       \
+	explicit exceptionName(const char* exceptionMessage);     \
+};															  \
 
-class MatrixIndexOutOfBounds : public std::runtime_error
-{
-public:
-	explicit MatrixIndexOutOfBounds(const char* exceptionMessage);
-};
+DeclareExceptionClass(MatrixHaveBadDimensions);
+DeclareExceptionClass(MatrixIndexOutOfBounds);
+DeclareExceptionClass(FileCouldNotBeOpened);
+DeclareExceptionClass(BadMatrixFormatInFile);

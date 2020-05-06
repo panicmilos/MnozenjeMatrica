@@ -11,5 +11,11 @@ public:
 	MatrixReader() = default;
 	~MatrixReader() = default;
 
-	MatrixReader& operator>>(Matrix& m) { return *this; }
+	MatrixReader& operator>>(Matrix& m);
+
+private:
+	void readMatrixHeader(Matrix& m);
+	void readMatrixBody(Matrix& m);
+
+	Matrix matrixFromFile;
 };

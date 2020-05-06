@@ -23,7 +23,7 @@ INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperator
 TEST_P(MatrixIndexingOperatorWithParamsRowOutOfBound, rowIndexOutOfBound)
 {
 	auto parameters = GetParam();
-	MATRIX_EXPECT_THROW(m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given rowIndex is out of bounds!");
+	MATRIX_EXPECT_THROW(int elementValue = m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given rowIndex is out of bounds!");
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsRowOutOfBound,
@@ -36,7 +36,7 @@ INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperator
 TEST_P(MatrixIndexingOperatorWithParamsColumnOutOfBound, columnIndexOutOfBound)
 {
 	auto parameters = GetParam();
-	MATRIX_EXPECT_THROW(m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given columnIndex is out of bounds!");
+	MATRIX_EXPECT_THROW(int elementValue = m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given columnIndex is out of bounds!");
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsColumnOutOfBound,

@@ -2,6 +2,7 @@
 
 #include "Matrix.h"
 #include "MatrixWritter.h"
+#include "MatrixReader.h"
 #include "Profiling.h"
 
 #define TESTING 0
@@ -39,7 +40,7 @@ Matrix multiply(Matrix& m1, Matrix& m2)
 int main()
 {
 	try {
-		Profiling::beginSession();
+		/*Profiling::beginSession();
 		Matrix m3(30, 1000, 2);
 		Matrix m4(1000, 30, 1);
 		Matrix res = multiply(m3, m4);
@@ -48,6 +49,12 @@ int main()
 		MatrixWritter ms;
 		ms.open("matrix.txt");
 		ms << res;
+		ms.close();*/
+
+		Matrix m;
+		MatrixReader mr;
+		mr.open("matrix.txt");
+		mr >> m;
 	}
 	catch (std::exception & e)
 	{

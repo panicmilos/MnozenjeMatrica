@@ -12,7 +12,7 @@ Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const 
 {
 	if (!validateDimensionsForParametarizedConstructor(numberOfRows_, numberOfColumns_))
 	{
-		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
+		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!"); // trow func?
 	}
 
 	if (defaultElementValue != DEFAULT_ELEMENT_VALUE)
@@ -54,7 +54,7 @@ Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixEl
 {
 	if (!validateDimensionsForInitializerListConstructor(matrixElements_))
 	{
-		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
+		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!"); // trow func?
 	}
 
 	numberOfRows = matrixElements_.size();
@@ -121,8 +121,7 @@ Matrix& Matrix::operator=(const Matrix& m)
 		const int oldNumberOfElements = getSize();
 		const int newNumberOfElements = m.getSize();
 
-		const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements;
-		if (matricesDontHaveSameSize)
+		if (const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements; matricesDontHaveSameSize)
 		{
 			int* newMemoryForMatrixElements = new int[newNumberOfElements];
 
