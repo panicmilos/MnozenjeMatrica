@@ -11,11 +11,23 @@ public:
 	MatrixReader() = default;
 	~MatrixReader() = default;
 
-	MatrixReader& operator>>(Matrix& m);
+	MatrixReader& operator>>(Matrix& m) noexcept(false);
 
 private:
-	void readMatrixHeader(Matrix& m);
-	void readMatrixBody(Matrix& m);
+	void readMatrixFromFile() noexcept(false);
+	void readMatrixHeader() noexcept;
+	void readMatrixBody() noexcept;
+	void readEndOfFormatCharacter() noexcept;
+
+	void throwIfMatrixFormatInFileIsBad() noexcept(false);
+
+	void createMatrixWithReadDimensionsFromFile() noexcept;
 
 	Matrix matrixFromFile;
+
+	struct
+	{
+		size_t numberOfRows;
+		size_t numberOfColumns;
+	} Dimensions;
 };

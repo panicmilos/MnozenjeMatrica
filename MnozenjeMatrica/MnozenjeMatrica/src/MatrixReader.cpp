@@ -1,50 +1,78 @@
 #include "MatrixReader.h"
 
+#include <algorithm>
+
+#include "MatrixExceptions.h"
 #include "MatrixRow.h"
 
-#include <iostream> // remove
-
-MatrixReader& MatrixReader::operator>>(Matrix& m)
+MatrixReader& MatrixReader::operator>>(Matrix& m) noexcept(false)
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
 
-	readMatrixHeader(m);
-	readMatrixBody(m);
+	readMatrixFromFile();
 
-	if (!fileStream.good())
-	{
-		std::cout << "GRESKA\n";
-	}
+	m = std::move(matrixFromFile);
+
 	return *this;
 }
 
-void MatrixReader::readMatrixHeader(Matrix& m)
+void MatrixReader::readMatrixFromFile() noexcept(false)
+{
+	readMatrixHeader();
+	throwIfMatrixFormatInFileIsBad();
+	createMatrixWithReadDimensionsFromFile();
+
+	readMatrixBody();
+	throwIfMatrixFormatInFileIsBad();
+
+	readEndOfFormatCharacter();
+	throwIfMatrixFormatInFileIsBad();
+}
+
+void MatrixReader::readMatrixHeader() noexcept
 {
 	char randomFormatCharFromFile;
-	size_t numberOfRows;
-	size_t numberOfColumns;
 
-	fileStream >> randomFormatCharFromFile >> numberOfRows >> randomFormatCharFromFile >> numberOfRows >> randomFormatCharFromFile;
+	fileStream >> randomFormatCharFromFile >> Dimensions.numberOfRows >> randomFormatCharFromFile >> Dimensions.numberOfColumns >> randomFormatCharFromFile;
+}
 
-	if (!fileStream.good())
+void MatrixReader::throwIfMatrixFormatInFileIsBad() noexcept(false)
+{
+	if (const bool somethingBadHappenedWhileReading = !fileStream.good(); somethingBadHappenedWhileReading)
 	{
-		std::cout << "LOSE?\n";
+		throw BadMatrixFormatInFile("File contains matrix with bad format!");
 	}
 }
 
-void MatrixReader::readMatrixBody(Matrix& m)
+void MatrixReader::createMatrixWithReadDimensionsFromFile() noexcept
 {
-	int value;
-	for (size_t i = 0; i < 900; i++)
-	{
-		fileStream >> value;
-		//std::cout << value << '\n';
-	}
+	Matrix m(Dimensions.numberOfRows, Dimensions.numberOfColumns);
+	matrixFromFile = std::move(m);
+}
 
-	char c;
-	fileStream >> c;
-	if (c == ';')
+void MatrixReader::readMatrixBody() noexcept
+{
+	int matrixElement;
+
+	for (size_t i = 0; i < Dimensions.numberOfRows; ++i)
 	{
-		std::cout << "DOBRO JE\n";
+		for (size_t j = 0; j < Dimensions.numberOfColumns; ++j)
+		{
+			fileStream >> matrixElement;
+
+			matrixFromFile[i][j] = matrixElement;
+		}
+	}
+}
+
+void MatrixReader::readEndOfFormatCharacter() noexcept
+{
+	char characterFromFile;
+
+	fileStream >> characterFromFile;
+
+	if (const bool readCharIsNotEndOfFormatChar = characterFromFile != ';'; readCharIsNotEndOfFormatChar)
+	{
+		fileStream.setstate(std::ios::failbit);
 	}
 }

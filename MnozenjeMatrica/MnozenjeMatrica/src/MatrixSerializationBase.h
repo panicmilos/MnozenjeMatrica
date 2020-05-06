@@ -19,9 +19,9 @@ public:
 	{
 		closeStreamIfItIsAlreadyOpen();
 
-		openFileStreamOnGivenPath(filePath);
+		openStreamOnGivenPath(filePath);
 
-		throwIfFileCouldNotBeOpened();
+		throwIfStreamCouldNotBeOpened();
 	}
 
 	void close() noexcept
@@ -34,22 +34,22 @@ protected:
 	T fileStream;
 
 private:
-	void openFileStreamOnGivenPath(const std::string& filePath) noexcept
+	void openStreamOnGivenPath(const std::string& filePath) noexcept
 	{
 		fileStream.open(filePath);
 	}
 
-	void throwIfFileCouldNotBeOpened() noexcept(false)
+	void throwIfStreamCouldNotBeOpened() noexcept(false)
 	{
-		if (const bool fileIsNotOpened = !fileStream.is_open(); fileIsNotOpened)
+		if (const bool streamIsNotOpened = !fileStream.is_open(); streamIsNotOpened)
 		{
-			throw FileCouldNotBeOpened("The file cannot be opened!");
+			throw FileCouldNotBeOpened("The file can not be opened!");
 		}
 	}
 
 	void closeStreamIfItIsAlreadyOpen() noexcept
 	{
-		if (const bool fileIsAlreadyOpen = fileStream.is_open(); fileIsAlreadyOpen)
+		if (const bool streamIsAlreadyOpen = fileStream.is_open(); streamIsAlreadyOpen)
 		{
 			fileStream.close();
 		}

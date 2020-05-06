@@ -51,6 +51,9 @@ int main()
 		ms << res;
 		ms.close();*/
 
+		Matrix m2(2, 2, 2);
+		auto x = m2.getMatrixElements();
+
 		Matrix m;
 		MatrixReader mr;
 		mr.open("matrix.txt");
