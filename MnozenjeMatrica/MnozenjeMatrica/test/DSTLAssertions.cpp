@@ -38,3 +38,11 @@ void MatrixAssertions::MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<in
 
 	ASSERT_EQ(allElementsAreSame, true);
 }
+
+void MatrixAssertions::MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& e)
+{
+	const int elementValueInMatrix = m[e.rowIndex][e.columnIndex];
+	const int expectedValue = e.value;
+
+	ASSERT_EQ(elementValueInMatrix, expectedValue);
+}

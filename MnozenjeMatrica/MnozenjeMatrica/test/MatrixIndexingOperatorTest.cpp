@@ -5,12 +5,9 @@
 
 TEST_P(MatrixIndexingOperatorWithParamsInBound, IndexesInBound)
 {
-	auto parameters = GetParam();
+	auto elemment = GetParam();
 
-	const int elementValue = m[parameters.rowIndex][parameters.columnIndex];
-	const int expectedValue = parameters.value;
-
-	ASSERT_EQ(elementValue, expectedValue); // asser neki
+	MATRIX_CONTAINS_ELEMENT(m, elemment);
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsInBound,
@@ -22,8 +19,8 @@ INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperator
 
 TEST_P(MatrixIndexingOperatorWithParamsRowOutOfBound, rowIndexOutOfBound)
 {
-	auto parameters = GetParam();
-	MATRIX_EXPECT_THROW(int elementValue = m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given rowIndex is out of bounds!");
+	auto element = GetParam();
+	MATRIX_EXPECT_THROW(int elementValueInMatrix = m[element.rowIndex][element.columnIndex], MatrixIndexOutOfBounds, "Given rowIndex is out of bounds!");
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsRowOutOfBound,
@@ -35,8 +32,8 @@ INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperator
 
 TEST_P(MatrixIndexingOperatorWithParamsColumnOutOfBound, columnIndexOutOfBound)
 {
-	auto parameters = GetParam();
-	MATRIX_EXPECT_THROW(int elementValue = m[parameters.rowIndex][parameters.columnIndex], MatrixIndexOutOfBounds, "Given columnIndex is out of bounds!");
+	auto element = GetParam();
+	MATRIX_EXPECT_THROW(int elementValueInMatrix = m[element.rowIndex][element.columnIndex], MatrixIndexOutOfBounds, "Given columnIndex is out of bounds!");
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsColumnOutOfBound,

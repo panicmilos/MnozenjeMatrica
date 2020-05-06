@@ -3,6 +3,7 @@
 #include <utility>
 #include <vector>
 
+#include "StructuresForTests.h"
 #include "../src/Matrix.h"
 
 #define MATRIX_EXPECT_THROW(statements, exceptionType, exceptionMessage)		\
@@ -21,6 +22,7 @@
 #define MATRIX_DIMENSIONS_EQ MatrixAssertions::MATRIX_DIMENSIONS_EQ_
 #define MATRIX_DIMENSIONS_NOT_EQ MatrixAssertions::MATRIX_DIMENSIONS_NOT_EQ_
 #define MATRIX_ELEMENTS_EQ MatrixAssertions::MATRIX_ELEMENTS_EQ_
+#define MATRIX_CONTAINS_ELEMENT MatrixAssertions::MATRIX_CONTAINS_ELEMENT_
 
 namespace MatrixAssertions
 {
@@ -28,4 +30,5 @@ namespace MatrixAssertions
 	void MATRIX_DIMENSIONS_NOT_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions);
 
 	void MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements);
+	void MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& e);
 } // MatrixAssertions

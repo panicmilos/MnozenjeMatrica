@@ -5,8 +5,8 @@
 
 TEST_P(MatrixAssignmentOperatorCopyWithParams, CopyingWithMatrixSizeAsParams)
 {
-	auto params = GetParam();
-	Matrix mCopied(params.numberOfRows, params.numberOfColumns);
+	auto dimensions = GetParam();
+	Matrix mCopied(dimensions.numberOfRows, dimensions.numberOfColumns);
 	mCopied = m;
 
 	MATRIX_DIMENSIONS_EQ(m, { 2, 3 });

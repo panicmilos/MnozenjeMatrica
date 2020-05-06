@@ -12,7 +12,7 @@ Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const 
 {
 	if (!validateDimensionsForParametarizedConstructor(numberOfRows_, numberOfColumns_))
 	{
-		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!"); // trow func?
+		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
 	}
 
 	if (defaultElementValue != DEFAULT_ELEMENT_VALUE)
@@ -54,7 +54,7 @@ Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixEl
 {
 	if (!validateDimensionsForInitializerListConstructor(matrixElements_))
 	{
-		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!"); // trow func?
+		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
 	}
 
 	numberOfRows = matrixElements_.size();
