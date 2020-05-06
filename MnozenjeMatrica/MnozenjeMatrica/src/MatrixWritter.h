@@ -9,7 +9,11 @@ class MatrixWritter : public MatrixSerializationBase<std::ofstream>
 {
 public:
 	MatrixWritter() = default;
-	~MatrixWritter() = default; // proveriti copy i move?
+	MatrixWritter(const MatrixWritter&) = delete;
+	MatrixWritter(MatrixWritter&&) = delete;
+	MatrixWritter& operator=(const MatrixWritter&) = delete;
+	MatrixWritter& operator=(MatrixWritter&&) = delete;
+	~MatrixWritter() = default;
 
 	MatrixWritter& operator<<(const Matrix& m) noexcept;
 

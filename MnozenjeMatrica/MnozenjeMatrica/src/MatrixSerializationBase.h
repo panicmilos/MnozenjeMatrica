@@ -9,6 +9,10 @@ template <typename T>class MatrixSerializationBase
 {
 public:
 	MatrixSerializationBase() = default;
+	MatrixSerializationBase(const MatrixSerializationBase&) = delete;
+	MatrixSerializationBase(MatrixSerializationBase&&) = delete;
+	MatrixSerializationBase& operator=(const MatrixSerializationBase&) = delete;
+	MatrixSerializationBase& operator=(MatrixSerializationBase&&) = delete;
 
 	virtual ~MatrixSerializationBase() noexcept
 	{
