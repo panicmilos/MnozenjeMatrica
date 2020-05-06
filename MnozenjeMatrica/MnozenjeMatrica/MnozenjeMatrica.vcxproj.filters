@@ -51,10 +51,16 @@
     <ClInclude Include="test\StructuresForTests.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
-    <ClInclude Include="src\MatrixSerializator.h">
+    <ClInclude Include="src\Utils.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils.h">
+    <ClInclude Include="src\MatrixWritter.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MatrixReader.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MatrixSerializationBase.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,10 +95,16 @@
     <ClCompile Include="test\StructuresForTests.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
-    <ClCompile Include="src\MatrixSerializator.cpp">
+    <ClCompile Include="src\Utils.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils.cpp">
+    <ClCompile Include="src\MatrixWritter.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MatrixReader.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MatrixSerializationBase.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

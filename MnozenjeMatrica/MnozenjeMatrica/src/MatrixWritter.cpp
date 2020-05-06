@@ -1,9 +1,9 @@
-#include "MatrixSerializator.h"
+#include "MatrixWritter.h"
 
 #include "MatrixRow.h"
 #include "Utils.h"
 
-MatrixWritter& MatrixWritter::operator<<(const Matrix& m)
+MatrixWritter& MatrixWritter::operator<<(const Matrix& m) noexcept
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
 
@@ -14,7 +14,7 @@ MatrixWritter& MatrixWritter::operator<<(const Matrix& m)
 	return *this;
 }
 
-void MatrixWritter::writeMatrixHeader(const Matrix& m)
+void MatrixWritter::writeMatrixHeader(const Matrix& m) noexcept
 {
 	const size_t numberOfRows = m.getNumberOfRows();
 	const size_t numberOfColumns = m.getNumberOfColumns();
@@ -22,7 +22,7 @@ void MatrixWritter::writeMatrixHeader(const Matrix& m)
 	fileStream << '[' << numberOfRows << ',' << numberOfColumns << "]\n";
 }
 
-void MatrixWritter::writeMatrixBody(const Matrix& m)
+void MatrixWritter::writeMatrixBody(const Matrix& m) noexcept
 {
 	const size_t numberOfRows = m.getNumberOfRows();
 
@@ -31,10 +31,11 @@ void MatrixWritter::writeMatrixBody(const Matrix& m)
 		MatrixRow row = m[rowIndex];
 		fileStream << row << '\n';
 	}
+
 	Utils::deleteLastNCharInStream(fileStream, 2ll);
 }
 
-void MatrixWritter::writeEndOfFormatCharacter()
+void MatrixWritter::writeEndOfFormatCharacter() noexcept
 {
 	fileStream << ';';
 }

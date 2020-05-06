@@ -1,6 +1,6 @@
 #include "Utils.h"
 
-void Utils::deleteLastNCharInStream(std::ostream& stream, const long long N)
+void Utils::deleteLastNCharInStream(std::ostream& stream, const long long N) noexcept
 {
 	std::streamoff lastCharPos = stream.tellp();
 

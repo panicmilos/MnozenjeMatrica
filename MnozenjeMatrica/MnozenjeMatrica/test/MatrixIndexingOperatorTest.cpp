@@ -10,7 +10,7 @@ TEST_P(MatrixIndexingOperatorWithParamsInBound, IndexesInBound)
 	const int elementValue = m[parameters.rowIndex][parameters.columnIndex];
 	const int expectedValue = parameters.value;
 
-	ASSERT_EQ(elementValue, expectedValue);
+	ASSERT_EQ(elementValue, expectedValue); // asser neki
 }
 
 INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsInBound,
