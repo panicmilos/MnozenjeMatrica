@@ -51,6 +51,12 @@
     <ClInclude Include="test\StructuresForTests.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="src\MatrixSerializator.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -82,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="test\StructuresForTests.cpp">
       <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MatrixSerializator.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

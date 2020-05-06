@@ -211,15 +211,3 @@ int* const Matrix::getMatrixElements() const noexcept
 {
 	return matrixElements;
 }
-
-void Matrix::print() noexcept
-{
-	for (size_t i = 0; i < numberOfRows; ++i)
-	{
-		for (size_t j = 0; j < numberOfColumns; ++j)
-		{
-			std::cout << matrixElements[i * numberOfColumns + j] << ' ';
-		}
-		std::cout << '\n';
-	}
-}

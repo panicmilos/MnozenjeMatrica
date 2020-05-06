@@ -28,8 +28,6 @@ public:
 	[[nodiscard]] size_t getSize() const noexcept;
 	[[nodiscard]] int* const getMatrixElements() const noexcept;
 
-	void print() noexcept;
-
 private:
 	void throwIfRowIndexIsOutOfBounds(const size_t rowIndex) const noexcept(false);
 
