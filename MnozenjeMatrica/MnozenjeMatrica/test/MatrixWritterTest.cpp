@@ -1,6 +1,7 @@
 #include "MatrixWritterTest.h"
 
 #include "DSTLAssertions.h"
+#include "gtest\gtest.h"
 #include "../src/Matrix.h"
 #include "../src/MatrixWritter.h"
 

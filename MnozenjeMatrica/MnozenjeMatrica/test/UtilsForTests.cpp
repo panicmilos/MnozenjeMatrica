@@ -9,7 +9,7 @@ std::string UtilsForTests::getContentOfFile(const std::string& filePath) noexcep
 	std::string fileContent;
 
 	fileStream.seekg(0, std::ios::end);
-	fileContent.reserve(fileStream.tellg());
+	fileContent.reserve((size_t)fileStream.tellg());
 	fileStream.seekg(0, std::ios::beg);
 
 	fileContent.assign((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
