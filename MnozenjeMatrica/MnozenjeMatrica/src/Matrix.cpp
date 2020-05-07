@@ -158,7 +158,9 @@ Matrix& Matrix::operator=(Matrix&& m) noexcept
 
 MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 {
+	#ifndef NDEBUG
 	throwIfRowIndexIsOutOfBounds(rowIndex);
+	#endif
 
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 
@@ -167,7 +169,9 @@ MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 
 const MatrixRow Matrix::operator[](const size_t rowIndex) const noexcept(false)
 {
+	#ifndef NDEBUG
 	throwIfRowIndexIsOutOfBounds(rowIndex);
+	#endif
 
 	int* const startOfIndexedRowPrt = matrixElements + rowIndex * numberOfColumns;
 

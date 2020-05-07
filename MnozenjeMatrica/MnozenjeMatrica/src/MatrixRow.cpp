@@ -13,14 +13,18 @@ MatrixRow::MatrixRow(int* const startOfRowPtr_, const size_t numberOfElements_) 
 
 int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 {
+	#ifndef NDEBUG
 	throwIfColumnIndexIsOutOfBounds(elementIndex);
+	#endif
 
 	return startOfRowPtr[elementIndex];
 }
 
 const int& MatrixRow::operator[](const size_t elementIndex) const noexcept(false)
 {
+	#ifndef NDEBUG
 	throwIfColumnIndexIsOutOfBounds(elementIndex);
+	#endif
 
 	return startOfRowPtr[elementIndex];
 }

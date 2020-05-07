@@ -20,10 +20,12 @@ Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matr
 		{
 			for (size_t columnIndex = range.cols().begin(); columnIndex != range.cols().end(); ++columnIndex)
 			{
+				int sumOfRowColumnPairs = 0;
 				for (size_t sharedIndex = 0; sharedIndex < numberOfColumnsInLeftMatrix; ++sharedIndex)
 				{
-					resultOfMultiplying[rowIndex][columnIndex] += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
+					sumOfRowColumnPairs += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 				}
+				resultOfMultiplying[rowIndex][columnIndex] = sumOfRowColumnPairs;
 			}
 		}
 	};
