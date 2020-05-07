@@ -78,6 +78,9 @@
     <ClInclude Include="test\MatrixMultiplierBaseTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="src\SerialMultiplier.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="test\MatrixMultiplierBaseTest.cpp">
       <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SerialMultiplier.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
