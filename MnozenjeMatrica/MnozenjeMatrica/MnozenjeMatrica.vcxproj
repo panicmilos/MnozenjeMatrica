@@ -170,6 +170,7 @@
     <ClInclude Include="test\MatrixAssignmentOperatorTest.h" />
     <ClInclude Include="test\MatrixConstructorTest.h" />
     <ClInclude Include="test\MatrixIndexingOperatorTest.h" />
+    <ClInclude Include="test\MatrixReaderTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +186,7 @@
     <ClCompile Include="test\MatrixAssignmentOperatorTest.cpp" />
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
     <ClCompile Include="test\MatrixIndexingOperatorTest.cpp" />
+    <ClCompile Include="test\MatrixReaderTest.cpp" />
     <ClCompile Include="test\ProfilingTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
   </ItemGroup>

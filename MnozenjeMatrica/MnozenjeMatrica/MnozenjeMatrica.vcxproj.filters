@@ -63,6 +63,9 @@
     <ClInclude Include="src\MatrixSerializationBase.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="test\MatrixReaderTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -106,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="src\MatrixSerializationBase.cpp">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\MatrixReaderTest.cpp">
+      <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
