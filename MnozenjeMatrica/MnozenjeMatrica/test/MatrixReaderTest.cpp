@@ -27,7 +27,7 @@ TEST(MatrixReader, GoodSquaredMatrix)
 TEST(MatrixReader, TwoGoodSquaredMatrix)
 {
 	MatrixReader mr;
-	mr.open("res\\2SquaredMatrixGood.txt");
+	mr.open("res\\2SquaredMatricesGood.txt");
 
 	Matrix m1;
 	mr >> m1;

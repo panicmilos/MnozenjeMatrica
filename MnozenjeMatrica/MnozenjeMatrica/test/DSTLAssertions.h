@@ -23,6 +23,7 @@
 #define MATRIX_DIMENSIONS_NOT_EQ MatrixAssertions::MATRIX_DIMENSIONS_NOT_EQ_
 #define MATRIX_ELEMENTS_EQ MatrixAssertions::MATRIX_ELEMENTS_EQ_
 #define MATRIX_CONTAINS_ELEMENT MatrixAssertions::MATRIX_CONTAINS_ELEMENT_
+#define MATRIX_FILE_CONTENT_EQ_TO MatrixAssertions::MATRIX_FILE_CONTENT_EQ_TO_
 
 namespace MatrixAssertions
 {
@@ -31,4 +32,6 @@ namespace MatrixAssertions
 
 	void MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements);
 	void MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& e);
+
+	void MATRIX_FILE_CONTENT_EQ_TO_(const std::string& filePath, const std::string& expectedContent);
 } // MatrixAssertions

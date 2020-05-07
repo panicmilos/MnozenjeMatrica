@@ -66,6 +66,12 @@
     <ClInclude Include="test\MatrixReaderTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="test\UtilsForTests.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\MatrixWritterTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -111,6 +117,12 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="test\MatrixReaderTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\UtilsForTests.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\MatrixWritterTest.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>

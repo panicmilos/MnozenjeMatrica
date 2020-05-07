@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "gtest\gtest.h"
+#include "UtilsForTests.h"
 
 void MatrixAssertions::MATRIX_DIMENSIONS_EQ_(const Matrix& m, std::pair<size_t, size_t> dimensions)
 {
@@ -45,4 +46,11 @@ void MatrixAssertions::MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& 
 	const int expectedValue = e.value;
 
 	ASSERT_EQ(elementValueInMatrix, expectedValue);
+}
+
+void MatrixAssertions::MATRIX_FILE_CONTENT_EQ_TO_(const std::string& filePath, const std::string& expectedContent)
+{
+	std::string fileContent = UtilsForTests::getContentOfFile(filePath);
+
+	ASSERT_EQ(fileContent, expectedContent);
 }

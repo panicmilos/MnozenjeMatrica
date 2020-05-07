@@ -171,7 +171,9 @@
     <ClInclude Include="test\MatrixConstructorTest.h" />
     <ClInclude Include="test\MatrixIndexingOperatorTest.h" />
     <ClInclude Include="test\MatrixReaderTest.h" />
+    <ClInclude Include="test\MatrixWritterTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
+    <ClInclude Include="test\UtilsForTests.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -187,8 +189,10 @@
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
     <ClCompile Include="test\MatrixIndexingOperatorTest.cpp" />
     <ClCompile Include="test\MatrixReaderTest.cpp" />
+    <ClCompile Include="test\MatrixWritterTest.cpp" />
     <ClCompile Include="test\ProfilingTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
+    <ClCompile Include="test\UtilsForTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

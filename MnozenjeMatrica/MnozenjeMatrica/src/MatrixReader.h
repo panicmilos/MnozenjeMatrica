@@ -31,7 +31,7 @@ private:
 
 	struct
 	{
-		size_t numberOfRows;
-		size_t numberOfColumns;
+		size_t numberOfRows = 0;
+		size_t numberOfColumns = 0;
 	} Dimensions;
 };

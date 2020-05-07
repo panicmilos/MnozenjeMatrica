@@ -12,12 +12,12 @@ class Matrix
 public:
 	Matrix() = default;
 	Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue = DEFAULT_ELEMENT_VALUE) noexcept(false);
-	Matrix(const Matrix& m);
+	Matrix(const Matrix& m) noexcept(false);
 	Matrix(Matrix&& m) noexcept;
 	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_) noexcept(false);
 	~Matrix() noexcept;
 
-	Matrix& operator=(const Matrix& m);
+	Matrix& operator=(const Matrix& m) noexcept(false);
 	Matrix& operator=(Matrix&& m) noexcept;
 
 	[[nodiscard]] MatrixRow operator[](const size_t rowIndex) noexcept(false);

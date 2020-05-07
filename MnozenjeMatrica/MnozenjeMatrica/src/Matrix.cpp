@@ -31,7 +31,7 @@ bool Matrix::validateDimensionsForParametarizedConstructor(const size_t numberOf
 	return areDimenstionsGood;
 }
 
-Matrix::Matrix(const Matrix& m) :
+Matrix::Matrix(const Matrix& m) noexcept(false) :
 	matrixElements(new int[m.numberOfRows * m.numberOfColumns]()),
 	numberOfRows(m.numberOfRows),
 	numberOfColumns(m.numberOfColumns)
@@ -114,7 +114,7 @@ Matrix::~Matrix() noexcept
 	delete matrixElements;
 }
 
-Matrix& Matrix::operator=(const Matrix& m)
+Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
 {
 	if (this != &m)
 	{

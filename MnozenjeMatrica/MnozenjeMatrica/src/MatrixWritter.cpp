@@ -37,5 +37,5 @@ void MatrixWritter::writeMatrixBody(const Matrix& m) noexcept
 
 void MatrixWritter::writeEndOfFormatCharacter() noexcept
 {
-	fileStream << ';';
+	fileStream << ";\n";
 }
