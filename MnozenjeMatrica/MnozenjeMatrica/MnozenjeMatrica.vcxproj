@@ -170,6 +170,7 @@
     <ClInclude Include="src\MatrixRow.h" />
     <ClInclude Include="src\MatrixSerializationBase.h" />
     <ClInclude Include="src\MatrixWritter.h" />
+    <ClInclude Include="src\ParallelForMultiplier.h" />
     <ClInclude Include="src\SerialMultiplier.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="test\DSTLAssertions.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="src\MatrixRow.cpp" />
     <ClCompile Include="src\MatrixSerializationBase.cpp" />
     <ClCompile Include="src\MatrixWritter.cpp" />
+    <ClCompile Include="src\ParallelForMultiplier.cpp" />
     <ClCompile Include="src\SerialMultiplier.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="test\DSTLAssertions.cpp" />

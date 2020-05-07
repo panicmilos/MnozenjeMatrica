@@ -81,6 +81,9 @@
     <ClInclude Include="src\SerialMultiplier.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParallelForMultiplier.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -141,6 +144,9 @@
       <Filter>Source Files\test</Filter>
     </ClCompile>
     <ClCompile Include="src\SerialMultiplier.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParallelForMultiplier.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
