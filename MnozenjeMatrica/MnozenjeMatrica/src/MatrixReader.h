@@ -9,6 +9,7 @@ class MatrixReader : public MatrixSerializationBase<std::ifstream>
 {
 public:
 	MatrixReader() = default;
+	MatrixReader(const std::string& filePath) noexcept(false);
 	MatrixReader(const MatrixReader&) = delete;
 	MatrixReader(MatrixReader&&) = delete;
 	MatrixReader& operator=(const MatrixReader&) = delete;

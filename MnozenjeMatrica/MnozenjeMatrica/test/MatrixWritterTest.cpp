@@ -8,8 +8,7 @@ TEST(MatrixWritter, WrittingSquaredMatrix)
 {
 	Matrix m(2, 2, 2);
 
-	MatrixWritter mw;
-	mw.open("res\\SavedSquaredMatrix.txt");
+	MatrixWritter mw("res\\SavedSquaredMatrix.txt");
 	mw << m;
 	mw.close();
 
@@ -18,8 +17,7 @@ TEST(MatrixWritter, WrittingSquaredMatrix)
 
 TEST_F(MatrixWritterWithTestMatrix, WrittingNonSquaredMatrix)
 {
-	MatrixWritter mw;
-	mw.open("res\\SavedNonSquaredMatrix.txt");
+	MatrixWritter mw("res\\SavedNonSquaredMatrix.txt");
 	mw << m;
 	mw.close();
 
@@ -30,8 +28,7 @@ TEST_F(MatrixWritterWithTestMatrix, WrittingTwoMatrices)
 {
 	Matrix m2(2, 2, 2);
 
-	MatrixWritter mw;
-	mw.open("res\\SavedTwoMatrices.txt");
+	MatrixWritter mw("res\\SavedTwoMatrices.txt");
 	mw << m;
 	mw << m2;
 	mw.close();

@@ -9,6 +9,7 @@ class MatrixWritter : public MatrixSerializationBase<std::ofstream>
 {
 public:
 	MatrixWritter() = default;
+	MatrixWritter(const std::string& filePath) noexcept(false);
 	MatrixWritter(const MatrixWritter&) = delete;
 	MatrixWritter(MatrixWritter&&) = delete;
 	MatrixWritter& operator=(const MatrixWritter&) = delete;

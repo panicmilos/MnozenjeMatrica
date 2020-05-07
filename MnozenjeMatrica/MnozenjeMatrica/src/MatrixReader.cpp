@@ -5,6 +5,11 @@
 #include "MatrixExceptions.h"
 #include "MatrixRow.h"
 
+MatrixReader::MatrixReader(const std::string& filePath) noexcept(false)
+{
+	open(filePath);
+}
+
 MatrixReader& MatrixReader::operator>>(Matrix& m) noexcept(false)
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);

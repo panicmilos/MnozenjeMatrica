@@ -7,15 +7,12 @@
 
 TEST(MatrixReader, WrongFilePath)
 {
-	MatrixReader mr;
-
-	MATRIX_EXPECT_THROW(mr.open("Wrong File Path.png"), FileCouldNotBeOpened, "The file can not be opened!");
+	MATRIX_EXPECT_THROW(MatrixReader mr("Wrong File Path.png"), FileCouldNotBeOpened, "The file can not be opened!");
 }
 
 TEST(MatrixReader, GoodSquaredMatrix)
 {
-	MatrixReader mr;
-	mr.open("res\\SquaredMatrixGood.txt");
+	MatrixReader mr("res\\SquaredMatrixGood.txt");
 
 	Matrix m;
 	mr >> m;
@@ -26,8 +23,7 @@ TEST(MatrixReader, GoodSquaredMatrix)
 
 TEST(MatrixReader, TwoGoodSquaredMatrix)
 {
-	MatrixReader mr;
-	mr.open("res\\2SquaredMatricesGood.txt");
+	MatrixReader mr("res\\2SquaredMatricesGood.txt");
 
 	Matrix m1;
 	mr >> m1;
@@ -44,8 +40,7 @@ TEST(MatrixReader, TwoGoodSquaredMatrix)
 
 TEST(MatrixReader, GoodNonSquaredMatrix)
 {
-	MatrixReader mr;
-	mr.open("res\\NonSquaredMatrixGood.txt");
+	MatrixReader mr("res\\NonSquaredMatrixGood.txt");
 
 	Matrix m;
 	mr >> m;
@@ -58,8 +53,7 @@ TEST_P(MatrixReaderWithBadFormat, ReadingMatrixWithBadFormat)
 {
 	auto path = GetParam();
 
-	MatrixReader mr;
-	mr.open("res\\" + path);
+	MatrixReader mr("res\\" + path);
 
 	Matrix m;
 

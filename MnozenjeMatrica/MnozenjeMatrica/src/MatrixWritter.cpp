@@ -3,6 +3,11 @@
 #include "MatrixRow.h"
 #include "Utils.h"
 
+MatrixWritter::MatrixWritter(const std::string& filePath) noexcept(false)
+{
+	open(filePath);
+}
+
 MatrixWritter& MatrixWritter::operator<<(const Matrix& m) noexcept
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
