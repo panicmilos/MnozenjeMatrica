@@ -5,23 +5,15 @@
 #include "MatrixReader.h"
 #include "Profiling.h"
 
-#define TESTING 1
+#define TESTING 0
 
 #if TESTING == 0
 
 Matrix multiply(Matrix& m1, Matrix& m2)
 {
-	const size_t numberOfColumnsInFirstMatrix = m1.getNumberOfColumns();
-	const size_t numberOfRowsInSecondMatrix = m2.getNumberOfRows();
-
-	bool numberOfRowsAndColumnsAreSame = numberOfColumnsInFirstMatrix == numberOfRowsInSecondMatrix;
-	if (!numberOfRowsAndColumnsAreSame)
-	{
-		throw std::exception();
-	}
-
 	PROFILE_FUNCSIG();
 
+	const size_t numberOfColumnsInFirstMatrix = m1.getNumberOfColumns();
 	const size_t numberOfRowsInFirstMatrix = m1.getNumberOfRows();
 	const size_t numberOfColumnsInSecondMatrix = m2.getNumberOfColumns();
 

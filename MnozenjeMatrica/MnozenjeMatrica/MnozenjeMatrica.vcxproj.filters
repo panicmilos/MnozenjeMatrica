@@ -72,6 +72,9 @@
     <ClInclude Include="test\MatrixWritterTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="src\MatrixMultiplyBase.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="test\MatrixWritterTest.cpp">
       <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MatrixMultiplyBase.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

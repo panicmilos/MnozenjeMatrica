@@ -13,3 +13,4 @@ DeclareExceptionClass(MatrixHaveBadDimensions);
 DeclareExceptionClass(MatrixIndexOutOfBounds);
 DeclareExceptionClass(FileCouldNotBeOpened);
 DeclareExceptionClass(BadMatrixFormatInFile);
+DeclareExceptionClass(BadMatricesDimensionsForMultiplying);

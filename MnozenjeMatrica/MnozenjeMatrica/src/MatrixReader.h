@@ -24,7 +24,7 @@ private:
 	void readMatrixBody() noexcept;
 	void readEndOfFormatCharacter() noexcept;
 
-	void throwIfMatrixFormatInFileIsBad() noexcept(false);
+	void throwIfMatrixFormatInFileIsBad() const noexcept(false);
 
 	void createMatrixWithReadDimensionsFromFile() noexcept;
 

@@ -10,3 +10,4 @@ DefineExceptionClass(MatrixHaveBadDimensions);
 DefineExceptionClass(MatrixIndexOutOfBounds);
 DefineExceptionClass(FileCouldNotBeOpened);
 DefineExceptionClass(BadMatrixFormatInFile);
+DefineExceptionClass(BadMatricesDimensionsForMultiplying);

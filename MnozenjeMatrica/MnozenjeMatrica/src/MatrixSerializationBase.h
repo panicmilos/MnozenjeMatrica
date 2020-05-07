@@ -43,7 +43,7 @@ private:
 		fileStream.open(filePath);
 	}
 
-	void throwIfStreamCouldNotBeOpened() noexcept(false)
+	void throwIfStreamCouldNotBeOpened() const noexcept(false)
 	{
 		if (const bool streamIsNotOpened = !fileStream.is_open(); streamIsNotOpened)
 		{

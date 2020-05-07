@@ -41,7 +41,7 @@ void MatrixReader::readMatrixHeader() noexcept
 	fileStream >> randomFormatCharFromFile >> Dimensions.numberOfRows >> randomFormatCharFromFile >> Dimensions.numberOfColumns >> randomFormatCharFromFile;
 }
 
-void MatrixReader::throwIfMatrixFormatInFileIsBad() noexcept(false)
+void MatrixReader::throwIfMatrixFormatInFileIsBad() const noexcept(false)
 {
 	if (const bool somethingBadHappenedWhileReading = !fileStream.good(); somethingBadHappenedWhileReading)
 	{
