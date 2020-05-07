@@ -11,15 +11,6 @@ constexpr char DEFAULT_RESULT_FILE_PATH[] = "profilingResults.json";
 
 namespace Profiling
 {
-	__declspec(dllexport) void beginSession(const std::string& filePath = DEFAULT_RESULT_FILE_PATH)
-	{
-		Instrumentor& instrumentorInstance = Instrumentor::getInstance();
-		instrumentorInstance.beginSession(filePath);
-	}
-
-	__declspec(dllexport) void endSession()
-	{
-		Instrumentor& instrumentorInstance = Instrumentor::getInstance();
-		instrumentorInstance.endSession();
-	}
+	__declspec(dllexport) void beginSession(const std::string& filePath = DEFAULT_RESULT_FILE_PATH);
+	__declspec(dllexport) void endSession();
 } // namespace Profiling
