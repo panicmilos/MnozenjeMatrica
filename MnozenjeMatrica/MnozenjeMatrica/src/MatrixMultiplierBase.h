@@ -11,7 +11,7 @@ protected:
 	[[nodiscard]] virtual Matrix doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept = 0;
 
 private:
-	void throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
+	void throwIfDimensionsAreBad(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
 
-	[[nodiscard]] bool isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept;
+	[[nodiscard]] bool validateDimensionsForMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept;
 };

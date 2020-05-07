@@ -4,22 +4,22 @@
 
 Matrix MatrixMultiplierBase::multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
 {
-	throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(leftMatrix, rightMatrix);
+	throwIfDimensionsAreBad(leftMatrix, rightMatrix);
 
 	Matrix resultOfMultiplying = doMultiplying(leftMatrix, rightMatrix);
 
 	return resultOfMultiplying;
 }
 
-void MatrixMultiplierBase::throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
+void MatrixMultiplierBase::throwIfDimensionsAreBad(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
 {
-	if (!isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(leftMatrix, rightMatrix))
+	if (!validateDimensionsForMultiplying(leftMatrix, rightMatrix))
 	{
 		throw BadMatricesDimensionsForMultiplying("Number of first matrix columns must be same as number of second matrix rows!");
 	}
 }
 
-bool MatrixMultiplierBase::isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
+bool MatrixMultiplierBase::validateDimensionsForMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
 	const size_t numberOfColumnsInFirstMatrix = leftMatrix.getNumberOfColumns();
 	const size_t numberOfRowsInSecondMatrix = rightMatrix.getNumberOfRows();
