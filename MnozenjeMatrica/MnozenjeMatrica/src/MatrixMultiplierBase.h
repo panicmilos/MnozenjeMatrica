@@ -2,7 +2,7 @@
 
 #include "Matrix.h"
 
-class MatrixMultiplyBase
+class MatrixMultiplierBase
 {
 public:
 	[[nodiscard]] Matrix multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);

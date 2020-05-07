@@ -1,8 +1,8 @@
-#include "MatrixMultiplyBase.h"
+#include "MatrixMultiplierBase.h"
 
 #include "MatrixExceptions.h"
 
-Matrix MatrixMultiplyBase::multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
+Matrix MatrixMultiplierBase::multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
 {
 	throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(leftMatrix, rightMatrix);
 
@@ -11,7 +11,7 @@ Matrix MatrixMultiplyBase::multiply(const Matrix& leftMatrix, const Matrix& righ
 	return resultOfMultiplying;
 }
 
-void MatrixMultiplyBase::throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
+void MatrixMultiplierBase::throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
 {
 	if (!isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(leftMatrix, rightMatrix))
 	{
@@ -19,7 +19,7 @@ void MatrixMultiplyBase::throwIfNumberOfFirstMatrixColumnsIsNotSameAsNumberOfSec
 	}
 }
 
-bool MatrixMultiplyBase::isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
+bool MatrixMultiplierBase::isNumberOfFirstMatrixColumnsSameAsNumberOfSecondMatrixRows(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
 	const size_t numberOfColumnsInFirstMatrix = leftMatrix.getNumberOfColumns();
 	const size_t numberOfRowsInSecondMatrix = rightMatrix.getNumberOfRows();

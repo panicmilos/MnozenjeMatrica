@@ -161,7 +161,7 @@
   <ItemGroup>
     <ClInclude Include="src\Matrix.h" />
     <ClInclude Include="src\MatrixExceptions.h" />
-    <ClInclude Include="src\MatrixMultiplyBase.h" />
+    <ClInclude Include="src\MatrixMultiplierBase.h" />
     <ClInclude Include="src\MatrixReader.h" />
     <ClInclude Include="src\MatrixRow.h" />
     <ClInclude Include="src\MatrixSerializationBase.h" />
@@ -171,7 +171,7 @@
     <ClInclude Include="test\MatrixAssignmentOperatorTest.h" />
     <ClInclude Include="test\MatrixConstructorTest.h" />
     <ClInclude Include="test\MatrixIndexingOperatorTest.h" />
-    <ClInclude Include="test\MatrixMultiplyBaseTest.h" />
+    <ClInclude Include="test\MatrixMultiplierBaseTest.h" />
     <ClInclude Include="test\MatrixReaderTest.h" />
     <ClInclude Include="test\MatrixWritterTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
@@ -181,7 +181,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="src\MatrixExceptions.cpp" />
-    <ClCompile Include="src\MatrixMultiplyBase.cpp" />
+    <ClCompile Include="src\MatrixMultiplierBase.cpp" />
     <ClCompile Include="src\MatrixReader.cpp" />
     <ClCompile Include="src\MatrixRow.cpp" />
     <ClCompile Include="src\MatrixSerializationBase.cpp" />
@@ -191,7 +191,7 @@
     <ClCompile Include="test\MatrixAssignmentOperatorTest.cpp" />
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
     <ClCompile Include="test\MatrixIndexingOperatorTest.cpp" />
-    <ClCompile Include="test\MatrixMultiplyBaseTest.cpp" />
+    <ClCompile Include="test\MatrixMultiplierBaseTest.cpp" />
     <ClCompile Include="test\MatrixReaderTest.cpp" />
     <ClCompile Include="test\MatrixWritterTest.cpp" />
     <ClCompile Include="test\ProfilingTest.cpp" />

@@ -72,10 +72,10 @@
     <ClInclude Include="test\MatrixWritterTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
-    <ClInclude Include="src\MatrixMultiplyBase.h">
+    <ClInclude Include="src\MatrixMultiplierBase.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="test\MatrixMultiplyBaseTest.h">
+    <ClInclude Include="test\MatrixMultiplierBaseTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,10 +131,10 @@
     <ClCompile Include="test\MatrixWritterTest.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
-    <ClCompile Include="src\MatrixMultiplyBase.cpp">
+    <ClCompile Include="src\MatrixMultiplierBase.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="test\MatrixMultiplyBaseTest.cpp">
+    <ClCompile Include="test\MatrixMultiplierBaseTest.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>
