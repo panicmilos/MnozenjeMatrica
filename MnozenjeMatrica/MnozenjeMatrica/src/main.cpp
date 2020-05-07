@@ -5,6 +5,8 @@
 #include "MatrixReader.h"
 #include "SerialMultiplier.h"
 
+#include "tbb\tbb.h"
+
 #define TESTING 0
 
 #if TESTING == 0

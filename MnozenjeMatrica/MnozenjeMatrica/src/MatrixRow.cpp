@@ -42,7 +42,7 @@ bool MatrixRow::validateColumnIndex(const size_t elementIndex) const noexcept
 
 std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
 {
-	const int numberOfElementsInRow = mr.numberOfElements;
+	const size_t numberOfElementsInRow = mr.numberOfElements;
 	const int* const startOfRowPtr = mr.startOfRowPtr;
 	const int* const endOfRowPtr = startOfRowPtr + numberOfElementsInRow;
 

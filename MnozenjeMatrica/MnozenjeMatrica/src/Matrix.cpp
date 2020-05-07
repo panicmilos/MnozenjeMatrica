@@ -118,8 +118,8 @@ Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
 {
 	if (this != &m)
 	{
-		const int oldNumberOfElements = getSize();
-		const int newNumberOfElements = m.getSize();
+		const size_t oldNumberOfElements = getSize();
+		const size_t newNumberOfElements = m.getSize();
 
 		if (const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements; matricesDontHaveSameSize)
 		{
