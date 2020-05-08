@@ -8,10 +8,10 @@
 class ParallelTask : public tbb::task
 {
 public:
-	ParallelTask(MultiplicationElements multiplicationElements_) noexcept;
+	ParallelTask(const MultiplicationElements multiplicationElements_) noexcept;
 
 protected:
-	MultiplicationElements multiplicationElements;
+	const MultiplicationElements multiplicationElements;
 };
 
 class ParalellTaskMultiplierBase : public MatrixMultiplierBase

@@ -5,17 +5,17 @@
 #include "Structures.h"
 #include "tbb/task.h"
 
-class ParallelTaskPerElement : public ParallelTask
+class ParallelTaskPerRow : public ParallelTask
 {
 public:
-	ParallelTaskPerElement(const MultiplicationElements multiplicationElements_, const ElementIndex element_) noexcept;
+	ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const int rowIndex_) noexcept;
 
 	tbb::task* execute() override;
 private:
-	const ElementIndex element;
+	const int rowIndex;
 };
 
-class ParallelTaskPerElementMultiplier : public ParalellTaskMultiplierBase
+class ParallelTaskPerRowMultiplier : public ParalellTaskMultiplierBase
 {
 private:
 	void fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept override;

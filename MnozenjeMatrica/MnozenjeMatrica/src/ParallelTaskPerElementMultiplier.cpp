@@ -1,6 +1,6 @@
 #include "ParallelTaskPerElementMultiplier.h"
 
-ParallelTaskPerElement::ParallelTaskPerElement(MultiplicationElements multiplicationElements_, ElementIndex element_) noexcept :
+ParallelTaskPerElement::ParallelTaskPerElement(const MultiplicationElements multiplicationElements_, const ElementIndex element_) noexcept :
 	ParallelTask(multiplicationElements_),
 	element(element_)
 {
@@ -9,7 +9,7 @@ ParallelTaskPerElement::ParallelTaskPerElement(MultiplicationElements multiplica
 tbb::task* ParallelTaskPerElement::execute()
 {
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
-	auto [rowIndex, columnIndex] = element;
+	const auto [rowIndex, columnIndex] = element;
 	const size_t numberOfElements = leftMatrix.getNumberOfColumns();
 
 	int element = 0;
@@ -24,7 +24,7 @@ tbb::task* ParallelTaskPerElement::execute()
 
 void ParallelTaskPerElementMultiplier::fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
-	Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
+	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
 	const size_t numberOfRows = resultOfMultiplication.getNumberOfRows();
 	const size_t numberOfColumns = resultOfMultiplication.getNumberOfColumns();
 
@@ -42,7 +42,7 @@ void ParallelTaskPerElementMultiplier::fillTaskListForParent(tbb::task_list& par
 	parent.set_ref_count(totalNumberOfRefCount);
 }
 
-int ParallelTaskPerElementMultiplier::getTotalNumberOfRefCount(Matrix& resultOfMultiplication) const noexcept
+int ParallelTaskPerElementMultiplier::getTotalNumberOfRefCount(const Matrix& resultOfMultiplication) const noexcept
 {
 	const int numberOfParentsTasks = resultOfMultiplication.getSize();
 	const int additionalRefCountForWait = 1;

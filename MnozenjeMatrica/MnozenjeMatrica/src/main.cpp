@@ -6,7 +6,7 @@
 #include "SerialMultiplier.h"
 #include "ParallelForMultiplier.h"
 #include "Profiling.h"
-#include "ParallelTaskPerElementMultiplier.h"
+#include "ParallelTaskPerRowMultiplier.h"
 
 #include <iostream> // remove
 #define TESTING 0
@@ -23,7 +23,7 @@ int main()
 		Profiling::beginSession("profile.json");
 
 		//	Matrix res = SerialMultiplier().multiply(m3, m4);
-		Matrix res2 = ParallelTaskPerElementMultiplier().multiply(m3, m4);
+		Matrix res2 = ParallelTaskPerRowMultiplier().multiply(m3, m4);
 		//std::cout << "HI\n";
 		Profiling::endSession();
 

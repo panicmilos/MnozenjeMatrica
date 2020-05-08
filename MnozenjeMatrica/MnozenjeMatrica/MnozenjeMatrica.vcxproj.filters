@@ -84,13 +84,16 @@
     <ClInclude Include="src\ParallelForMultiplier.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParallelTaskPerElementMultiplier.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParallelTaskPerRowMultiplier.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
     <ClInclude Include="src\ParallelTaskMultiplierBase.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="src\Structures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParallelTaskPerElementMultiplier.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -161,10 +164,13 @@
     <ClCompile Include="src\ParallelTaskMultiplierBase.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Structures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ParallelTaskPerElementMultiplier.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParallelTaskPerRowMultiplier.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Structures.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
