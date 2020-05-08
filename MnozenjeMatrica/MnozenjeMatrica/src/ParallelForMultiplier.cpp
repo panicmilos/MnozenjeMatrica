@@ -14,7 +14,7 @@ Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matr
 
 	Matrix resultOfMultiplication(numberOfRowsInLeftMatrix, numberOfColumnsInRightMatrix);
 
-	const auto calculateBlockOfResultMatrix = [&](const tbb::blocked_range2d<size_t>& range)
+	const auto calculateBlockOfElementsInResultMatrix = [&](const tbb::blocked_range2d<size_t>& range)
 	{
 		PROFILE_SCOPE("");
 		for (size_t rowIndex = range.rows().begin(); rowIndex != range.rows().end(); ++rowIndex)
@@ -31,7 +31,7 @@ Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matr
 		}
 	};
 
-	tbb::parallel_for(tbb::blocked_range2d<size_t>(0, numberOfRowsInLeftMatrix, 0, numberOfColumnsInRightMatrix), calculateBlockOfResultMatrix);
+	tbb::parallel_for(tbb::blocked_range2d<size_t>(0, numberOfRowsInLeftMatrix, 0, numberOfColumnsInRightMatrix), calculateBlockOfElementsInResultMatrix);
 
 	return resultOfMultiplication;
 }
