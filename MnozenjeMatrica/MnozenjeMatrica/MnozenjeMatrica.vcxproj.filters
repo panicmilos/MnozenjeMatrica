@@ -84,6 +84,15 @@
     <ClInclude Include="src\ParallelForMultiplier.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParallelTaskMultiplierBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Structures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParallelTaskPerElementMultiplier.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -147,6 +156,15 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="src\ParallelForMultiplier.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParallelTaskMultiplierBase.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Structures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParallelTaskPerElementMultiplier.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

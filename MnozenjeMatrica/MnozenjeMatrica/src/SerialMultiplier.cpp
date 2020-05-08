@@ -11,7 +11,7 @@ Matrix SerialMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& r
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();
 
-	Matrix resultOfMultiplying(numberOfRowsInLeftMatrix, numberOfColumnsInRightMatrix);
+	Matrix resultOfMultiplication(numberOfRowsInLeftMatrix, numberOfColumnsInRightMatrix);
 	for (size_t rowIndex = 0; rowIndex < numberOfRowsInLeftMatrix; ++rowIndex)
 	{
 		for (size_t columnIndex = 0; columnIndex < numberOfColumnsInRightMatrix; ++columnIndex)
@@ -21,9 +21,9 @@ Matrix SerialMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& r
 			{
 				sumOfRowColumnPairs += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 			}
-			resultOfMultiplying[rowIndex][columnIndex] = sumOfRowColumnPairs;
+			resultOfMultiplication[rowIndex][columnIndex] = sumOfRowColumnPairs;
 		}
 	}
 
-	return resultOfMultiplying;
+	return resultOfMultiplication;
 }
