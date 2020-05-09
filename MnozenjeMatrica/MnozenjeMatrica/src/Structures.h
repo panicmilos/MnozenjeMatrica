@@ -8,6 +8,12 @@ struct ElementIndex
 	size_t columnIndex = 0;
 };
 
+struct ElementRange
+{
+	size_t firstElement = 0;
+	size_t lastElement = 0;
+};
+
 struct MultiplicationElements
 {
 	const Matrix& leftMatrix;

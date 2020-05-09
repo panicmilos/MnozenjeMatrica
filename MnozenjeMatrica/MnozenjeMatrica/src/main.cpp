@@ -8,7 +8,7 @@
 #include "Profiling.h"
 #include "ParallelTaskPerRowMultiplier.h"
 #include "ParallelTaskPerElementMultiplier.h"
-
+#include "ParallelTaskPerThreadMultiplier.h"
 #include <iostream> // remove
 #define TESTING 0
 
@@ -23,7 +23,7 @@ int main()
 
 		Profiling::beginSession("profile.json");
 
-		Matrix res2 = ParallelTaskPerRowMultiplier().multiply(m3, m4);
+		Matrix res2 = ParallelTaskPerThreadMultiplier().multiply(m3, m4);
 		//Matrix res2 = ParallelForMultiplier().multiply(m3, m4);
 		Profiling::endSession();
 

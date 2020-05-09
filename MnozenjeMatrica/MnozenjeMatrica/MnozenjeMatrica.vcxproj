@@ -196,7 +196,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-	  <FunctionLevelLinking>true</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -250,6 +250,7 @@
     <ClInclude Include="src\ParallelTaskMultiplierBase.h" />
     <ClInclude Include="src\ParallelTaskPerElementMultiplier.h" />
     <ClInclude Include="src\ParallelTaskPerRowMultiplier.h" />
+    <ClInclude Include="src\ParallelTaskPerThreadMultiplier.h" />
     <ClInclude Include="src\SerialMultiplier.h" />
     <ClInclude Include="src\Structures.h" />
     <ClInclude Include="src\Utils.h" />
@@ -276,6 +277,7 @@
     <ClCompile Include="src\ParallelTaskMultiplierBase.cpp" />
     <ClCompile Include="src\ParallelTaskPerElementMultiplier.cpp" />
     <ClCompile Include="src\ParallelTaskPerRowMultiplier.cpp" />
+    <ClCompile Include="src\ParallelTaskPerThreadMultiplier.cpp" />
     <ClCompile Include="src\SerialMultiplier.cpp" />
     <ClCompile Include="src\Structures.cpp" />
     <ClCompile Include="src\Utils.cpp" />

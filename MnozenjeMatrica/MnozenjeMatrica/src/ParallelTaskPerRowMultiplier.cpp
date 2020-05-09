@@ -9,12 +9,13 @@ ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicati
 tbb::task* ParallelTaskPerRow::execute()
 {
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
-	const size_t numberOfElements = rightMatrix.getNumberOfColumns();
+	const size_t numberOfElementsInResultMatrixColumn = resultOfMultiplication.getNumberOfColumns();
+	const size_t numberOfElementsInLeftMatrixColumn = leftMatrix.getNumberOfColumns();
 
-	for (size_t columnIndex = 0; columnIndex < numberOfElements; ++columnIndex)
+	for (size_t columnIndex = 0; columnIndex < numberOfElementsInResultMatrixColumn; ++columnIndex)
 	{
 		int element = 0;
-		for (size_t sharedIndex = 0; sharedIndex < numberOfElements; ++sharedIndex)
+		for (size_t sharedIndex = 0; sharedIndex < numberOfElementsInLeftMatrixColumn; ++sharedIndex)
 		{
 			element += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 		}
