@@ -246,6 +246,7 @@
     <ClInclude Include="src\MatrixRow.h" />
     <ClInclude Include="src\MatrixSerializationBase.h" />
     <ClInclude Include="src\MatrixWritter.h" />
+    <ClInclude Include="src\MultiplierFactory.h" />
     <ClInclude Include="src\ParallelForMultiplier.h" />
     <ClInclude Include="src\ParallelTaskMultiplierBase.h" />
     <ClInclude Include="src\ParallelTaskPerElementMultiplier.h" />
@@ -275,6 +276,7 @@
     <ClCompile Include="src\MatrixRow.cpp" />
     <ClCompile Include="src\MatrixSerializationBase.cpp" />
     <ClCompile Include="src\MatrixWritter.cpp" />
+    <ClCompile Include="src\MultiplierFactory.cpp" />
     <ClCompile Include="src\ParallelForMultiplier.cpp" />
     <ClCompile Include="src\ParallelTaskMultiplierBase.cpp" />
     <ClCompile Include="src\ParallelTaskPerElementMultiplier.cpp" />

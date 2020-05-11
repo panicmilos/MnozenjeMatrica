@@ -19,6 +19,9 @@ private:
 
 class ParallelTaskPerThreadMultiplier : public ParalellTaskMultiplierBase
 {
+public:
+	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
+
 private:
 	void fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept override;
 	void fillListWithAllTasksExceptLastOne(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept;

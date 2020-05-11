@@ -41,6 +41,11 @@ ElementIndex ParallelTaskPerThread::get2DElementIndexFrom1D(const size_t element
 	return elementIndexIn2d;
 }
 
+MatrixMultiplierBase* ParallelTaskPerThreadMultiplier::create() noexcept
+{
+	return new ParallelTaskPerThreadMultiplier();
+}
+
 void ParallelTaskPerThreadMultiplier::fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
 	fillListWithAllTasksExceptLastOne(parentsTasks, parent, multiplicationElements);

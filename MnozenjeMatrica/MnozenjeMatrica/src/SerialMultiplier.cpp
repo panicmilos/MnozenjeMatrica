@@ -3,6 +3,11 @@
 #include "MatrixRow.h"
 #include "Profiling.h"
 
+MatrixMultiplierBase* SerialMultiplier::create() noexcept
+{
+	return new SerialMultiplier();
+}
+
 Matrix SerialMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
 	PROFILE_SCOPE("SerialMultiplier");

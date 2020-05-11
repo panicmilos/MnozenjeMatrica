@@ -25,6 +25,11 @@ tbb::task* ParallelTaskPerRow::execute()
 	return nullptr;
 }
 
+MatrixMultiplierBase* ParallelTaskPerRowMultiplier::create() noexcept
+{
+	return new ParallelTaskPerRowMultiplier();
+}
+
 void ParallelTaskPerRowMultiplier::fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
 	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;

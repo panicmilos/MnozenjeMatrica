@@ -17,6 +17,9 @@ private:
 
 class ParallelTaskPerElementMultiplier : public ParalellTaskMultiplierBase
 {
+public:
+	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
+
 private:
 	void fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept override;
 	[[nodiscard]] int getTotalNumberOfRefCount(const Matrix& resultOfMultiplication) const noexcept;

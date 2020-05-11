@@ -3,16 +3,12 @@
 #include "Matrix.h"
 #include "MatrixWritter.h"
 #include "MatrixReader.h"
-#include "SerialMultiplier.h"
-#include "ParallelForMultiplier.h"
 #include "Profiling.h"
-#include "ParallelTaskPerRowMultiplier.h"
-#include "ParallelTaskPerElementMultiplier.h"
-#include "ParallelTaskPerThreadMultiplier.h"
+#include "MultiplierFactory.h"
 #include <iostream> // remove
 #include <time.h>
 
-#define TESTING 1
+#define TESTING 0
 
 #if TESTING == 0
 
@@ -63,12 +59,12 @@ int main()
 
 	try
 	{
-		Matrix m3(5000, 5000, 2);
-		Matrix m4(5000, 5000, 1);
+		Matrix m3(1000, 1000, 2);
+		Matrix m4(1000, 1000, 1);
 
 		Profiling::beginSession("profile.json");
-
-		Matrix res2 = ParallelForMultiplier()(m3, m4);
+		MatrixMultiplierBase* multiplier = MultiplierFactory::get()->createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
+		Matrix res2 = (*multiplier)(m3, m4);
 		//Matrix res2 = ParallelForMultiplier().multiply(m3, m4);
 		Profiling::endSession();
 

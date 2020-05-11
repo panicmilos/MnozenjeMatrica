@@ -5,6 +5,11 @@
 #include "tbb\parallel_for.h"
 #include "tbb\blocked_range2d.h"
 
+MatrixMultiplierBase* ParallelForMultiplier::create() noexcept
+{
+	return new ParallelForMultiplier();
+}
+
 Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
 	PROFILE_SCOPE("ParallelForMultiplier");
