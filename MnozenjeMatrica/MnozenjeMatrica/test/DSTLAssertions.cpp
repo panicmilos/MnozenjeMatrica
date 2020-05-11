@@ -48,11 +48,18 @@ void MatrixAssertions::MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& 
 	ASSERT_EQ(elementValueInMatrix, expectedValue);
 }
 
-void MatrixAssertions::MATRICES_EQ_(const Matrix& leftMatrix, const Matrix& rightMatrix, const bool isSame)
+void MatrixAssertions::MATRICES_EQ_(const Matrix& leftMatrix, const Matrix& rightMatrix, const bool areSame)
 {
 	const bool matricesAreSame = leftMatrix == rightMatrix;
 
-	ASSERT_EQ(matricesAreSame, isSame);
+	ASSERT_EQ(matricesAreSame, areSame);
+}
+
+void MatrixAssertions::ROWS_EQ_(const MatrixRow& leftRow, const MatrixRow& rightRow, const bool areSame)
+{
+	const bool rowsAreSame = leftRow == rightRow;
+
+	ASSERT_EQ(rowsAreSame, areSame);
 }
 
 void MatrixAssertions::MATRIX_FILE_CONTENT_EQ_TO_(const std::string& filePath, const std::string& expectedContent)

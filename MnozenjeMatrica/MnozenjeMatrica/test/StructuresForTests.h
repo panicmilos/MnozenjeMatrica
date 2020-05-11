@@ -23,6 +23,13 @@ struct MatrixEqualOperatorTest
 	bool areSame;
 };
 
+struct MatrixRowOperatorTest
+{
+	size_t leftRowNumberOfElements;
+	size_t rightRowNumberOfElements;
+	bool areSame;
+};
+
 struct MatrixForTest : public ::testing::Test
 {
 public:

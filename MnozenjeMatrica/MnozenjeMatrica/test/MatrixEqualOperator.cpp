@@ -25,7 +25,7 @@ INSTANTIATE_TEST_CASE_P(MatrixEqualOperator, MatrixEqualOperatorDimensionsTest,
 		MatrixEqualOperatorTest{ { 1, 2 }, { 1, 2}, true }
 ));
 
-TEST(MatrixEqualOperator, DifferentElements)
+TEST(MatrixEqualOperator, DifferentElementsInMatrices)
 {
 	Matrix leftMatrix{ {1, 2, 6, 4} };
 	Matrix rightMatrix{ {1, 2, 2, 4} };

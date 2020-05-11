@@ -261,6 +261,7 @@
     <ClInclude Include="test\MatrixIndexingOperatorTest.h" />
     <ClInclude Include="test\MatrixMultiplierBaseTest.h" />
     <ClInclude Include="test\MatrixReaderTest.h" />
+    <ClInclude Include="test\MatrixRowEqualOperator.h" />
     <ClInclude Include="test\MatrixWritterTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
     <ClInclude Include="test\UtilsForTests.h" />
@@ -289,6 +290,7 @@
     <ClCompile Include="test\MatrixIndexingOperatorTest.cpp" />
     <ClCompile Include="test\MatrixMultiplierBaseTest.cpp" />
     <ClCompile Include="test\MatrixReaderTest.cpp" />
+    <ClCompile Include="test\MatrixRowEqualOperator.cpp" />
     <ClCompile Include="test\MatrixWritterTest.cpp" />
     <ClCompile Include="test\ProfilingTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
