@@ -16,6 +16,13 @@ struct Element
 	size_t columnIndex;
 };
 
+struct MatrixEqualOperatorTest
+{
+	Dimensions leftMatrixDimensions;
+	Dimensions rightMatrixDimensions;
+	bool areSame;
+};
+
 struct MatrixForTest : public ::testing::Test
 {
 public:

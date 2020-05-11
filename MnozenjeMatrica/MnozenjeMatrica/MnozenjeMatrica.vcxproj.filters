@@ -99,6 +99,9 @@
     <ClInclude Include="src\ParallelTaskPerThreadMultiplier.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="test\MatrixEqualOperator.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="src\ParallelTaskPerThreadMultiplier.cpp">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\MatrixEqualOperator.cpp">
+      <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

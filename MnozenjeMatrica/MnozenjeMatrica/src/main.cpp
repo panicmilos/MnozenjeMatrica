@@ -10,26 +10,71 @@
 #include "ParallelTaskPerElementMultiplier.h"
 #include "ParallelTaskPerThreadMultiplier.h"
 #include <iostream> // remove
-#define TESTING 0
+#include <time.h>
+
+#define TESTING 1
 
 #if TESTING == 0
 
 int main()
 {
+	/*srand(time(NULL));
+
+	Matrix m(154, 70);
+	Matrix m1(70, 81);
+
+	for (int i = 0; i < m.getNumberOfRows(); ++i)
+	{
+		for (int j = 0; j < m.getNumberOfColumns(); ++j)
+		{
+			m[i][j] = rand() % 21 - 10;
+		}
+	}
+
+	for (int i = 0; i < m1.getNumberOfRows(); ++i)
+	{
+		for (int j = 0; j < m1.getNumberOfColumns(); ++j)
+		{
+			m1[i][j] = rand() % 21 - 10;
+		}
+	}
+
+	Matrix res = SerialMultiplier().multiply(m, m1);
+
+	MatrixWritter ms("smallMatrices2.txt");
+	ms << m;
+	ms << m1;
+	ms << res;
+	ms.close();
+
+	for (int i = 1; i <= 3; ++i) {
+		Matrix m;
+		Matrix m1;
+		Matrix m2;
+		MatrixReader mr("smallMatrices" + std::to_string(i) + ".txt");
+		mr >> m >> m1 >> m2;
+		Matrix res = ParallelTaskPerRowMultiplier()(m, m1);
+
+		if (m2 == res)
+		{
+			std::cout << "Isto je\n";
+		}
+	}*/
+
 	try
 	{
-		Matrix m3(3000, 3000, 2);
-		Matrix m4(3000, 3000, 1);
+		Matrix m3(5000, 5000, 2);
+		Matrix m4(5000, 5000, 1);
 
 		Profiling::beginSession("profile.json");
 
-		Matrix res2 = ParallelTaskPerThreadMultiplier().multiply(m3, m4);
+		Matrix res2 = ParallelForMultiplier()(m3, m4);
 		//Matrix res2 = ParallelForMultiplier().multiply(m3, m4);
 		Profiling::endSession();
 
-		MatrixWritter ms("matrixRes.txt");
-		ms << res2;
-		ms.close();
+		//MatrixWritter ms("matrixRes.txt");
+		//ms << res2;
+		//ms.close();
 	}
 	catch (std::exception & e)
 	{

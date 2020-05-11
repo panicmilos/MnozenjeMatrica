@@ -48,6 +48,13 @@ void MatrixAssertions::MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& 
 	ASSERT_EQ(elementValueInMatrix, expectedValue);
 }
 
+void MatrixAssertions::MATRICES_EQ_(const Matrix& leftMatrix, const Matrix& rightMatrix, const bool isSame)
+{
+	const bool matricesAreSame = leftMatrix == rightMatrix;
+
+	ASSERT_EQ(matricesAreSame, isSame);
+}
+
 void MatrixAssertions::MATRIX_FILE_CONTENT_EQ_TO_(const std::string& filePath, const std::string& expectedContent)
 {
 	std::string fileContent = UtilsForTests::getContentOfFile(filePath);

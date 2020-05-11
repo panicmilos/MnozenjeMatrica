@@ -257,6 +257,7 @@
     <ClInclude Include="test\DSTLAssertions.h" />
     <ClInclude Include="test\MatrixAssignmentOperatorTest.h" />
     <ClInclude Include="test\MatrixConstructorTest.h" />
+    <ClInclude Include="test\MatrixEqualOperator.h" />
     <ClInclude Include="test\MatrixIndexingOperatorTest.h" />
     <ClInclude Include="test\MatrixMultiplierBaseTest.h" />
     <ClInclude Include="test\MatrixReaderTest.h" />
@@ -284,6 +285,7 @@
     <ClCompile Include="test\DSTLAssertions.cpp" />
     <ClCompile Include="test\MatrixAssignmentOperatorTest.cpp" />
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
+    <ClCompile Include="test\MatrixEqualOperator.cpp" />
     <ClCompile Include="test\MatrixIndexingOperatorTest.cpp" />
     <ClCompile Include="test\MatrixMultiplierBaseTest.cpp" />
     <ClCompile Include="test\MatrixReaderTest.cpp" />
