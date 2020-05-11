@@ -12,12 +12,12 @@ tbb::task* ParallelTaskPerElement::execute()
 	const auto [rowIndex, columnIndex] = element;
 	const size_t numberOfElements = leftMatrix.getNumberOfColumns();
 
-	int element = 0;
+	int sumOfRowColumnPairs = 0;
 	for (size_t sharedIndex = 0; sharedIndex < numberOfElements; ++sharedIndex)
 	{
-		element += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
+		sumOfRowColumnPairs += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 	}
-	resultOfMultiplication[rowIndex][columnIndex] = element;
+	resultOfMultiplication[rowIndex][columnIndex] = sumOfRowColumnPairs;
 
 	return nullptr;
 }

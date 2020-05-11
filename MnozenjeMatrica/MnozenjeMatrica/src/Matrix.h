@@ -19,6 +19,8 @@ public:
 
 	Matrix& operator=(const Matrix& m) noexcept(false);
 	Matrix& operator=(Matrix&& m) noexcept;
+	friend bool operator==(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+	friend bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
 
 	[[nodiscard]] MatrixRow operator[](const size_t rowIndex) noexcept(false);
 	[[nodiscard]] const MatrixRow operator[](const size_t rowIndex) const noexcept(false);
@@ -41,3 +43,6 @@ private:
 	size_t numberOfRows = 0;
 	size_t numberOfColumns = 0;
 };
+
+[[nodiscard]] bool operator==(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+[[nodiscard]] bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;

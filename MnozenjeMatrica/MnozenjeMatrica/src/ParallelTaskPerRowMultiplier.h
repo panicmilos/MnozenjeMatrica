@@ -8,7 +8,7 @@
 class ParallelTaskPerRow : public ParallelTask
 {
 public:
-	ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const int rowIndex_) noexcept;
+	ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const size_t rowIndex_) noexcept;
 
 	tbb::task* execute() override;
 private:

@@ -8,7 +8,7 @@ struct ElementIndex
 	size_t columnIndex = 0;
 };
 
-struct ElementRange
+struct ElementsRange
 {
 	size_t firstElement = 0;
 	size_t lastElement = 0;

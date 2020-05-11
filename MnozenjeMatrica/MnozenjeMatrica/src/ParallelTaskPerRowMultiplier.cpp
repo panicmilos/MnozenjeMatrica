@@ -1,6 +1,6 @@
 #include "ParallelTaskPerRowMultiplier.h"
 
-ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const int rowIndex_) noexcept :
+ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const size_t rowIndex_) noexcept :
 	ParallelTask(multiplicationElements_),
 	rowIndex(rowIndex_)
 {
@@ -9,17 +9,17 @@ ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicati
 tbb::task* ParallelTaskPerRow::execute()
 {
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
-	const size_t numberOfElementsInResultMatrixColumn = resultOfMultiplication.getNumberOfColumns();
+	const size_t numberOfElementsInResultMatrixRow = resultOfMultiplication.getNumberOfColumns();
 	const size_t numberOfElementsInLeftMatrixColumn = leftMatrix.getNumberOfColumns();
 
-	for (size_t columnIndex = 0; columnIndex < numberOfElementsInResultMatrixColumn; ++columnIndex)
+	for (size_t columnIndex = 0; columnIndex < numberOfElementsInResultMatrixRow; ++columnIndex)
 	{
-		int element = 0;
+		int sumOfRowColumnPairs = 0;
 		for (size_t sharedIndex = 0; sharedIndex < numberOfElementsInLeftMatrixColumn; ++sharedIndex)
 		{
-			element += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
+			sumOfRowColumnPairs += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 		}
-		resultOfMultiplication[rowIndex][columnIndex] = element;
+		resultOfMultiplication[rowIndex][columnIndex] = sumOfRowColumnPairs;
 	}
 
 	return nullptr;

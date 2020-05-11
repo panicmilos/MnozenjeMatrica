@@ -53,7 +53,30 @@ std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
 	std::ostream_iterator<int> outIt(out, " ");
 	std::copy(startOfRowPtr, endOfRowPtr, outIt);
 
-	Utils::deleteLastNCharInStream(out, 1ll);
+	Utils::deleteLastNCharsInStream(out, 1ll);
 
 	return out;
+}
+
+bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
+{
+	if (const bool numberOfElementsAreSame = leftRow.numberOfElements == rightRow.numberOfElements; !numberOfElementsAreSame)
+	{
+		return false;
+	}
+
+	const size_t numberOfElementsInRow = leftRow.numberOfElements;
+	const int* const startOfLeftRowPtr = leftRow.startOfRowPtr;
+	const int* const endOfLeftRowPtr = leftRow.startOfRowPtr + numberOfElementsInRow;
+	const int* const startOfRightRowPtr = rightRow.startOfRowPtr;
+	const bool allElementsAreSame = std::equal(startOfLeftRowPtr, endOfLeftRowPtr, startOfRightRowPtr);
+
+	return allElementsAreSame;
+}
+
+bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
+{
+	const bool areRowSame = leftRow == rightRow;
+
+	return !areRowSame;
 }

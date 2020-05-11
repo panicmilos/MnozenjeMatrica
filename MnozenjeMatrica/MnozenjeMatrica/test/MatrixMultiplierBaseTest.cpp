@@ -10,5 +10,5 @@ TEST(MatrixMultiplyBase, WrongMatricesDimensions)
 	Matrix rightMatrix(3, 2, 6);
 
 	MatrixMultiplierBaseTest mmbt;
-	MATRIX_EXPECT_THROW(Matrix result = mmbt.multiply(leftMatrix, rightMatrix), BadMatricesDimensionsForMultiplying, "Number of left matrix columns must be same as number of right matrix rows!");
+	MATRIX_EXPECT_THROW(Matrix result = mmbt(leftMatrix, rightMatrix), BadMatricesDimensionsForMultiplying, "Number of left matrix columns must be same as number of right matrix rows!");
 }

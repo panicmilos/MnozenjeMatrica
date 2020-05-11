@@ -12,7 +12,7 @@ TEST(MatrixReader, WrongFilePath)
 
 TEST(MatrixReader, GoodSquaredMatrix)
 {
-	MatrixReader mr("res\\SquaredMatrixGood.txt");
+	MatrixReader mr("res\\tests\\SquaredMatrixGood.txt");
 
 	Matrix m;
 	mr >> m;
@@ -23,7 +23,7 @@ TEST(MatrixReader, GoodSquaredMatrix)
 
 TEST(MatrixReader, TwoGoodSquaredMatrix)
 {
-	MatrixReader mr("res\\2SquaredMatricesGood.txt");
+	MatrixReader mr("res\\tests\\2SquaredMatricesGood.txt");
 
 	Matrix m1;
 	mr >> m1;
@@ -40,7 +40,7 @@ TEST(MatrixReader, TwoGoodSquaredMatrix)
 
 TEST(MatrixReader, GoodNonSquaredMatrix)
 {
-	MatrixReader mr("res\\NonSquaredMatrixGood.txt");
+	MatrixReader mr("res\\tests\\NonSquaredMatrixGood.txt");
 
 	Matrix m;
 	mr >> m;
@@ -53,7 +53,7 @@ TEST_P(MatrixReaderWithBadFormat, ReadingMatrixWithBadFormat)
 {
 	auto path = GetParam();
 
-	MatrixReader mr("res\\" + path);
+	MatrixReader mr("res\\tests\\" + path);
 
 	Matrix m;
 

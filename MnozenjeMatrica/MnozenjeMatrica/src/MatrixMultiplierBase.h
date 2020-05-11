@@ -5,7 +5,7 @@
 class MatrixMultiplierBase
 {
 public:
-	[[nodiscard]] Matrix multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
+	[[nodiscard]] Matrix operator()(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
 
 protected:
 	[[nodiscard]] virtual Matrix doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept = 0;

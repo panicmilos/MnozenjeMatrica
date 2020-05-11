@@ -214,3 +214,29 @@ int* const Matrix::getMatrixElements() const noexcept
 {
 	return matrixElements;
 }
+
+bool operator==(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept
+{
+	const bool numberOfRowsAreSame = leftMatrix.numberOfRows == rightMatrix.numberOfRows;
+	const bool numberOfColumnsAreSame = leftMatrix.numberOfColumns == rightMatrix.numberOfColumns;
+
+	if (const bool dimensionsAreSame = numberOfRowsAreSame & numberOfColumnsAreSame; !dimensionsAreSame)
+	{
+		return false;
+	}
+
+	const size_t numberOfElements = leftMatrix.getSize();
+	const int* const startOfLeftMatrixElementsPtr = leftMatrix.matrixElements;
+	const int* const endOfLeftMatrixElementsPtr = leftMatrix.matrixElements + numberOfElements;
+	const int* const startOfRightMatrixElementsPtr = rightMatrix.matrixElements;
+	const bool allElementsAreSame = std::equal(startOfLeftMatrixElementsPtr, endOfLeftMatrixElementsPtr, startOfRightMatrixElementsPtr);
+
+	return allElementsAreSame;
+}
+
+bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept
+{
+	const bool areMatricesSame = leftMatrix == rightMatrix;
+
+	return !areMatricesSame;
+}

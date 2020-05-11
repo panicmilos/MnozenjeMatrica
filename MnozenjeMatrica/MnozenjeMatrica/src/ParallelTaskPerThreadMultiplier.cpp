@@ -1,9 +1,8 @@
 #include "ParallelTaskPerThreadMultiplier.h"
 
 #include "tbb\task_scheduler_init.h"
-#include <iostream> // remove
-#include <atomic>
-ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multiplicationElements_, const ElementRange elements_) noexcept :
+
+ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multiplicationElements_, const ElementsRange elements_) noexcept :
 	ParallelTask(multiplicationElements_),
 	elements(elements_)
 {
@@ -13,28 +12,28 @@ tbb::task* ParallelTaskPerThread::execute()
 {
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
 	const auto [firstElement, lastElements] = elements;
-	const size_t numberOfElementsInResultMatrixColumn = resultOfMultiplication.getNumberOfColumns();
+	const size_t numberOfElementsInResultMatrixRow = resultOfMultiplication.getNumberOfColumns();
 	const size_t numberOfElementsInLeftMatrixColumn = leftMatrix.getNumberOfColumns();
 
 	for (size_t elementIndexIn1D = firstElement; elementIndexIn1D < lastElements; ++elementIndexIn1D)
 	{
-		const auto [rowIndex, columnIndex] = get2DElementIndexFrom1D(elementIndexIn1D, numberOfElementsInResultMatrixColumn);
-		int element = 0;
+		const auto [rowIndex, columnIndex] = get2DElementIndexFrom1D(elementIndexIn1D, numberOfElementsInResultMatrixRow);
+		int sumOfRowColumnPairs = 0;
 		for (size_t sharedIndex = 0; sharedIndex < numberOfElementsInLeftMatrixColumn; ++sharedIndex)
 		{
-			element += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
+			sumOfRowColumnPairs += leftMatrix[rowIndex][sharedIndex] * rightMatrix[sharedIndex][columnIndex];
 		}
-		resultOfMultiplication[rowIndex][columnIndex] = element;
+		resultOfMultiplication[rowIndex][columnIndex] = sumOfRowColumnPairs;
 	}
 	return nullptr;
 }
 
-ElementIndex ParallelTaskPerThread::get2DElementIndexFrom1D(const size_t elementIndexIn1D, const size_t numberOfElementsInColumn) const noexcept
+ElementIndex ParallelTaskPerThread::get2DElementIndexFrom1D(const size_t elementIndexIn1D, const size_t numberOfElementsInRow) const noexcept
 {
-	const size_t rowIndex = elementIndexIn1D / numberOfElementsInColumn;
-	const size_t columnIndex = elementIndexIn1D % numberOfElementsInColumn;
+	const size_t rowIndex = elementIndexIn1D / numberOfElementsInRow;
+	const size_t columnIndex = elementIndexIn1D % numberOfElementsInRow;
 
-	ElementIndex elementIndexIn2d = {
+	const ElementIndex elementIndexIn2d = {
 		rowIndex,
 		columnIndex
 	};
@@ -63,7 +62,7 @@ void ParallelTaskPerThreadMultiplier::fillListWithAllTasksExceptLastOne(tbb::tas
 	{
 		const size_t lowerElementsBound = threadIndex * numberOfElementsPerThread;
 		const size_t upperElementsBound = (threadIndex + 1) * numberOfElementsPerThread;
-		const ElementRange elements = { lowerElementsBound, upperElementsBound };
+		const ElementsRange elements = { lowerElementsBound, upperElementsBound };
 		tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerThread(multiplicationElements, elements);
 		parentsTasks.push_back(elementsCalculation);
 	}
@@ -82,15 +81,15 @@ void ParallelTaskPerThreadMultiplier::fillListWithLastTask(tbb::task_list& paren
 	const size_t dividingError = getDividingElementsPerThreadError(numberOfElements);
 	const size_t upperElementsBoundWithError = upperElementsBoundWithoutError + dividingError;
 
-	const ElementRange elements = { lowerElementsBound, upperElementsBoundWithError };
+	const ElementsRange elements = { lowerElementsBound, upperElementsBoundWithError };
 	tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerThread(multiplicationElements, elements);
 	parentsTasks.push_back(elementsCalculation);
 }
 
-size_t ParallelTaskPerThreadMultiplier::getNumberOfElementsPerThread(const size_t numberOfColumns) const noexcept
+size_t ParallelTaskPerThreadMultiplier::getNumberOfElementsPerThread(const size_t numberOfElements) const noexcept
 {
 	const int numberOfThreads = getNumberOfProcessorThreads();
-	const size_t numberOfElementsPerThread = numberOfColumns / numberOfThreads;
+	const size_t numberOfElementsPerThread = numberOfElements / numberOfThreads;
 
 	return numberOfElementsPerThread;
 }
@@ -106,8 +105,8 @@ size_t ParallelTaskPerThreadMultiplier::getDividingElementsPerThreadError(const 
 {
 	const int numberOfThreads = getNumberOfProcessorThreads();
 	const size_t numberOfElementsPerThread = getNumberOfElementsPerThread(numberOfElements);
-	const size_t totalElements = numberOfThreads * numberOfElementsPerThread;
-	const size_t dividingError = numberOfElements - totalElements;
+	const size_t numberOfElementsWithError = numberOfThreads * numberOfElementsPerThread;
+	const size_t dividingError = numberOfElements - numberOfElementsWithError;
 
 	return dividingError;
 }

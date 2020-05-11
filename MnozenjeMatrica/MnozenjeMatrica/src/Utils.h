@@ -4,5 +4,5 @@
 
 namespace Utils
 {
-	void deleteLastNCharInStream(std::ostream& stream, const long long N) noexcept;
+	void deleteLastNCharsInStream(std::ostream& stream, const long long numberOfCharsForDeletion) noexcept;
 }

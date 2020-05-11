@@ -51,21 +51,24 @@ void MatrixReader::throwIfMatrixFormatInFileIsBad() const noexcept(false)
 
 void MatrixReader::createMatrixWithReadDimensionsFromFile() noexcept
 {
-	Matrix m(Dimensions.numberOfRows, Dimensions.numberOfColumns);
+	const auto [numberOfRows, numberOfColumns] = Dimensions;
+
+	Matrix m(numberOfRows, numberOfColumns);
 	matrixFromFile = std::move(m);
 }
 
 void MatrixReader::readMatrixBody() noexcept
 {
+	const auto [numberOfRows, numberOfColumns] = Dimensions;
 	int matrixElement;
 
-	for (size_t i = 0; i < Dimensions.numberOfRows; ++i)
+	for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
 	{
-		for (size_t j = 0; j < Dimensions.numberOfColumns; ++j)
+		for (size_t columnIndex = 0; columnIndex < numberOfColumns; ++columnIndex)
 		{
 			fileStream >> matrixElement;
 
-			matrixFromFile[i][j] = matrixElement;
+			matrixFromFile[rowIndex][columnIndex] = matrixElement;
 		}
 	}
 }

@@ -37,7 +37,7 @@ void MatrixWritter::writeMatrixBody(const Matrix& m) noexcept
 		fileStream << row << '\n';
 	}
 
-	Utils::deleteLastNCharInStream(fileStream, 2ll);
+	Utils::deleteLastNCharsInStream(fileStream, 2ll);
 }
 
 void MatrixWritter::writeEndOfFormatCharacter() noexcept

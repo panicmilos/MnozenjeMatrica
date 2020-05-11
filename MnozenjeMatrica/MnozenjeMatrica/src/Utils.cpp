@@ -1,9 +1,9 @@
 #include "Utils.h"
 
-void Utils::deleteLastNCharInStream(std::ostream& stream, const long long N) noexcept
+void Utils::deleteLastNCharsInStream(std::ostream& stream, const long long numberOfCharsForDeletion) noexcept
 {
-	if (std::streamoff lastCharPos = stream.tellp(); lastCharPos >= N)
+	if (const std::streamoff positionOfLastChar = stream.tellp(); positionOfLastChar >= numberOfCharsForDeletion)
 	{
-		stream.seekp(lastCharPos - N);
+		stream.seekp(positionOfLastChar - numberOfCharsForDeletion);
 	}
 }

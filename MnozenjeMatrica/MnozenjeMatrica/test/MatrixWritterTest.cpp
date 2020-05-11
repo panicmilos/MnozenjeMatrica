@@ -9,30 +9,30 @@ TEST(MatrixWritter, WrittingSquaredMatrix)
 {
 	Matrix m(2, 2, 2);
 
-	MatrixWritter mw("res\\SavedSquaredMatrix.txt");
+	MatrixWritter mw("res\\tests\\SavedSquaredMatrix.txt");
 	mw << m;
 	mw.close();
 
-	MATRIX_FILE_CONTENT_EQ_TO("res\\SavedSquaredMatrix.txt", "[2,2]\n2 2\n2 2;\n");
+	MATRIX_FILE_CONTENT_EQ_TO("res\\tests\\SavedSquaredMatrix.txt", "[2,2]\n2 2\n2 2;\n");
 }
 
 TEST_F(MatrixWritterWithTestMatrix, WrittingNonSquaredMatrix)
 {
-	MatrixWritter mw("res\\SavedNonSquaredMatrix.txt");
+	MatrixWritter mw("res\\tests\\SavedNonSquaredMatrix.txt");
 	mw << m;
 	mw.close();
 
-	MATRIX_FILE_CONTENT_EQ_TO("res\\SavedNonSquaredMatrix.txt", "[2,3]\n2 23 -4\n55 0 6;\n");
+	MATRIX_FILE_CONTENT_EQ_TO("res\\tests\\SavedNonSquaredMatrix.txt", "[2,3]\n2 23 -4\n55 0 6;\n");
 }
 
 TEST_F(MatrixWritterWithTestMatrix, WrittingTwoMatrices)
 {
 	Matrix m2(2, 2, 2);
 
-	MatrixWritter mw("res\\SavedTwoMatrices.txt");
+	MatrixWritter mw("res\\tests\\SavedTwoMatrices.txt");
 	mw << m;
 	mw << m2;
 	mw.close();
 
-	MATRIX_FILE_CONTENT_EQ_TO("res\\SavedTwoMatrices.txt", "[2,3]\n2 23 -4\n55 0 6;\n[2,2]\n2 2\n2 2;\n");
+	MATRIX_FILE_CONTENT_EQ_TO("res\\tests\\SavedTwoMatrices.txt", "[2,3]\n2 23 -4\n55 0 6;\n[2,2]\n2 2\n2 2;\n");
 }
