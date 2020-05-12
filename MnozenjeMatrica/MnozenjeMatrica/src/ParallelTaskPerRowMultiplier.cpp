@@ -1,5 +1,7 @@
 #include "ParallelTaskPerRowMultiplier.h"
 
+#include "Profiling.h"
+
 ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const size_t rowIndex_) noexcept :
 	ParallelTask(multiplicationElements_),
 	rowIndex(rowIndex_)
@@ -8,6 +10,7 @@ ParallelTaskPerRow::ParallelTaskPerRow(const MultiplicationElements multiplicati
 
 tbb::task* ParallelTaskPerRow::execute()
 {
+	PROFILE_SCOPE("");
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
 	const size_t numberOfElementsInResultMatrixRow = resultOfMultiplication.getNumberOfColumns();
 	const size_t numberOfElementsInLeftMatrixColumn = leftMatrix.getNumberOfColumns();

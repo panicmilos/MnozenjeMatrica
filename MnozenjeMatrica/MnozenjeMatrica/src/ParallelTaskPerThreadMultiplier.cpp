@@ -1,5 +1,6 @@
 #include "ParallelTaskPerThreadMultiplier.h"
 
+#include "Profiling.h"
 #include "tbb\task_scheduler_init.h"
 
 ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multiplicationElements_, const ElementsRange elements_) noexcept :
@@ -10,12 +11,13 @@ ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multip
 
 tbb::task* ParallelTaskPerThread::execute()
 {
+	PROFILE_SCOPE("");
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
-	const auto [firstElement, lastElements] = elements;
+	const auto [firstElementPosition, lastElementsPosition] = elements;
 	const size_t numberOfElementsInResultMatrixRow = resultOfMultiplication.getNumberOfColumns();
 	const size_t numberOfElementsInLeftMatrixColumn = leftMatrix.getNumberOfColumns();
 
-	for (size_t elementIndexIn1D = firstElement; elementIndexIn1D < lastElements; ++elementIndexIn1D)
+	for (size_t elementIndexIn1D = firstElementPosition; elementIndexIn1D < lastElementsPosition; ++elementIndexIn1D)
 	{
 		const auto [rowIndex, columnIndex] = get2DElementIndexFrom1D(elementIndexIn1D, numberOfElementsInResultMatrixRow);
 		int sumOfRowColumnPairs = 0;
@@ -65,9 +67,9 @@ void ParallelTaskPerThreadMultiplier::fillListWithAllTasksExceptLastOne(tbb::tas
 
 	for (int threadIndex = 0; threadIndex < numberOfThreadsWithoutLastOne; ++threadIndex)
 	{
-		const size_t lowerElementsBound = threadIndex * numberOfElementsPerThread;
-		const size_t upperElementsBound = (threadIndex + 1) * numberOfElementsPerThread;
-		const ElementsRange elements = { lowerElementsBound, upperElementsBound };
+		const size_t firstElementInRange = threadIndex * numberOfElementsPerThread;
+		const size_t lastElementInRange = (threadIndex + 1) * numberOfElementsPerThread;
+		const ElementsRange elements = { firstElementInRange, lastElementInRange };
 		tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerThread(multiplicationElements, elements);
 		parentsTasks.push_back(elementsCalculation);
 	}
@@ -81,12 +83,12 @@ void ParallelTaskPerThreadMultiplier::fillListWithLastTask(tbb::task_list& paren
 	const int numberOfThreads = getNumberOfProcessorThreads();
 	const size_t lastThreadIndex = numberOfThreads - 1;
 
-	const size_t lowerElementsBound = lastThreadIndex * numberOfElementsPerThread;
-	const size_t upperElementsBoundWithoutError = (lastThreadIndex + 1) * numberOfElementsPerThread;
+	const size_t firstElementInRange = lastThreadIndex * numberOfElementsPerThread;
+	const size_t lastElementInRangeWithoutError = (lastThreadIndex + 1) * numberOfElementsPerThread;
 	const size_t dividingError = getDividingElementsPerThreadError(numberOfElements);
-	const size_t upperElementsBoundWithError = upperElementsBoundWithoutError + dividingError;
+	const size_t lastElementInRangeWithError = lastElementInRangeWithoutError + dividingError;
 
-	const ElementsRange elements = { lowerElementsBound, upperElementsBoundWithError };
+	const ElementsRange elements = { firstElementInRange, lastElementInRangeWithError };
 	tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerThread(multiplicationElements, elements);
 	parentsTasks.push_back(elementsCalculation);
 }

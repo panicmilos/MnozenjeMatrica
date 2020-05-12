@@ -15,8 +15,8 @@ public:
 	friend std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept;
 
 private:
-	void throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const noexcept(false);
-	[[nodiscard]] bool validateColumnIndex(const size_t elementIndex) const noexcept;
+	void throwIfElementIndexIsOutOfBounds(const size_t elementIndex) const noexcept(false);
+	[[nodiscard]] bool validateElementIndex(const size_t elementIndex) const noexcept;
 
 	int* const startOfRowPtr;
 	size_t numberOfElements;

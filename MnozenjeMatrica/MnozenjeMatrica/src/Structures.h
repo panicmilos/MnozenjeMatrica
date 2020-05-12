@@ -10,8 +10,8 @@ struct ElementIndex
 
 struct ElementsRange
 {
-	size_t firstElement = 0;
-	size_t lastElement = 0;
+	size_t firstElementPosition = 0;
+	size_t lastElementPosition = 0;
 };
 
 struct MultiplicationElements

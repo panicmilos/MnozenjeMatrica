@@ -9,7 +9,7 @@ ParallelTask::ParallelTask(MultiplicationElements multiplicationElements_) noexc
 
 Matrix ParalellTaskMultiplierBase::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
-	PROFILE_SCOPE("ParallelTask");
+	PROFILE_SCOPE("ParallelTaskMultiplier");
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();
 

@@ -19,12 +19,12 @@ Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matr
 
 	Matrix resultOfMultiplication(numberOfRowsInLeftMatrix, numberOfColumnsInRightMatrix);
 
-	const auto calculateBlockOfElementsInResultMatrix = [&](const tbb::blocked_range2d<size_t>& range)
+	const auto calculateBlockOfElementsInResultMatrix = [&](const tbb::blocked_range2d<size_t>& elementsRange)
 	{
 		PROFILE_SCOPE("");
-		for (size_t rowIndex = range.rows().begin(); rowIndex != range.rows().end(); ++rowIndex)
+		for (size_t rowIndex = elementsRange.rows().begin(); rowIndex != elementsRange.rows().end(); ++rowIndex)
 		{
-			for (size_t columnIndex = range.cols().begin(); columnIndex != range.cols().end(); ++columnIndex)
+			for (size_t columnIndex = elementsRange.cols().begin(); columnIndex != elementsRange.cols().end(); ++columnIndex)
 			{
 				int sumOfRowColumnPairs = 0;
 				for (size_t sharedIndex = 0; sharedIndex < numberOfColumnsInLeftMatrix; ++sharedIndex)

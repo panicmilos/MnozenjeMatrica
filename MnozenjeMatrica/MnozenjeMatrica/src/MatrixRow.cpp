@@ -14,7 +14,7 @@ MatrixRow::MatrixRow(int* const startOfRowPtr_, const size_t numberOfElements_) 
 int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 {
 	#ifndef NDEBUG
-	throwIfColumnIndexIsOutOfBounds(elementIndex);
+	throwIfElementIndexIsOutOfBounds(elementIndex);
 	#endif
 
 	return startOfRowPtr[elementIndex];
@@ -23,21 +23,21 @@ int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 const int& MatrixRow::operator[](const size_t elementIndex) const noexcept(false)
 {
 	#ifndef NDEBUG
-	throwIfColumnIndexIsOutOfBounds(elementIndex);
+	throwIfElementIndexIsOutOfBounds(elementIndex);
 	#endif
 
 	return startOfRowPtr[elementIndex];
 }
 
-void MatrixRow::throwIfColumnIndexIsOutOfBounds(const size_t elementIndex) const noexcept(false)
+void MatrixRow::throwIfElementIndexIsOutOfBounds(const size_t elementIndex) const noexcept(false)
 {
-	if (!validateColumnIndex(elementIndex))
+	if (!validateElementIndex(elementIndex))
 	{
 		throw MatrixIndexOutOfBounds("Given columnIndex is out of bounds!");
 	}
 }
 
-bool MatrixRow::validateColumnIndex(const size_t elementIndex) const noexcept
+bool MatrixRow::validateElementIndex(const size_t elementIndex) const noexcept
 {
 	const bool isElementIndexInBounds = elementIndex < numberOfElements;
 

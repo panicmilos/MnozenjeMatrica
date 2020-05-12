@@ -6,6 +6,7 @@
 
 class MultiplierFactory
 {
+private:
 	typedef MatrixMultiplierBase* (*createFunctionPtr)();
 
 public:
