@@ -10,7 +10,6 @@ ParallelTaskPerElement::ParallelTaskPerElement(const MultiplicationElements mult
 
 tbb::task* ParallelTaskPerElement::execute()
 {
-	PROFILE_SCOPE("");
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
 	const auto [rowIndex, columnIndex] = element;
 	const size_t numberOfElements = leftMatrix.getNumberOfColumns();

@@ -19,18 +19,17 @@ void Instrumentor::beginSession(const std::string& filePath) noexcept
 		endSession();
 	}
 
-	hasActiveSession = true;
 	profilingFile.open(filePath);
+	hasActiveSession = true;
 }
 
 void Instrumentor::endSession() noexcept
 {
 	if (hasActiveSession)
 	{
-		hasActiveSession = false;
 		writeAllProfileResultsToFile();
-		unwrittenProfilingResults.clear();
 		profilingFile.close();
+		hasActiveSession = false;
 	}
 }
 
@@ -40,10 +39,18 @@ void Instrumentor::writeAllProfileResultsToFile() noexcept
 	{
 		profilingFile << profilingResult;
 	}
+
+	unwrittenProfilingResults.clear();
 }
 
 void Instrumentor::addProfileResult(const ProfileResult& profilingResult) noexcept
 {
 	std::lock_guard<decltype(lockForAddingToVector)> lockGuard(lockForAddingToVector);
 	unwrittenProfilingResults.push_back(profilingResult);
+
+	size_t numberOfUnwrittenProfilingResult = unwrittenProfilingResults.size();
+	if (numberOfUnwrittenProfilingResult >= 100000)
+	{
+		writeAllProfileResultsToFile();
+	}
 }
