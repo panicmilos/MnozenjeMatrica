@@ -40,8 +40,8 @@ void ParallelTaskPerRowMultiplier::fillTaskListForParent(tbb::task_list& parents
 
 	for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
 	{
-		tbb::task& elementCalculation = *new(parent.allocate_child()) ParallelTaskPerRow(multiplicationElements, rowIndex);
-		parentsTasks.push_back(elementCalculation);
+		tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerRow(multiplicationElements, rowIndex);
+		parentsTasks.push_back(elementsCalculation);
 	}
 
 	const int totalNumberOfRefCount = getTotalNumberOfRefCount(resultOfMultiplication);

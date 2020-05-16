@@ -29,5 +29,5 @@ void InstrumentationTimer::collectProfilingResult() noexcept
 void InstrumentationTimer::profileResult() noexcept
 {
 	Instrumentor& instrumentorInstance = Instrumentor::getInstance();
-	instrumentorInstance.profileGivenResult(profilingResult);
+	instrumentorInstance.addProfileResult(profilingResult);
 }

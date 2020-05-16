@@ -59,11 +59,11 @@ int main()
 
 	try
 	{
-		Matrix m3(1000, 1000, 2);
-		Matrix m4(1000, 1000, 1);
+		Matrix m3(2000, 2000, 2);
+		Matrix m4(2000, 2000, 1);
 
 		Profiling::beginSession("profile.json");
-		MatrixMultiplierBase* multiplier = MultiplierFactory::get()->createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
+		MatrixMultiplierBase* multiplier = MultiplierFactory::get()->createMultiplier(MultiplierFactory::OPTIONS::ParallelTaskPerThread);
 		Matrix res2 = (*multiplier)(m3, m4);
 		//Matrix res2 = ParallelForMultiplier().multiply(m3, m4);
 		Profiling::endSession();

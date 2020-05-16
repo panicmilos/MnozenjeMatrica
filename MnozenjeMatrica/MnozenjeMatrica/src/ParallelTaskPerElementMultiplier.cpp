@@ -41,8 +41,8 @@ void ParallelTaskPerElementMultiplier::fillTaskListForParent(tbb::task_list& par
 		for (size_t columnIndex = 0; columnIndex < numberOfColumns; ++columnIndex)
 		{
 			ElementIndex elementIndex = { rowIndex, columnIndex };
-			tbb::task& elementsCalculation = *new(parent.allocate_child()) ParallelTaskPerElement(multiplicationElements, elementIndex);
-			parentsTasks.push_back(elementsCalculation);
+			tbb::task& elementCalculation = *new(parent.allocate_child()) ParallelTaskPerElement(multiplicationElements, elementIndex);
+			parentsTasks.push_back(elementCalculation);
 		}
 	}
 
