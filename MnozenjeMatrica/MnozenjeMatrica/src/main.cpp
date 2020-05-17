@@ -63,9 +63,8 @@ int main()
 		Matrix m4(1000, 1000, 1);
 
 		Profiling::beginSession("profile.json");
-		MatrixMultiplierBase* multiplier = MultiplierFactory::get()->createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
+		MatrixMultiplierBase* multiplier = MultiplierFactory::get().createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
 		Matrix res2 = multiplier->multiply(m3, m4);
-		//Matrix res2 = ParallelForMultiplier().multiply(m3, m4);
 		Profiling::endSession();
 
 		//MatrixWritter ms("matrixRes.txt");

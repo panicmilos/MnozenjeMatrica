@@ -17,11 +17,11 @@ MultiplierFactory::MultiplierFactory() noexcept
 	registerMultiplier(OPTIONS::ParallelTaskPerThread, &ParallelTaskPerThreadMultiplier::create);
 }
 
-MultiplierFactory* MultiplierFactory::get() noexcept
+MultiplierFactory& MultiplierFactory::get() noexcept
 {
 	static MultiplierFactory factory;
 
-	return &factory;
+	return factory;
 }
 
 void MultiplierFactory::registerMultiplier(const int methodNumber, createFunctionPtr creationMethod) noexcept

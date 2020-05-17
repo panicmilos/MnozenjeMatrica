@@ -19,7 +19,7 @@ public:
 		ParallelTaskPerThread
 	};
 
-	[[nodiscard]] static MultiplierFactory* get() noexcept;
+	[[nodiscard]] static MultiplierFactory& get() noexcept;
 
 	void registerMultiplier(const int methodNumber, createFunctionPtr creationMethod) noexcept;
 	[[nodiscard]] MatrixMultiplierBase* createMultiplier(const int methodNumber) noexcept;
