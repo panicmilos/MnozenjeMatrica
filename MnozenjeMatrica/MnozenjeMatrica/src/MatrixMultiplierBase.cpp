@@ -2,7 +2,7 @@
 
 #include "MatrixExceptions.h"
 
-Matrix MatrixMultiplierBase::operator()(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
+Matrix MatrixMultiplierBase::multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false)
 {
 	throwIfDimensionsAreBad(leftMatrix, rightMatrix);
 

@@ -49,7 +49,7 @@ void Instrumentor::addProfileResult(const ProfileResult& profilingResult) noexce
 	unwrittenProfilingResults.push_back(profilingResult);
 
 	size_t numberOfUnwrittenProfilingResult = unwrittenProfilingResults.size();
-	if (numberOfUnwrittenProfilingResult >= 100000)
+	if (numberOfUnwrittenProfilingResult >= 1500000)
 	{
 		writeAllProfileResultsToFile();
 	}
