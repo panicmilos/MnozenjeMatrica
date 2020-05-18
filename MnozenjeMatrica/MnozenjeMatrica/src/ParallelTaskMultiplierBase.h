@@ -11,6 +11,8 @@ public:
 	ParallelTask(const MultiplicationElements multiplicationElements_) noexcept;
 	virtual ~ParallelTask() = default;
 
+	virtual task* execute() = 0;
+
 protected:
 	const MultiplicationElements multiplicationElements;
 };

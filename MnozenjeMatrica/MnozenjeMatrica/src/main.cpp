@@ -8,7 +8,7 @@
 #include <iostream> // remove
 #include <time.h>
 
-#define TESTING 1
+#define TESTING 0
 
 #if TESTING == 0
 
@@ -59,8 +59,8 @@ int main()
 
 	try
 	{
-		Matrix m3(1000, 1000, 2);
-		Matrix m4(1000, 1000, 1);
+		Matrix m3(2000, 2000, 2);
+		Matrix m4(2000, 2000, 1);
 
 		Profiling::beginSession("profile.json");
 		MatrixMultiplierBase* multiplier = MultiplierFactory::get().createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
