@@ -9,6 +9,7 @@ class ParallelTaskPerThread : public ParallelTask
 {
 public:
 	ParallelTaskPerThread(const MultiplicationElements multiplicationElements_, const ElementsRange elements_) noexcept;
+	~ParallelTaskPerThread() = default;
 
 	tbb::task* execute() override;
 private:
@@ -20,6 +21,9 @@ private:
 class ParallelTaskPerThreadMultiplier : public ParalellTaskMultiplierBase
 {
 public:
+	ParallelTaskPerThreadMultiplier() = default;
+	~ParallelTaskPerThreadMultiplier() = default;
+
 	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
 
 private:

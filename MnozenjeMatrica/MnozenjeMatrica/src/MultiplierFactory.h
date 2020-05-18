@@ -28,6 +28,7 @@ private:
 	MultiplierFactory() noexcept;
 	MultiplierFactory(const MultiplierFactory&) = delete;
 	MultiplierFactory& operator=(const MultiplierFactory&) = delete;
+	~MultiplierFactory() = default;
 
 	std::unordered_map<int, createFunctionPtr> creationMethods;
 };

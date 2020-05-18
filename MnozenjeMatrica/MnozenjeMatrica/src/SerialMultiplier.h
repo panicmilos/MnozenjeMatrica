@@ -6,6 +6,9 @@
 class SerialMultiplier : public MatrixMultiplierBase
 {
 public:
+	SerialMultiplier() = default;
+	~SerialMultiplier() = default;
+
 	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
 
 private:

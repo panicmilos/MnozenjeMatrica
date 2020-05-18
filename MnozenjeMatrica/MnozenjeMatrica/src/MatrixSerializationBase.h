@@ -21,6 +21,8 @@ public:
 
 	void open(const std::string& filePath) noexcept(false)
 	{
+		std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
+
 		closeStreamIfItIsAlreadyOpen();
 
 		openStreamOnGivenPath(filePath);
@@ -30,6 +32,8 @@ public:
 
 	void close() noexcept
 	{
+		std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
+
 		closeStreamIfItIsAlreadyOpen();
 	}
 

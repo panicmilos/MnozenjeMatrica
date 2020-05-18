@@ -9,6 +9,7 @@ class ParallelTask : public tbb::task
 {
 public:
 	ParallelTask(const MultiplicationElements multiplicationElements_) noexcept;
+	virtual ~ParallelTask() = default;
 
 protected:
 	const MultiplicationElements multiplicationElements;
@@ -16,6 +17,10 @@ protected:
 
 class ParalellTaskMultiplierBase : public MatrixMultiplierBase
 {
+public:
+	ParalellTaskMultiplierBase() = default;
+	virtual ~ParalellTaskMultiplierBase() = default;
+
 protected:
 	[[nodiscard]] Matrix doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept override;
 

@@ -5,6 +5,9 @@
 class MatrixMultiplierBase
 {
 public:
+	MatrixMultiplierBase() = default;
+	virtual ~MatrixMultiplierBase() = default;
+
 	[[nodiscard]] Matrix multiply(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
 
 protected:

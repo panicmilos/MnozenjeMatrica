@@ -6,6 +6,7 @@ class MatrixRow
 {
 public:
 	MatrixRow(int* const startOfRowPtr_, const size_t numberOfElements_) noexcept;
+	~MatrixRow() = default;
 
 	[[nodiscard]] int& operator[](const size_t elementIndex) noexcept(false);
 	[[nodiscard]] const int& operator[](const size_t elementIndex) const noexcept(false);

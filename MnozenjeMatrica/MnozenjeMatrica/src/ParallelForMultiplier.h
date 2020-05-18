@@ -6,6 +6,9 @@
 class ParallelForMultiplier : public MatrixMultiplierBase
 {
 public:
+	ParallelForMultiplier() = default;
+	~ParallelForMultiplier() = default;
+
 	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
 
 private:

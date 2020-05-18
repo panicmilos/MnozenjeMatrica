@@ -9,6 +9,7 @@ class ParallelTaskPerRow : public ParallelTask
 {
 public:
 	ParallelTaskPerRow(const MultiplicationElements multiplicationElements_, const size_t rowIndex_) noexcept;
+	~ParallelTaskPerRow() = default;
 
 	tbb::task* execute() override;
 private:
@@ -18,6 +19,9 @@ private:
 class ParallelTaskPerRowMultiplier : public ParalellTaskMultiplierBase
 {
 public:
+	ParallelTaskPerRowMultiplier() = default;
+	~ParallelTaskPerRowMultiplier() = default;
+
 	[[nodiscard]] static MatrixMultiplierBase* create() noexcept;
 
 private:
