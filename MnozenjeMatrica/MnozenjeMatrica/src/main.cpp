@@ -64,12 +64,12 @@ int main()
 
 		Profiling::beginSession("profile.json");
 		MatrixMultiplierBase* multiplier = MultiplierFactory::get().createMultiplier(MultiplierFactory::OPTIONS::ParallelFor);
-		Matrix res2 = multiplier->multiply(m3, m4);
+		Matrix res = multiplier->multiply(m3, m4);
 		Profiling::endSession();
 
-		//MatrixWritter ms("matrixRes.txt");
-		//ms << res2;
-		//ms.close();
+		MatrixWritter ms("matrixRes.txt");
+		ms << res;
+		ms.close();
 	}
 	catch (std::exception & e)
 	{

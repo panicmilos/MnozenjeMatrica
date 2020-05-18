@@ -44,6 +44,16 @@ bool MatrixRow::validateElementIndex(const size_t elementIndex) const noexcept
 	return isElementIndexInBounds;
 }
 
+size_t MatrixRow::getSize() const noexcept
+{
+	return numberOfElements;
+}
+
+int* const MatrixRow::getRowElements() const noexcept
+{
+	return startOfRowPtr;
+}
+
 std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
 {
 	const size_t numberOfElementsInRow = mr.numberOfElements;

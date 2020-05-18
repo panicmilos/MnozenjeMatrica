@@ -112,6 +112,7 @@ bool Matrix::doesListInitializerHaveAtLeastOneColumn(const std::initializer_list
 Matrix::~Matrix() noexcept
 {
 	delete matrixElements;
+	matrixElements = nullptr;
 }
 
 Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
