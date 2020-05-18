@@ -294,7 +294,6 @@
     <ClCompile Include="test\MatrixReaderTest.cpp" />
     <ClCompile Include="test\MatrixRowEqualOperator.cpp" />
     <ClCompile Include="test\MatrixWritterTest.cpp" />
-    <ClCompile Include="test\ProfilingTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
     <ClCompile Include="test\UtilsForTests.cpp" />
   </ItemGroup>

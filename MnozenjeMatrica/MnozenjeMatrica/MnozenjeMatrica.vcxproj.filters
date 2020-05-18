@@ -116,9 +116,6 @@
     <ClCompile Include="src\Matrix.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="test\ProfilingTest.cpp">
-      <Filter>Source Files\test</Filter>
-    </ClCompile>
     <ClCompile Include="test\MatrixConstructorTest.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
