@@ -8,7 +8,7 @@
 #include <iostream> // remove
 #include <time.h>
 
-#define TESTING 0
+#define TESTING 1
 
 #if TESTING == 0
 

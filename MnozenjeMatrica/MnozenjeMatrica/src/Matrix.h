@@ -22,7 +22,10 @@ public:
 	Matrix& operator=(Matrix&& m) noexcept;
 	friend bool operator==(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
 	friend bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+
 	friend std::ostream& operator << (std::ostream& out, const Matrix& m) noexcept;
+	friend bool matricesHaveSameDimensions(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+	friend bool matricesHaveSameElements(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
 
 	[[nodiscard]] MatrixRow operator[](const size_t rowIndex) noexcept(false);
 	[[nodiscard]] const MatrixRow operator[](const size_t rowIndex) const noexcept(false);
@@ -48,4 +51,7 @@ private:
 
 [[nodiscard]] bool operator==(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
 [[nodiscard]] bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+
 std::ostream& operator << (std::ostream& out, const Matrix& m) noexcept;
+[[nodiscard]] bool matricesHaveSameDimensions(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;
+[[nodiscard]] bool matricesHaveSameElements(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept;

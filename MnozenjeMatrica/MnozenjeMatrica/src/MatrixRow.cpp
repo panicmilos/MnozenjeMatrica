@@ -56,11 +56,25 @@ int* const MatrixRow::getRowElements() const noexcept
 
 bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
 {
-	if (const bool numberOfElementsAreSame = leftRow.numberOfElements == rightRow.numberOfElements; !numberOfElementsAreSame)
+	if (!rowsHaveSameNumberOfElements(leftRow, rightRow))
 	{
 		return false;
 	}
 
+	const bool allElementsAreSame = rowsHaveSameElements(leftRow, rightRow);
+
+	return allElementsAreSame;
+}
+
+bool rowsHaveSameNumberOfElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
+{
+	const bool numberOfElementsAreSame = leftRow.numberOfElements == rightRow.numberOfElements;
+
+	return numberOfElementsAreSame;
+}
+
+bool rowsHaveSameElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
+{
 	const size_t numberOfElementsInRow = leftRow.numberOfElements;
 	const int* const startOfLeftRowPtr = leftRow.startOfRowPtr;
 	const int* const endOfLeftRowPtr = leftRow.startOfRowPtr + numberOfElementsInRow;

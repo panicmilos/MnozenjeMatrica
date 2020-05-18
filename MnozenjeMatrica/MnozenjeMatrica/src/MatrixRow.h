@@ -12,7 +12,10 @@ public:
 	[[nodiscard]] const int& operator[](const size_t elementIndex) const noexcept(false);
 	friend bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
 	friend bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
+
 	friend std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept;
+	friend bool rowsHaveSameNumberOfElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
+	friend bool rowsHaveSameElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
 
 	[[nodiscard]] size_t getSize() const noexcept;
 	[[nodiscard]] int* const getRowElements() const noexcept;
@@ -27,4 +30,7 @@ private:
 
 [[nodiscard]] bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
 [[nodiscard]] bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
+
 std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept;
+[[nodiscard]] bool rowsHaveSameNumberOfElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
+[[nodiscard]] bool rowsHaveSameElements(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
