@@ -54,20 +54,6 @@ int* const MatrixRow::getRowElements() const noexcept
 	return startOfRowPtr;
 }
 
-std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
-{
-	const size_t numberOfElementsInRow = mr.numberOfElements;
-	const int* const startOfRowPtr = mr.startOfRowPtr;
-	const int* const endOfRowPtr = startOfRowPtr + numberOfElementsInRow;
-
-	std::ostream_iterator<int> outIt(out, " ");
-	std::copy(startOfRowPtr, endOfRowPtr, outIt);
-
-	Utils::deleteLastNCharsInStream(out, 1ll);
-
-	return out;
-}
-
 bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
 {
 	if (const bool numberOfElementsAreSame = leftRow.numberOfElements == rightRow.numberOfElements; !numberOfElementsAreSame)
@@ -89,4 +75,18 @@ bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept
 	const bool areRowSame = leftRow == rightRow;
 
 	return !areRowSame;
+}
+
+std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
+{
+	const size_t numberOfElementsInRow = mr.numberOfElements;
+	const int* const startOfRowPtr = mr.startOfRowPtr;
+	const int* const endOfRowPtr = startOfRowPtr + numberOfElementsInRow;
+
+	std::ostream_iterator<int> outIt(out, " ");
+	std::copy(startOfRowPtr, endOfRowPtr, outIt);
+
+	Utils::deleteLastNCharsInStream(out, 1ll);
+
+	return out;
 }

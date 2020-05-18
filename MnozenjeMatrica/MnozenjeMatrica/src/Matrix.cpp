@@ -241,3 +241,16 @@ bool operator!=(const Matrix& leftMatrix, const Matrix& rightMatrix) noexcept
 
 	return !areMatricesSame;
 }
+
+std::ostream& operator << (std::ostream& out, const Matrix& m) noexcept
+{
+	const size_t numberOfRows = m.numberOfRows;
+
+	for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
+	{
+		MatrixRow row = m[rowIndex];
+		out << row << '\n';
+	}
+
+	return out;
+}

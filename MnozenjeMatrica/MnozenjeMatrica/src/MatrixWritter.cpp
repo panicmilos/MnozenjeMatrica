@@ -29,13 +29,7 @@ void MatrixWritter::writeMatrixHeader(const Matrix& m) noexcept
 
 void MatrixWritter::writeMatrixBody(const Matrix& m) noexcept
 {
-	const size_t numberOfRows = m.getNumberOfRows();
-
-	for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
-	{
-		MatrixRow row = m[rowIndex];
-		fileStream << row << '\n';
-	}
+	fileStream << m;
 
 	Utils::deleteLastNCharsInStream(fileStream, 2ll);
 }

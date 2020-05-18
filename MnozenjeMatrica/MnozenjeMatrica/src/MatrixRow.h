@@ -11,7 +11,6 @@ public:
 	[[nodiscard]] const int& operator[](const size_t elementIndex) const noexcept(false);
 	friend bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
 	friend bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
-
 	friend std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept;
 
 	[[nodiscard]] size_t getSize() const noexcept;
@@ -27,5 +26,4 @@ private:
 
 [[nodiscard]] bool operator==(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
 [[nodiscard]] bool operator!=(const MatrixRow& leftRow, const MatrixRow& rightRow) noexcept;
-
 std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept;
