@@ -8,15 +8,22 @@ MatrixWritter::MatrixWritter(const std::string& filePath) noexcept(false)
 	open(filePath);
 }
 
-MatrixWritter& MatrixWritter::operator<<(const Matrix& m) noexcept
+MatrixWritter& MatrixWritter::operator<<(const Matrix& m) noexcept(false)
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
 
+	throwIfStreamIsClosed();
+
+	writeMatrixToFile(m);
+
+	return *this;
+}
+
+void MatrixWritter::writeMatrixToFile(const Matrix& m) noexcept
+{
 	writeMatrixHeader(m);
 	writeMatrixBody(m);
 	writeEndOfFormatCharacter();
-
-	return *this;
 }
 
 void MatrixWritter::writeMatrixHeader(const Matrix& m) noexcept

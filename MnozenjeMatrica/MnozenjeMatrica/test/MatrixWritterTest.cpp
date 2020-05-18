@@ -3,7 +3,17 @@
 #include "DSTLAssertions.h"
 #include "gtest\gtest.h"
 #include "../src/Matrix.h"
+#include "../src/MatrixExceptions.h"
 #include "../src/MatrixWritter.h"
+
+TEST(MatrixWritter, StreamIsClosed)
+{
+	MatrixWritter mr;
+
+	Matrix m;
+
+	MATRIX_EXPECT_THROW(mr << m, FileStreamIsClosed, "You have to open the stream first!");
+}
 
 TEST(MatrixWritter, WrittingSquaredMatrix)
 {

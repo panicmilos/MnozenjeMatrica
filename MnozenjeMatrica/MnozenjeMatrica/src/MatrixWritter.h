@@ -16,9 +16,10 @@ public:
 	MatrixWritter& operator=(MatrixWritter&&) = delete;
 	~MatrixWritter() = default;
 
-	MatrixWritter& operator<<(const Matrix& m) noexcept;
+	MatrixWritter& operator<<(const Matrix& m) noexcept(false);
 
 private:
+	void writeMatrixToFile(const Matrix& m) noexcept;
 	void writeMatrixHeader(const Matrix& m) noexcept;
 	void writeMatrixBody(const Matrix& m) noexcept;
 	void writeEndOfFormatCharacter() noexcept;

@@ -38,6 +38,14 @@ public:
 	}
 
 protected:
+	void throwIfStreamIsClosed() noexcept(false)
+	{
+		if (const bool streamIsClosed = !fileStream.is_open(); streamIsClosed)
+		{
+			throw FileStreamIsClosed("You have to open the stream first!");
+		}
+	}
+
 	std::mutex lockForFileAccess;
 	T fileStream;
 
@@ -49,7 +57,7 @@ private:
 
 	void throwIfStreamCouldNotBeOpened() const noexcept(false)
 	{
-		if (const bool streamIsNotOpened = !fileStream.is_open(); streamIsNotOpened)
+		if (const bool streamIsClosed = !fileStream.is_open(); streamIsClosed)
 		{
 			throw FileCouldNotBeOpened("The file can not be opened!");
 		}

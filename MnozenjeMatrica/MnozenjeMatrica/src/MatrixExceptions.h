@@ -12,5 +12,6 @@ public:                                                       \
 DeclareExceptionClass(MatrixHaveBadDimensions);
 DeclareExceptionClass(MatrixIndexOutOfBounds);
 DeclareExceptionClass(FileCouldNotBeOpened);
+DeclareExceptionClass(FileStreamIsClosed);
 DeclareExceptionClass(BadMatrixFormatInFile);
 DeclareExceptionClass(BadMatricesDimensionsForMultiplying);

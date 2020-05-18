@@ -10,6 +10,15 @@ TEST(MatrixReader, WrongFilePath)
 	MATRIX_EXPECT_THROW(MatrixReader mr("Wrong File Path.png"), FileCouldNotBeOpened, "The file can not be opened!");
 }
 
+TEST(MatrixReader, StreamIsClosed)
+{
+	MatrixReader mr;
+
+	Matrix m;
+
+	MATRIX_EXPECT_THROW(mr >> m, FileStreamIsClosed, "You have to open the stream first!");
+}
+
 TEST(MatrixReader, GoodSquaredMatrix)
 {
 	MatrixReader mr("res\\tests\\SquaredMatrixGood.txt");

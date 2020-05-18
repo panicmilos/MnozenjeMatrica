@@ -9,5 +9,6 @@ exceptionName::exceptionName(const char* exceptionMessage) :						\
 DefineExceptionClass(MatrixHaveBadDimensions);
 DefineExceptionClass(MatrixIndexOutOfBounds);
 DefineExceptionClass(FileCouldNotBeOpened);
+DefineExceptionClass(FileStreamIsClosed);
 DefineExceptionClass(BadMatrixFormatInFile);
 DefineExceptionClass(BadMatricesDimensionsForMultiplying);

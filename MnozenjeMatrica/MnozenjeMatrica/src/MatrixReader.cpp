@@ -14,6 +14,8 @@ MatrixReader& MatrixReader::operator>>(Matrix& m) noexcept(false)
 {
 	std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
 
+	throwIfStreamIsClosed();
+
 	readMatrixFromFile();
 
 	m = std::move(matrixFromFile);
