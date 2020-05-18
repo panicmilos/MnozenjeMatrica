@@ -50,9 +50,9 @@ void ParallelTaskPerRowMultiplier::fillTaskListForParent(tbb::task_list& parents
 
 int ParallelTaskPerRowMultiplier::getTotalNumberOfRefCount(const Matrix& resultOfMultiplication) const noexcept
 {
-	const int numberOfParentsTasks = resultOfMultiplication.getNumberOfRows();
+	const size_t numberOfParentsTasks = resultOfMultiplication.getNumberOfRows();
 	const int additionalRefCountForWait = 1;
-	const int totalNumberOfRefCount = numberOfParentsTasks + additionalRefCountForWait;
+	const int totalNumberOfRefCount = (int)numberOfParentsTasks + additionalRefCountForWait;
 
 	return totalNumberOfRefCount;
 }

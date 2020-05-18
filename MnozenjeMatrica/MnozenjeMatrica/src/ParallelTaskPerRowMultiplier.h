@@ -13,7 +13,7 @@ public:
 
 	tbb::task* execute() override;
 private:
-	const int rowIndex;
+	const size_t rowIndex;
 };
 
 class ParallelTaskPerRowMultiplier : public ParalellTaskMultiplierBase
