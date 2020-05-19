@@ -4,7 +4,6 @@
 
 MatrixForTest::MatrixForTest() : m(2, 3)
 {
-	int* const matrixElements = m.getMatrixElements();
 	m[0][0] = 2;
 	m[0][1] = 23;
 	m[0][2] = -4;
