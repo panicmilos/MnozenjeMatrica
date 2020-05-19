@@ -26,7 +26,7 @@ bool shouldReadMultiplicationElements(int argc, char** argv)
 }
 
 int main(int argc, char** argv) {
-	std::cout << "Running main() from %s" << __FILE__ << '\n';
+	std::cout << "Running main() from " << __FILE__ << '\n';
 
 	if (shouldReadMultiplicationElements(argc, argv)) // --gtest_filter=-*MultiplierTest*
 	{

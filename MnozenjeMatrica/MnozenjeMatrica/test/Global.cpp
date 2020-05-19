@@ -5,9 +5,9 @@
 
 void readAllMultiplicationElementsFromFiles()
 {
-	for (size_t i = 0; i < numberOfTestCasesForMultipliers; ++i)
+	for (const auto& testCaseFile : testCasesFiles)
 	{
-		MatrixReader mr(testCasesFiles[i]);
+		MatrixReader mr(testCaseFile);
 
 		Matrix& leftMatrix = *new Matrix();
 		Matrix& rightMatrix = *new Matrix();

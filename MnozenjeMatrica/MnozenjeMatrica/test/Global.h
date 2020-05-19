@@ -5,8 +5,7 @@
 
 #include "../src/Structures.h"
 
-constexpr int numberOfTestCasesForMultipliers = 5;
-std::string testCasesFiles[numberOfTestCasesForMultipliers] =
+std::vector<std::string> testCasesFiles =
 {
 	"res\\tests\\TestCase1.txt",
 	"res\\tests\\TestCase2.txt",
