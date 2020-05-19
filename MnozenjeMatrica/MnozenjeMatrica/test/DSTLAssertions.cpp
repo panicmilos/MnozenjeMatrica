@@ -20,11 +20,8 @@ void MatrixAssertions::MATRIX_DIMENSIONS_NOT_EQ_(const Matrix& m, std::pair<size
 	const auto [numberOfRowsExpected, numberOfColumnsExpected] = dimensions;
 	const auto [numberOfRows, numberOfColumns] = std::pair{ m.getNumberOfRows(), m.getNumberOfColumns() };
 
-	const bool numberOfRowsAreNotSame = numberOfRows != numberOfRowsExpected;
-	const bool numberOfColumnsAreNotSame = numberOfColumns != numberOfColumnsExpected;
-
-	ASSERT_EQ(numberOfRowsAreNotSame, true);
-	ASSERT_EQ(numberOfColumnsAreNotSame, true);
+	ASSERT_NE(numberOfRows, numberOfRowsExpected);
+	ASSERT_NE(numberOfColumns, numberOfColumnsExpected);
 }
 
 void MatrixAssertions::MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements)
