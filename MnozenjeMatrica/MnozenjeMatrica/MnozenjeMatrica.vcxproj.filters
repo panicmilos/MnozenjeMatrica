@@ -114,6 +114,9 @@
     <ClInclude Include="test\SerialMultiplierTest.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
+    <ClInclude Include="test\ParallelForMultiplierTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -207,6 +210,9 @@
       <Filter>Source Files\test</Filter>
     </ClCompile>
     <ClCompile Include="test\SerialMultiplierTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\ParallelForMultiplierTest.cpp">
       <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>

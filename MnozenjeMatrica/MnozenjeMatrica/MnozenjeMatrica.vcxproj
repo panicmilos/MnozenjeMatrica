@@ -265,6 +265,7 @@
     <ClInclude Include="test\MatrixReaderTest.h" />
     <ClInclude Include="test\MatrixRowEqualOperator.h" />
     <ClInclude Include="test\MatrixWritterTest.h" />
+    <ClInclude Include="test\ParallelForMultiplierTest.h" />
     <ClInclude Include="test\SerialMultiplierTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
     <ClInclude Include="test\UtilsForTests.h" />
@@ -298,6 +299,7 @@
     <ClCompile Include="test\MatrixReaderTest.cpp" />
     <ClCompile Include="test\MatrixRowEqualOperator.cpp" />
     <ClCompile Include="test\MatrixWritterTest.cpp" />
+    <ClCompile Include="test\ParallelForMultiplierTest.cpp" />
     <ClCompile Include="test\SerialMultiplierTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
     <ClCompile Include="test\UtilsForTests.cpp" />
