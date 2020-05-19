@@ -36,8 +36,8 @@ namespace MatrixAssertions
 	void MATRIX_ELEMENTS_EQ_(const Matrix& m, const std::vector<int>& elements);
 	void MATRIX_CONTAINS_ELEMENT_(const Matrix& m, const Element& e);
 
-	void MATRICES_EQ_(const Matrix& leftMatrix, const Matrix& rightMatrix, const bool areSame);
-	void ROWS_EQ_(const MatrixRow& leftRow, const MatrixRow& rightRow, const bool areSame);
+	void MATRICES_EQ_(const Matrix& leftMatrix, const Matrix& rightMatrix, const bool areSame = true);
+	void ROWS_EQ_(const MatrixRow& leftRow, const MatrixRow& rightRow, const bool areSame = true);
 
 	void MATRIX_FILE_CONTENT_EQ_TO_(const std::string& filePath, const std::string& expectedContent);
 } // MatrixAssertions

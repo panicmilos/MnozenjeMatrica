@@ -38,5 +38,5 @@ TEST(MatrixEqualOperator, MatricesAreSame)
 	Matrix leftMatrix{ {1, 2, 6, 4} };
 	Matrix rightMatrix{ {1, 2, 6, 4} };
 
-	MATRICES_EQ(leftMatrix, rightMatrix, true);
+	MATRICES_EQ(leftMatrix, rightMatrix);
 }

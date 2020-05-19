@@ -43,5 +43,5 @@ TEST(MatrixEqualOperator, RowsAreSame)
 	MatrixRow leftRow(leftRowElements, numberOfElementsInRow);
 	MatrixRow rightRow(rightRowElements, numberOfElementsInRow);
 
-	ROWS_EQ(leftRow, rightRow, true);
+	ROWS_EQ(leftRow, rightRow);
 }

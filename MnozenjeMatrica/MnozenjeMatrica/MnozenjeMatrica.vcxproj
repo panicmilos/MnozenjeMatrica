@@ -179,7 +179,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_RELEASET;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TESTING;_RELEASET;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Profiling;$(SolutionDir)GoogleTestLib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -219,7 +219,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_RELEASET;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TESTING;_RELEASET;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Profiling;$(SolutionDir)GoogleTestLib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -256,6 +256,7 @@
     <ClInclude Include="src\Structures.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="test\DSTLAssertions.h" />
+    <ClInclude Include="test\Global.h" />
     <ClInclude Include="test\MatrixAssignmentOperatorTest.h" />
     <ClInclude Include="test\MatrixConstructorTest.h" />
     <ClInclude Include="test\MatrixEqualOperator.h" />
@@ -264,6 +265,7 @@
     <ClInclude Include="test\MatrixReaderTest.h" />
     <ClInclude Include="test\MatrixRowEqualOperator.h" />
     <ClInclude Include="test\MatrixWritterTest.h" />
+    <ClInclude Include="test\SerialMultiplierTest.h" />
     <ClInclude Include="test\StructuresForTests.h" />
     <ClInclude Include="test\UtilsForTests.h" />
   </ItemGroup>
@@ -286,6 +288,8 @@
     <ClCompile Include="src\Structures.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="test\DSTLAssertions.cpp" />
+    <ClCompile Include="test\Global.cpp" />
+    <ClCompile Include="test\mainTest.cpp" />
     <ClCompile Include="test\MatrixAssignmentOperatorTest.cpp" />
     <ClCompile Include="test\MatrixConstructorTest.cpp" />
     <ClCompile Include="test\MatrixEqualOperator.cpp" />
@@ -294,6 +298,7 @@
     <ClCompile Include="test\MatrixReaderTest.cpp" />
     <ClCompile Include="test\MatrixRowEqualOperator.cpp" />
     <ClCompile Include="test\MatrixWritterTest.cpp" />
+    <ClCompile Include="test\SerialMultiplierTest.cpp" />
     <ClCompile Include="test\StructuresForTests.cpp" />
     <ClCompile Include="test\UtilsForTests.cpp" />
   </ItemGroup>

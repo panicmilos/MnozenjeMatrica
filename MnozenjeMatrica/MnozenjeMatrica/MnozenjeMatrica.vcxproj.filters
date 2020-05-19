@@ -108,6 +108,12 @@
     <ClInclude Include="src\MultiplierFactory.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="test\Global.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\SerialMultiplierTest.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -193,6 +199,15 @@
     </ClCompile>
     <ClCompile Include="src\MultiplierFactory.cpp">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\mainTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\Global.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\SerialMultiplierTest.cpp">
+      <Filter>Source Files\test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
