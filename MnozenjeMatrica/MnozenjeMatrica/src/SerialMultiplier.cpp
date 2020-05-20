@@ -1,7 +1,6 @@
 #include "SerialMultiplier.h"
 
 #include "MatrixRow.h"
-#include "Profiling.h"
 
 MatrixMultiplierBase* SerialMultiplier::create() noexcept
 {
@@ -10,8 +9,6 @@ MatrixMultiplierBase* SerialMultiplier::create() noexcept
 
 Matrix SerialMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
-	PROFILE_SCOPE("SerialMultiplier");
-
 	const size_t numberOfColumnsInLeftMatrix = leftMatrix.getNumberOfColumns();
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();

@@ -1,7 +1,5 @@
 #include "ParallelTaskMultiplierBase.h"
 
-#include "Profiling.h"
-
 ParallelTask::ParallelTask(MultiplicationElements multiplicationElements_) noexcept :
 	multiplicationElements(multiplicationElements_)
 {
@@ -9,7 +7,6 @@ ParallelTask::ParallelTask(MultiplicationElements multiplicationElements_) noexc
 
 Matrix ParalellTaskMultiplierBase::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
-	PROFILE_SCOPE("ParallelTaskMultiplier");
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();
 

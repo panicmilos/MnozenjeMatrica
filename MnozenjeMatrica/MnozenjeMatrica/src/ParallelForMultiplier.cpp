@@ -1,7 +1,6 @@
 #include "ParallelForMultiplier.h"
 
 #include "MatrixRow.h"
-#include "Profiling.h"
 #include "tbb\parallel_for.h"
 #include "tbb\blocked_range2d.h"
 
@@ -12,7 +11,6 @@ MatrixMultiplierBase* ParallelForMultiplier::create() noexcept
 
 Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
-	PROFILE_SCOPE("ParallelForMultiplier");
 	const size_t numberOfColumnsInLeftMatrix = leftMatrix.getNumberOfColumns();
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();
@@ -21,7 +19,6 @@ Matrix ParallelForMultiplier::doMultiplying(const Matrix& leftMatrix, const Matr
 
 	const auto calculateBlockOfElementsInResultMatrix = [&](const tbb::blocked_range2d<size_t>& elementsRange)
 	{
-		PROFILE_SCOPE("");
 		for (size_t rowIndex = elementsRange.rows().begin(); rowIndex != elementsRange.rows().end(); ++rowIndex)
 		{
 			for (size_t columnIndex = elementsRange.cols().begin(); columnIndex != elementsRange.cols().end(); ++columnIndex)

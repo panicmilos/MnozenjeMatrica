@@ -1,6 +1,5 @@
 #include "ParallelTaskPerThreadMultiplier.h"
 
-#include "Profiling.h"
 #include "tbb\task_scheduler_init.h"
 
 ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multiplicationElements_, const ElementsRange elements_) noexcept :
@@ -11,7 +10,6 @@ ParallelTaskPerThread::ParallelTaskPerThread(const MultiplicationElements multip
 
 tbb::task* ParallelTaskPerThread::execute()
 {
-	PROFILE_SCOPE("");
 	auto [leftMatrix, rightMatrix, resultOfMultiplication] = multiplicationElements;
 	const auto [firstElementPosition, lastElementsPosition] = elements;
 	const size_t numberOfElementsInResultMatrixRow = resultOfMultiplication.getNumberOfColumns();
