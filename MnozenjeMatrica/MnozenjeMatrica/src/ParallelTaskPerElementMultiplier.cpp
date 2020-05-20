@@ -1,9 +1,5 @@
 #include "ParallelTaskPerElementMultiplier.h"
 
-#include <tbb/parallel_for.h>
-#include <tbb/blocked_range2d.h> // remove
-#include <mutex>
-
 ParallelTaskPerElement::ParallelTaskPerElement(const MultiplicationElements multiplicationElements_, const ElementIndex element_) noexcept :
 	ParallelTask(multiplicationElements_),
 	element(element_)
@@ -40,34 +36,15 @@ void ParallelTaskPerElementMultiplier::fillTaskListForParent(tbb::task_list& par
 	const int totalNumberOfRefCount = getTotalNumberOfRefCount(resultOfMultiplication);
 	parent.set_ref_count(totalNumberOfRefCount);
 
-	//for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
-	//{
-	//	for (size_t columnIndex = 0; columnIndex < numberOfColumns; ++columnIndex)
-	//	{
-	//		ElementIndex elementIndex = { rowIndex, columnIndex };
-	//		tbb::task& elementCalculation = *new(parent.allocate_child()) ParallelTaskPerElement(multiplicationElements, elementIndex);
-	//		parentsTasks.push_back(elementCalculation);
-	//	}
-	//}
-
-	const auto spawnTasks = [&](const tbb::blocked_range2d<size_t>& range)
+	for (size_t rowIndex = 0; rowIndex < numberOfRows; ++rowIndex)
 	{
-		for (size_t rowIndex = range.rows().begin(); rowIndex < range.rows().end(); ++rowIndex)
+		for (size_t columnIndex = 0; columnIndex < numberOfColumns; ++columnIndex)
 		{
-			for (size_t columnIndex = range.cols().begin(); columnIndex < range.cols().end(); ++columnIndex)
-			{
-				ElementIndex elementIndex = { rowIndex, columnIndex };
-				tbb::task& elementCalculation = *new(parent.allocate_child()) ParallelTaskPerElement(multiplicationElements, elementIndex);
-
-				static std::mutex m;
-				m.lock();
-				parentsTasks.push_back(elementCalculation);
-				m.unlock();
-			}
+			ElementIndex elementIndex = { rowIndex, columnIndex };
+			tbb::task& elementCalculation = *new(parent.allocate_child()) ParallelTaskPerElement(multiplicationElements, elementIndex);
+			parentsTasks.push_back(elementCalculation);
 		}
-	};
-
-	tbb::parallel_for(tbb::blocked_range2d<size_t>(0, numberOfRows, 0, numberOfColumns), spawnTasks);
+	}
 }
 
 int ParallelTaskPerElementMultiplier::getTotalNumberOfRefCount(const Matrix& resultOfMultiplication) const noexcept
