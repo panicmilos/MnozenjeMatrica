@@ -274,7 +274,6 @@
     <ClInclude Include="test\UtilsForTests.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="src\MatrixExceptions.cpp" />
     <ClCompile Include="src\MatrixMultiplierBase.cpp" />
