@@ -31,7 +31,7 @@ void MultiplierFactory::registerMultiplier(const int methodNumber, createFunctio
 
 MatrixMultiplierBase* MultiplierFactory::createMultiplier(const int methodNumber) noexcept
 {
-	if (auto creationMethodsIt = creationMethods.find(methodNumber); creationMethodsIt == creationMethods.end())
+	if (const bool methodIsNotInMap = creationMethods.find(methodNumber) == creationMethods.end(); methodIsNotInMap)
 	{
 		return nullptr;
 	}

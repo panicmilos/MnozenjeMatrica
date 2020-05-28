@@ -81,6 +81,7 @@ void MatrixReader::readEndOfFormatCharacter() noexcept
 
 	fileStream >> characterFromFile;
 
+	// Postavlja flag toka na fail u slucaju da nije ';' na kraju formata kako bi throw posle bacio izuzetak
 	if (const bool readCharIsNotEndOfFormatChar = characterFromFile != ';'; readCharIsNotEndOfFormatChar)
 	{
 		fileStream.setstate(std::ios::failbit);

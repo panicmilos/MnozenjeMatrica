@@ -26,8 +26,11 @@ private:
 
 	void throwIfMatrixFormatInFileIsBad() const noexcept(false);
 
+	// U matrixFromFile smesta matricu procitanih dimenzija iz fajla
 	void createMatrixWithReadDimensionsFromFile() noexcept;
 
+	// Matrica u koju se privremeno pamte ucitani elementi iz fajla a potom
+	// se prebaci u parametar operatora>>
 	Matrix matrixFromFile;
 
 	struct

@@ -25,5 +25,7 @@ Matrix ParalellTaskMultiplierBase::doMultiplying(const Matrix& leftMatrix, const
 void ParalellTaskMultiplierBase::handleParentsTasks(tbb::empty_task& parent, tbb::task_list& parentsTasks) const noexcept
 {
 	parent.spawn_and_wait_for_all(parentsTasks);
+	// brise se parent task
+	// svi ostali taskovi su obrisani posle poziva execute metode
 	parent.destroy(parent);
 }

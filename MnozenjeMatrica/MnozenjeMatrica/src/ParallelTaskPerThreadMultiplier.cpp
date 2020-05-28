@@ -60,11 +60,12 @@ void ParallelTaskPerThreadMultiplier::fillListWithAllTasksExceptLastOne(tbb::tas
 	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
 	const size_t numberOfElements = resultOfMultiplication.getSize();
 	const int numberOfThreads = getNumberOfProcessorThreads();
-	const int numberOfThreadsWithoutLastOne = numberOfThreads - 1;
 	const size_t numberOfElementsPerThread = getNumberOfElementsPerThread(numberOfElements);
+	const int numberOfThreadsWithoutLastOne = numberOfThreads - 1;
 
 	for (int threadIndex = 0; threadIndex < numberOfThreadsWithoutLastOne; ++threadIndex)
 	{
+		// racuna se range elemenata
 		const size_t firstElementInRange = threadIndex * numberOfElementsPerThread;
 		const size_t lastElementInRange = (threadIndex + 1) * numberOfElementsPerThread;
 		const ElementsRange elements = { firstElementInRange, lastElementInRange };

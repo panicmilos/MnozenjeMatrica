@@ -38,6 +38,7 @@ void MatrixWritter::writeMatrixBody(const Matrix& m) noexcept
 {
 	fileStream << m;
 
+	// Brise se 2 karaktera kako bi se obrisao poslednji '\n'
 	Utils::deleteLastNCharsInStream(fileStream, 2ll);
 }
 

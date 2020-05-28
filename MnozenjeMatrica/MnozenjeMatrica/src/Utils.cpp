@@ -4,6 +4,7 @@ void Utils::deleteLastNCharsInStream(std::ostream& stream, const long long numbe
 {
 	if (const std::streamoff positionOfLastChar = stream.tellp(); positionOfLastChar >= numberOfCharsForDeletion)
 	{
+		// "brise" n karaktera tako sto pomera pokazivas u toku
 		stream.seekp(positionOfLastChar - numberOfCharsForDeletion);
 	}
 }

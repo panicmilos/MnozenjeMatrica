@@ -13,6 +13,7 @@ MatrixRow::MatrixRow(int* const startOfRowPtr_, const size_t numberOfElements_) 
 
 int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 {
+	// Provera se ne vrsi u Release rezimu
 	#ifndef NDEBUG
 	throwIfElementIndexIsOutOfBounds(elementIndex);
 	#endif
@@ -22,6 +23,7 @@ int& MatrixRow::operator[](const size_t elementIndex) noexcept(false)
 
 const int& MatrixRow::operator[](const size_t elementIndex) const noexcept(false)
 {
+	// Provera se ne vrsi u Release rezimu
 	#ifndef NDEBUG
 	throwIfElementIndexIsOutOfBounds(elementIndex);
 	#endif
@@ -100,6 +102,7 @@ std::ostream& operator << (std::ostream& out, const MatrixRow& mr) noexcept
 	std::ostream_iterator<int> outIt(out, " ");
 	std::copy(startOfRowPtr, endOfRowPtr, outIt);
 
+	// Brise 1 karakter kako bi se obrisao dodatan ' '
 	Utils::deleteLastNCharsInStream(out, 1ll);
 
 	return out;

@@ -16,5 +16,6 @@ protected:
 private:
 	void throwIfDimensionsAreBad(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept(false);
 
+	// Proverava da li broj kolona prve je isti kao broj redova druge matrice
 	[[nodiscard]] bool validateDimensionsForMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept;
 };

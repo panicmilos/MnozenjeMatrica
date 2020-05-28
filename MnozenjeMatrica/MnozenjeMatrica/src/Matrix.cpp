@@ -63,6 +63,7 @@ Matrix::Matrix(const std::initializer_list<std::initializer_list<int>>& matrixEl
 
 	for (auto rowIt = matrixElements_.begin(); rowIt != matrixElements_.end(); ++rowIt)
 	{
+		// Oduzimanjem dva iteratora se dobija brojna razlika u vidu pozicija izmedju njih
 		const size_t rowIndex = rowIt - matrixElements_.begin();
 
 		for (auto columnIt = rowIt->begin(); columnIt != rowIt->end(); ++columnIt)
@@ -117,7 +118,7 @@ Matrix::~Matrix() noexcept
 
 Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
 {
-	if (this != &m)
+	if (const bool notTryingToCopyMatrixToItself = this != &m; notTryingToCopyMatrixToItself)
 	{
 		const size_t oldNumberOfElements = getSize();
 		const size_t newNumberOfElements = m.getSize();
@@ -141,7 +142,7 @@ Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
 
 Matrix& Matrix::operator=(Matrix&& m) noexcept
 {
-	if (this != &m)
+	if (const bool notTryingToMoveMatrixToItself = this != &m; notTryingToMoveMatrixToItself)
 	{
 		delete matrixElements;
 
@@ -159,6 +160,7 @@ Matrix& Matrix::operator=(Matrix&& m) noexcept
 
 MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 {
+	// Provera se ne vrsi u Release rezimu
 	#ifndef NDEBUG
 	throwIfRowIndexIsOutOfBounds(rowIndex);
 	#endif
@@ -170,6 +172,7 @@ MatrixRow Matrix::operator[](const size_t rowIndex) noexcept(false)
 
 const MatrixRow Matrix::operator[](const size_t rowIndex) const noexcept(false)
 {
+	// Provera se ne vrsi u Release rezimu
 	#ifndef NDEBUG
 	throwIfRowIndexIsOutOfBounds(rowIndex);
 	#endif
