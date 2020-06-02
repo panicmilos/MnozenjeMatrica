@@ -10,7 +10,7 @@ TEST_P(MatrixIndexingOperatorWithParamsInBound, IndexesInBound)
 	MATRIX_CONTAINS_ELEMENT(m, elemment);
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsInBound,
+INSTANTIATE_TEST_SUITE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsInBound,
 	testing::Values(
 		Element{ 2, 0u, 0u },
 		Element{ -4, 0u, 2u },
@@ -23,7 +23,7 @@ TEST_P(MatrixIndexingOperatorWithParamsRowOutOfBound, rowIndexOutOfBound)
 	MATRIX_EXPECT_THROW(int elementValueInMatrix = m[element.rowIndex][element.columnIndex], MatrixIndexOutOfBounds, "Given rowIndex is out of bounds!");
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsRowOutOfBound,
+INSTANTIATE_TEST_SUITE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsRowOutOfBound,
 	testing::Values(
 		Element{ 0, (size_t)-1, 0u },
 		Element{ 0, 5u, 2u },
@@ -36,7 +36,7 @@ TEST_P(MatrixIndexingOperatorWithParamsColumnOutOfBound, columnIndexOutOfBound)
 	MATRIX_EXPECT_THROW(int elementValueInMatrix = m[element.rowIndex][element.columnIndex], MatrixIndexOutOfBounds, "Given columnIndex is out of bounds!");
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsColumnOutOfBound,
+INSTANTIATE_TEST_SUITE_P(MatrixIndexingOperatorWithParams, MatrixIndexingOperatorWithParamsColumnOutOfBound,
 	testing::Values(
 		Element{ 0, 1u, 4u },
 		Element{ 0, 0u, 3u },

@@ -16,7 +16,7 @@ TEST_P(MatrixAssignmentOperatorCopyWithParams, CopyingWithMatrixSizeAsParams)
 	MATRIX_ELEMENTS_EQ(mCopied, { 2, 23, -4, 55, 0, 6 });
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixAssignmentOperatorCopy, MatrixAssignmentOperatorCopyWithParams,
+INSTANTIATE_TEST_SUITE_P(MatrixAssignmentOperatorCopy, MatrixAssignmentOperatorCopyWithParams,
 	testing::Values(
 		Dimensions{ 1, 1 },
 		Dimensions{ 2, 3 },

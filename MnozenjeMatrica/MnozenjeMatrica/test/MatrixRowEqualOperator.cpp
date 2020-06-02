@@ -16,7 +16,7 @@ TEST_P(MatrixRowEqualOperatorDimensionsTest, DifferentNumberOfElements)
 	ROWS_EQ(leftRow, rightRow, isSame);
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixRowEqualOperator, MatrixRowEqualOperatorDimensionsTest,
+INSTANTIATE_TEST_SUITE_P(MatrixRowEqualOperator, MatrixRowEqualOperatorDimensionsTest,
 	testing::Values(
 		MatrixRowOperatorTest{ 1, 2, false },
 		MatrixRowOperatorTest{ 1, 1, true }

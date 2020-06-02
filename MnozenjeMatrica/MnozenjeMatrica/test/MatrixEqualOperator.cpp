@@ -17,7 +17,7 @@ TEST_P(MatrixEqualOperatorDimensionsTest, DifferentDimensions)
 	MATRICES_EQ(leftMatrix, rightMatrix, isSame);
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixEqualOperator, MatrixEqualOperatorDimensionsTest,
+INSTANTIATE_TEST_SUITE_P(MatrixEqualOperator, MatrixEqualOperatorDimensionsTest,
 	testing::Values(
 		MatrixEqualOperatorTest{ { 1, 1 }, { 2, 2}, false },
 		MatrixEqualOperatorTest{ { 1, 2 }, { 2, 2}, false },

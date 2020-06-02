@@ -69,7 +69,7 @@ TEST_P(MatrixReaderWithBadFormat, ReadingMatrixWithBadFormat)
 	MATRIX_EXPECT_THROW(mr >> m, BadMatrixFormatInFile, "File contains matrix with bad format!");
 }
 
-INSTANTIATE_TEST_CASE_P(MatrixReader, MatrixReaderWithBadFormat,
+INSTANTIATE_TEST_SUITE_P(MatrixReader, MatrixReaderWithBadFormat,
 	testing::Values(
 		std::string("BadHeader - CharInsteadOfFirstNumber.txt"),
 		std::string("BadHeader - CharInsteadOfSecondNumber.txt"),
