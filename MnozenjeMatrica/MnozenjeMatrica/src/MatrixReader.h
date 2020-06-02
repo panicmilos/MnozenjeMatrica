@@ -33,6 +33,7 @@ private:
 	// se prebaci u parametar operatora>>
 	Matrix matrixFromFile;
 
+	// Struktura u kojoj se pamte dimenzije
 	struct
 	{
 		size_t numberOfRows = 0;

@@ -5,20 +5,22 @@
 
 #include "MatrixExceptions.h"
 
-Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue) noexcept(false) :
+Matrix::Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int elementsValue) noexcept(false) :
 	matrixElements(new int[numberOfRows_ * numberOfColumns_]()),
 	numberOfRows(numberOfRows_),
 	numberOfColumns(numberOfColumns_)
 {
+	// Provera da li ima bar jedan red i kolona
 	if (!validateDimensionsForParametarizedConstructor(numberOfRows_, numberOfColumns_))
 	{
 		throw MatrixHaveBadDimensions("Matrix must have at lease one row and one column!");
 	}
 
-	if (defaultElementValue != DEFAULT_ELEMENT_VALUE)
+	// Svi elementi niza su po kontrukciji 0 pa nema potrebe da se ponovo radi fill
+	if (elementsValue != 0)
 	{
 		const size_t numberOfElements = getSize();
-		std::fill(matrixElements, matrixElements + numberOfElements, defaultElementValue);
+		std::fill(matrixElements, matrixElements + numberOfElements, elementsValue);
 	}
 }
 
@@ -86,6 +88,7 @@ bool Matrix::validateDimensionsForInitializerListConstructor(const std::initiali
 
 bool Matrix::areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept
 {
+	// Proverava se velicina svih ostalih kolona sa velicinom prve da se vidi da li sve imaju istu velicinu
 	const auto firstColumnPtr = matrixElements.begin();
 	const size_t sizeOfFirstColumn = firstColumnPtr->size();
 
@@ -123,6 +126,7 @@ Matrix& Matrix::operator=(const Matrix& m) noexcept(false)
 		const size_t oldNumberOfElements = getSize();
 		const size_t newNumberOfElements = m.getSize();
 
+		// Ako matrice imaju iste dimenzije onda se samo radi kopija a ako ne onda se zauzima memorija za matrice
 		if (const bool matricesDontHaveSameSize = oldNumberOfElements != newNumberOfElements; matricesDontHaveSameSize)
 		{
 			int* newMemoryForMatrixElements = new int[newNumberOfElements];

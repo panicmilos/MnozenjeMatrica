@@ -17,6 +17,7 @@ tbb::task* ParallelTaskPerThread::execute()
 
 	for (size_t elementIndexIn1D = firstElementPosition; elementIndexIn1D < lastElementsPosition; ++elementIndexIn1D)
 	{
+		// Pretvara se index iz 1d u 2d kako bi se pristupalo tacnom elementu matrice
 		const auto [rowIndex, columnIndex] = get2DElementIndexFrom1D(elementIndexIn1D, numberOfElementsInResultMatrixRow);
 		int sumOfRowColumnPairs = 0;
 		for (size_t sharedIndex = 0; sharedIndex < numberOfElementsInLeftMatrixColumn; ++sharedIndex)
@@ -57,6 +58,7 @@ void ParallelTaskPerThreadMultiplier::fillTaskListForParent(tbb::task_list& pare
 
 void ParallelTaskPerThreadMultiplier::fillListWithAllTasksExceptLastOne(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
+	// Ubacuje se N-1 zadatak gde je N broj tredova. Broj elemenata po zadatku je ukupan broj elemenata rezultujuce matrice/broj tredova
 	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
 	const size_t numberOfElements = resultOfMultiplication.getSize();
 	const int numberOfThreads = getNumberOfProcessorThreads();
@@ -76,6 +78,7 @@ void ParallelTaskPerThreadMultiplier::fillListWithAllTasksExceptLastOne(tbb::tas
 
 void ParallelTaskPerThreadMultiplier::fillListWithLastTask(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
+	// Racuna se range elemenata koji racuna poslednji task sa greskom deljenja kako bi svi elementi bili izracunati
 	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
 	const size_t numberOfElements = resultOfMultiplication.getSize();
 	const size_t numberOfElementsPerThread = getNumberOfElementsPerThread(numberOfElements);
@@ -109,6 +112,7 @@ int ParallelTaskPerThreadMultiplier::getNumberOfProcessorThreads() const noexcep
 
 size_t ParallelTaskPerThreadMultiplier::getDividingElementsPerThreadError(const size_t numberOfElements) const noexcept
 {
+	// Greska se racuna po principu ukupan broj elemenata - izracunat broj elemenata po zadatku * broj tredova
 	const int numberOfThreads = getNumberOfProcessorThreads();
 	const size_t numberOfElementsPerThread = getNumberOfElementsPerThread(numberOfElements);
 	const size_t numberOfElementsWithError = numberOfThreads * numberOfElementsPerThread;

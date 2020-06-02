@@ -18,6 +18,7 @@ MatrixReader& MatrixReader::operator>>(Matrix& m) noexcept(false)
 
 	readMatrixFromFile();
 
+	// Ucitana matrica se prebacuje u zadatu da ne bi doslo do nepotrebne kopije
 	m = std::move(matrixFromFile);
 
 	return *this;
@@ -39,7 +40,7 @@ void MatrixReader::readMatrixFromFile() noexcept(false)
 void MatrixReader::readMatrixHeader() noexcept
 {
 	char randomFormatCharFromFile;
-
+	// Ucitavaju se dimenzije matrice koje se smestaju u Dimensions
 	fileStream >> randomFormatCharFromFile >> Dimensions.numberOfRows >> randomFormatCharFromFile >> Dimensions.numberOfColumns >> randomFormatCharFromFile;
 }
 

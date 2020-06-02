@@ -7,6 +7,7 @@ ParallelTask::ParallelTask(MultiplicationElements multiplicationElements_) noexc
 
 Matrix ParalellTaskMultiplierBase::doMultiplying(const Matrix& leftMatrix, const Matrix& rightMatrix) const noexcept
 {
+	// Pravljenje rezultujuce matrice, gormiranje grafa zadataka, pokretanje i cekanje na izvrsavanje istih
 	const size_t numberOfRowsInLeftMatrix = leftMatrix.getNumberOfRows();
 	const size_t numberOfColumnsInRightMatrix = rightMatrix.getNumberOfColumns();
 

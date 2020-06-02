@@ -32,6 +32,7 @@ MatrixMultiplierBase* ParallelTaskPerRowMultiplier::create() noexcept
 
 void ParallelTaskPerRowMultiplier::fillTaskListForParent(tbb::task_list& parentsTasks, tbb::empty_task& parent, MultiplicationElements multiplicationElements) const noexcept
 {
+	// Pravi se task za svaki red
 	const Matrix& resultOfMultiplication = multiplicationElements.resultOfMultiplication;
 	const size_t numberOfRows = resultOfMultiplication.getNumberOfRows();
 

@@ -12,7 +12,7 @@ class Matrix
 {
 public:
 	Matrix() = default;
-	Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int defaultElementValue = DEFAULT_ELEMENT_VALUE) noexcept(false);
+	Matrix(const size_t numberOfRows_, const size_t numberOfColumns_, const int elementsValue = DEFAULT_ELEMENT_VALUE) noexcept(false);
 	Matrix(const Matrix& m) noexcept(false);
 	Matrix(Matrix&& m) noexcept;
 	Matrix(const std::initializer_list<std::initializer_list<int>>& matrixElements_) noexcept(false);
@@ -40,6 +40,7 @@ private:
 
 	// Proverava da li je broj redova i kolona veci od 0
 	[[nodiscard]] bool validateDimensionsForParametarizedConstructor(const size_t numberOfRows, const size_t numberOfColumns) const noexcept;
+	// Poziva dve provere ispod
 	[[nodiscard]] bool validateDimensionsForInitializerListConstructor(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;
 	// Proverava da li su velicine svih kolona iste posto kolone mogu biti tipa { {1, 2}, {1}, {1, 2, 4, 5}, {} }
 	[[nodiscard]] bool areAllColumnsInListInitializerSameSize(const std::initializer_list<std::initializer_list<int>>& matrixElements) const noexcept;

@@ -23,6 +23,7 @@ public:
 	{
 		std::lock_guard<decltype(lockForFileAccess)> lockGuard(lockForFileAccess);
 
+		// Zatvara se tok u slucaju da se pokusa ponovo otvoriti nov
 		closeStreamIfItIsAlreadyOpen();
 
 		openStreamOnGivenPath(filePath);
